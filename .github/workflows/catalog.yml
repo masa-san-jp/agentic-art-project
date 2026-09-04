@@ -19,5 +19,7 @@ jobs:
           python-version: "3.x"
       - name: Verify generated catalog blocks
         run: python3 tools/catalog_sync.py --check
+      - name: Verify canonical Production plan identity
+        run: python3 tools/validate.py --check
       - name: Run catalog tests
         run: python3 -m unittest discover -s tests -v

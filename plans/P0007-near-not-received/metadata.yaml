@@ -1,21 +1,24 @@
 id: P0007
 title: 近接不在 — Near, Not Received
 slug: near-not-received
-status: published
-plan_state: planning
+status: ready-for-publication
 visibility: public
 rights_status: cleared
-publication_basis: explicit user-authorized public plan summary; original text only; external sources linked; internal research and handoff omitted
-public_record_rights_scope: original_public_summary_only
-production_clearance: pending
-content_sha256: 5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
-source:
+content_sha256: db553bcadc72e4929bb8886fea7df4fcc42951b238fd4ae0208a2bcdf7fbe1c4
+canonical_plan_available: true
+projection:
+  contract_version: canonical-plan-projection/v1
+  mode: AUTOMATIC_PLAN
+  producer: tools/run.py
+  canonical_artifact: production-plan.md
+  body_transform: none
+provenance:
   source_system: agentic-art-orchestration
-  source_project: auto-new-plan-20260904-001-d3fa82c0d944
-  source_handoff: HO001
-  source_generated_at: 2026-09-05
-  source_revision: 1
-  projection: sanitized-public-plan
+  source_ref: sha256:db553bcadc72e4929bb8886fea7df4fcc42951b238fd4ae0208a2bcdf7fbe1c4
+  source_repository: agentic-art-production
+  source_commit: e1bb0deb4c28489a881ef663a3d2a8d974c5b295
+  source_run_id: auto-new-plan-20260904-001-d3fa82c0d944
+  canonical_sha256: db553bcadc72e4929bb8886fea7df4fcc42951b238fd4ae0208a2bcdf7fbe1c4
 related_works: []
 tags:
   - agentic-art

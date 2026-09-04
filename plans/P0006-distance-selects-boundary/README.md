@@ -9,4 +9,6 @@
 - [ビジュアルリファレンスボード](media/visual-reference-board.svg)
 - [コンセプト・モックアップ](media/concept-mockup.svg)
 
+`plan.md`はProduction正本のbyte-for-byte投影です。このREADMEは紹介だけを担います。
+
 この公開レコードは、試作前の制作仮説と検証条件を記録するものです。実物の制作、会場設営、受入試験、健康上の効果、展示許可を示すものではありません。

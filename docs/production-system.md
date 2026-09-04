@@ -62,19 +62,19 @@ Agentic Artでは、人間が一つの完成案を直接指定するのではな
 - 作品・計画・素材の外部公開を確定する操作
 - Gitのcommit、push、PR、merge、release、visibility変更
 
-公開用の計画レコードは、生成されたプランを人間が読める形にしたものです。レコードが`published`であっても、そこに書かれた制作を実行済み、受入試験を通過済み、展示許可済みとは解釈しません。
+公開用の計画レコードは、Productionが生成した統合制作計画を本文変更なしで投影したものです。レコードが`ready-for-publication`であっても、そこに書かれた制作を実行済み、受入試験を通過済み、展示許可済みとは解釈しません。
 
 ## 公開projectionの考え方
 
-`agentic-art-project`へ取り込むのは、オーケストレーション出力のうち、公開用に整理した正本だけです。内部の`research-project/`、`handoff/`、実行ログ、会話、エージェント向けcontext、credential、ローカルパスはそのままコピーしません。
+`agentic-art-project`へ取り込む正規`plan.md`は、Production `03_plan/production-plan.md`のbyte-for-byte複製だけです。要約・翻訳・再構成・抜粋は`plan.md`に行わず、紹介文は`README.md`に置きます。内部の`research-project/`、`handoff/`、実行ログ、会話、エージェント向けcontext、credential、ローカルパスはコピーしません。正本が公開安全でなければ要約へfallbackせずblockedにします。
 
 公開レコードは次の単位で整理します。
 
 ```text
 plans/P0001-example/
 ├── README.md       # 展示カタログから読む紹介
-├── plan.md         # 公開用の制作プラン本文
-└── metadata.yaml   # 識別子、状態、可視性、権利状態、出典
+├── plan.md         # Production正本のbyte-for-byte投影
+└── metadata.yaml   # 識別子、状態、canonical hash、no-transform provenance
 ```
 
 画像や動画などのメディアは、公開許諾と権利状態が確認された場合だけ、対応する作品レコードの`media/`へ収録します。計画本文の説明用素材を、内部出力から自動的に持ち込むことはしません。
@@ -86,6 +86,7 @@ plans/P0001-example/
 ```bash
 python3 tools/catalog_sync.py --write
 python3 tools/catalog_sync.py --check
+python3 tools/validate.py --check
 ```
 
 オーケストレーションの自動plan投影が `public_projection_root` に新しいプランを反映するとき、ルートREADMEに `<!-- agentic-art:catalog:start -->` と `<!-- agentic-art:catalog:end -->` がある場合は、ルートからのリンク一覧も同じtransactionに含めます。ルートREADMEの概念説明、リポジトリ関係表、代表作品の紹介は自動置換の対象外です。関連リポジトリのURLと役割は [`repositories.yaml`](repositories.yaml) で管理します。

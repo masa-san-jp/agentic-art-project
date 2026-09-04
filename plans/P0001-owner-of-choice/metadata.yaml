@@ -1,20 +1,17 @@
 id: P0001
 title: 選択の持ち主 — 翻訳のあとに残るもの
 slug: owner-of-choice
-status: published
-plan_state: planning
+status: blocked-missing-canonical
 visibility: public
 rights_status: cleared
-publication_basis: user-authorized public plan summary; original text only, with external sources linked rather than reproduced
 content_sha256: 525fcd31ff35c11603baac67d9adca86ac4b89baa533372dcf14510006aae8af
-public_record_rights_scope: original_public_summary_only
-production_clearance: pending
-source:
-  source_system: agentic-art-orchestration
-  source_project: owner-of-choice
-  source_generated_at: 2026-09-02
-  source_revision: 1
+canonical_plan_available: false
+blocking_reason: canonical-production-plan-unavailable
+legacy:
+  artifact: summary.md
   projection: sanitized-public-plan
+  source_project: owner-of-choice
+  observed_at: 2026-09-05
 related_works: []
 tags:
   - agentic-art

@@ -2,24 +2,24 @@
 
 Agentic Art の制作プラン一覧です。
 
-制作プランは一件につき一つのディレクトリで管理します。各プランのディレクトリ名は `P0001-short-slug` の形式とし、詳細は個別の `README.md` と `plan.md` に記載します。
+制作プランは一件につき一つのディレクトリで管理します。各プランのディレクトリ名は `P0001-short-slug` の形式とし、紹介は`README.md`、Production正本の無変換投影は`plan.md`に置きます。
 
-現時点では、公開可否と正本の確認が完了した制作プランのみを掲載します。参照元に複数の版や形式がある場合、同じプランを重複掲載せず、公開する正本を一つ選びます。
+`ready-for-publication`はProduction正本を確認済みです。`正本待ち（制作不可）`は過去の要約を`summary.md`として追跡するblocked recordであり、制作プランとして使用できません。
 
 全件の機械可読一覧は [`index.yaml`](index.yaml) を参照してください。`index.yaml` が制作プランのSSOTであり、下の一覧とルートREADMEの制作プラン一覧は `python3 tools/catalog_sync.py --write` で同期します。
 
 ## 取り込み方針
 
-参照元にある旧版、別形式の同一計画、`.gdoc`の参照ファイル、研究・handoff・実行ツリーは、そのまま複製していません。各計画について、人間が読むための最新の正本を一つ選び、内部パス、個人由来の原資料、非公開URL、会話、認証情報を除いた公開版を作成しています。
+正規`plan.md`は`agentic-art-production`の`03_plan/production-plan.md`を`agentic-art-orchestration`の`AUTOMATIC_PLAN`経路がbyte-for-byteで投影します。要約、翻訳、再構成、抜粋はせず、紹介文だけを`README.md`に置きます。内部パス、個人由来の原資料、非公開URL、会話、認証情報が検出された場合は、正本を編集して公開せずblockedにします。
 
 100件規模のプランを生み出す仕組みの説明は、個別プランではなく [`docs/production-system.md`](../docs/production-system.md) に収録しています。実物作品、原寸データ、大容量メディア、制作手順は、作品の公開可否と権利状態を確認したうえで `works/` に別途収録します。
 
 <!-- agentic-art:catalog:start -->
-- [選択の持ち主 — 翻訳のあとに残るもの](P0001-owner-of-choice/README.md)
+- [選択の持ち主 — 翻訳のあとに残るもの — 正本待ち（制作不可）](P0001-owner-of-choice/README.md)
 - [移動する隙間による近接場の交換](P0002-moving-gap/README.md)
 - [関わり方を選び直す距離 — 余白の呼吸](P0003-yohaku-breath/README.md)
-- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](P0004-necessary-retreat/README.md)
-- [近いのに届かない — 枠を見る側に置く](P0005-close-but-cannot-reach/README.md)
+- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント — 正本待ち（制作不可）](P0004-necessary-retreat/README.md)
+- [近いのに届かない — 枠を見る側に置く — 正本待ち（制作不可）](P0005-close-but-cannot-reach/README.md)
 - [距離が選ぶ境界 — 近づいても触れない休止の場](P0006-distance-selects-boundary/README.md)
 - [近接不在 — Near, Not Received](P0007-near-not-received/README.md)
 <!-- agentic-art:catalog:end -->
