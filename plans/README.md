@@ -6,7 +6,7 @@ Agentic Art の制作プラン一覧です。
 
 現時点では、公開可否と正本の確認が完了した制作プランのみを掲載します。参照元に複数の版や形式がある場合、同じプランを重複掲載せず、公開する正本を一つ選びます。
 
-全件の機械可読一覧は [`index.yaml`](index.yaml) を参照してください。
+全件の機械可読一覧は [`index.yaml`](index.yaml) を参照してください。`index.yaml` が制作プランのSSOTであり、下の一覧とルートREADMEの制作プラン一覧は `python3 tools/catalog_sync.py --write` で同期します。
 
 ## 取り込み方針
 
@@ -23,3 +23,5 @@ Agentic Art の制作プラン一覧です。
 - [距離が選ぶ境界 — 近づいても触れない休止の場](P0006-distance-selects-boundary/README.md)
 - [近接不在 — Near, Not Received](P0007-near-not-received/README.md)
 <!-- agentic-art:catalog:end -->
+
+管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。

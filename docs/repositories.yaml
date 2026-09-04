@@ -1,0 +1,43 @@
+version: 1
+description: Agentic Art を構成するリポジトリ群と、この公開カタログとの関係
+repositories:
+  - id: agentic-art-orchestration
+    full_name: masa-san-jp/agentic-art-orchestration
+    url: https://github.com/masa-san-jp/agentic-art-orchestration
+    role: オーケストレーション親・制御面
+    relation: 入力、研究、制作をつなぎ、公開可能な制作プランをこのリポジトリへ投影する
+  - id: agentic-art-project
+    full_name: masa-san-jp/agentic-art-project
+    url: https://github.com/masa-san-jp/agentic-art-project
+    role: 公開成果物カタログ
+    relation: オーケストレーションの出力から公開用の制作プラン、作品、制作記録を収録する
+  - id: agentic-art-research
+    full_name: masa-san-jp/agentic-art-research
+    url: https://github.com/masa-san-jp/agentic-art-research
+    role: 制作リサーチ実行・成果物
+    relation: オーケストレーションから参照される下流リポジトリで、内部資料はこのカタログへ複製しない
+  - id: agentic-art-production
+    full_name: masa-san-jp/agentic-art-production
+    url: https://github.com/masa-san-jp/agentic-art-production
+    role: 制作実行・結果記録
+    relation: 制作引き渡しを受けて制作物と記録を扱い、作品公開は別の人間ゲートを通る
+  - id: self-model-notes
+    full_name: masa-san-jp/self-model-notes
+    url: https://github.com/masa-san-jp/self-model-notes
+    role: 自己モデル入力ナレッジベース
+    relation: オーケストレーションが参照する上流入力であり、このカタログの収録対象ではない
+  - id: art-history-notes
+    full_name: masa-san-jp/art-history-notes
+    url: https://github.com/masa-san-jp/art-history-notes
+    role: 美術史入力ナレッジベース
+    relation: オーケストレーションが参照する上流入力であり、このカタログの収録対象ではない
+  - id: marketing-trends-notes
+    full_name: masa-san-jp/marketing-trends-notes
+    url: https://github.com/masa-san-jp/marketing-trends-notes
+    role: 市場変化入力ナレッジベース
+    relation: オーケストレーションが参照する上流入力であり、このカタログの収録対象ではない
+  - id: viewer-response-notes
+    full_name: masa-san-jp/viewer-response-notes
+    url: https://github.com/masa-san-jp/viewer-response-notes
+    role: 鑑賞者反応・フィードバック
+    relation: 作品への反応を集計し、将来の制作要件を評価する上流フィードバックである

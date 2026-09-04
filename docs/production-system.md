@@ -79,6 +79,17 @@ plans/P0001-example/
 
 画像や動画などのメディアは、公開許諾と権利状態が確認された場合だけ、対応する作品レコードの`media/`へ収録します。計画本文の説明用素材を、内部出力から自動的に持ち込むことはしません。
 
+## READMEとカタログの同期
+
+制作プランの正本一覧は `plans/index.yaml` です。`plans/README.md` とルート `README.md` の制作プラン一覧は、インデックスを読みやすいリンクへ展開した生成ブロックであり、個別に編集しません。ローカルでレコードを追加・修正した場合は次を実行します。
+
+```bash
+python3 tools/catalog_sync.py --write
+python3 tools/catalog_sync.py --check
+```
+
+オーケストレーションの自動plan投影が `public_projection_root` に新しいプランを反映するとき、ルートREADMEに `<!-- agentic-art:catalog:start -->` と `<!-- agentic-art:catalog:end -->` がある場合は、ルートからのリンク一覧も同じtransactionに含めます。ルートREADMEの概念説明、リポジトリ関係表、代表作品の紹介は自動置換の対象外です。関連リポジトリのURLと役割は [`repositories.yaml`](repositories.yaml) で管理します。
+
 ## このカタログの読み方
 
 各プランは、完成作品の説明ではなく、エージェントがどのような制作仮説を採択し、何を検証前の問題として残したかを読むための記録です。プラン同士を比較することで、同じ入力からどのような体験、媒体、距離、参加条件が分岐したかを確認できます。

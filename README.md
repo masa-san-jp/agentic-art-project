@@ -38,14 +38,37 @@ agentic-art-orchestration
 
 このリポジトリはオーケストレーションの実行環境や内部ログを収録する場所ではありません。自律的な制作の結果を、個別の制作プランと作品記録として追跡可能な形で公開する場所です。
 
-公開対象の選定と、100件規模の制作プランを生み出す仕組みについては [`docs/production-system.md`](docs/production-system.md) を参照してください。
+公開対象の選定と、100件規模の制作プランを生み出す仕組みについては [`docs/production-system.md`](docs/production-system.md) を参照してください。リポジトリ群のURLと関係性は [`docs/repositories.yaml`](docs/repositories.yaml) を正本とします。
 
-## 関連リポジトリ
+## 関連リポジトリと関係性
 
-| リポジトリ | 役割 |
-|---|---|
-| `agentic-art-orchestration` | エージェント群、制作フロー、制作プランの生成、制作物・記録の出力を管理する |
-| `agentic-art-project` | オーケストレーションの出力から、公開対象の制作プラン、作品、制作記録を整理・紹介する |
+`agentic-art-orchestration` を親の制御面とし、入力ナレッジ、リサーチ、制作実行を経て、このリポジトリへ公開用レコードを `export-only` で投影します。このリポジトリは入力ナレッジや実行状態を所有せず、オーケストレーション内部のログ・会話・handoff・認証情報を受け取りません。
+
+```text
+入力ナレッジ / 鑑賞者反応
+          │
+          ▼
+agentic-art-orchestration（親・制御面）
+          │
+          ├── agentic-art-research（リサーチ）
+          ├── agentic-art-production（制作実行・結果記録）
+          └── agentic-art-project（公開カタログへexport-only投影）
+```
+
+関係性の表は [`docs/repositories.yaml`](docs/repositories.yaml) から生成されています。追加・変更時は同ファイルを更新し、`python3 tools/catalog_sync.py --write` を実行してください。
+
+<!-- agentic-art:repositories:start -->
+| リポジトリ | 役割 | このプロジェクトとの関係 |
+|---|---|---|
+| [agentic-art-orchestration](https://github.com/masa-san-jp/agentic-art-orchestration) | オーケストレーション親・制御面 | 入力、研究、制作をつなぎ、公開可能な制作プランをこのリポジトリへ投影する |
+| [agentic-art-project](https://github.com/masa-san-jp/agentic-art-project) | 公開成果物カタログ | オーケストレーションの出力から公開用の制作プラン、作品、制作記録を収録する |
+| [agentic-art-research](https://github.com/masa-san-jp/agentic-art-research) | 制作リサーチ実行・成果物 | オーケストレーションから参照される下流リポジトリで、内部資料はこのカタログへ複製しない |
+| [agentic-art-production](https://github.com/masa-san-jp/agentic-art-production) | 制作実行・結果記録 | 制作引き渡しを受けて制作物と記録を扱い、作品公開は別の人間ゲートを通る |
+| [self-model-notes](https://github.com/masa-san-jp/self-model-notes) | 自己モデル入力ナレッジベース | オーケストレーションが参照する上流入力であり、このカタログの収録対象ではない |
+| [art-history-notes](https://github.com/masa-san-jp/art-history-notes) | 美術史入力ナレッジベース | オーケストレーションが参照する上流入力であり、このカタログの収録対象ではない |
+| [marketing-trends-notes](https://github.com/masa-san-jp/marketing-trends-notes) | 市場変化入力ナレッジベース | オーケストレーションが参照する上流入力であり、このカタログの収録対象ではない |
+| [viewer-response-notes](https://github.com/masa-san-jp/viewer-response-notes) | 鑑賞者反応・フィードバック | 作品への反応を集計し、将来の制作要件を評価する上流フィードバックである |
+<!-- agentic-art:repositories:end -->
 
 制作プロセスやエージェントの仕組みを確認したい場合は `agentic-art-orchestration` を参照してください。実際に生成された公開作品や制作記録を閲覧したい場合は、このリポジトリの `plans/` と `works/` を参照してください。
 
@@ -65,13 +88,17 @@ agentic-art-orchestration
 
 ## 公開された制作プラン
 
-制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や受入試験の通過を意味しません。
+制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や受入試験の通過を意味しません。以下の一覧は [`plans/index.yaml`](plans/index.yaml) から生成されます。
 
+<!-- agentic-art:catalog:start -->
 - [選択の持ち主 — 翻訳のあとに残るもの](plans/P0001-owner-of-choice/README.md)
 - [移動する隙間による近接場の交換](plans/P0002-moving-gap/README.md)
 - [関わり方を選び直す距離 — 余白の呼吸](plans/P0003-yohaku-breath/README.md)
 - [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
 - [近いのに届かない — 枠を見る側に置く](plans/P0005-close-but-cannot-reach/README.md)
+- [距離が選ぶ境界 — 近づいても触れない休止の場](plans/P0006-distance-selects-boundary/README.md)
+- [近接不在 — Near, Not Received](plans/P0007-near-not-received/README.md)
+<!-- agentic-art:catalog:end -->
 
 ## リポジトリの構造
 
@@ -82,8 +109,11 @@ agentic-art-orchestration
 ├── LICENSE                   # 公開資料のライセンス
 ├── docs/                     # プロジェクト全体に関する公開資料
 │   ├── production-system.md  # 自律的な制作システムの説明
-│   ├── background.md         # 背景・位置づけ
-│   └── glossary.md           # 用語
+│   └── repositories.yaml      # 関連リポジトリのURL・役割・関係性
+├── tools/                    # カタログ同期・検証ツール
+│   └── catalog_sync.py       # index.yamlからREADMEの管理ブロックを同期
+├── .github/workflows/        # リポジトリ上の自動検証
+│   └── catalog.yml           # READMEとindexの不一致を検出
 ├── plans/                    # 制作プランの集合
 │   ├── README.md             # 全制作プランの一覧
 │   ├── index.yaml            # 制作プランの機械可読インデックス
@@ -194,7 +224,7 @@ source_plans:
   - P0001
 ```
 
-プランと作品の追加・変更時は、個別の `metadata.yaml`、`plans/index.yaml` または `works/index.yaml`、関連する一覧ページを必要に応じて同時に更新します。
+プランと作品の追加・変更時は、個別の `metadata.yaml`、`plans/index.yaml` または `works/index.yaml`、関連する一覧ページを必要に応じて同時に更新します。制作プランについては `plans/index.yaml` がSSOTです。READMEの管理ブロックを手で編集せず、`python3 tools/catalog_sync.py --write` で同期し、コミット前に `python3 tools/catalog_sync.py --check` を実行します。
 
 ## 公開範囲
 
