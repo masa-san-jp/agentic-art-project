@@ -7,3 +7,6 @@ Agentic Art の作品と制作記録の一覧です。
 現時点では、公開可否と権利状態の確認が完了した作品のみを掲載します。制作プランとの関係は、個別作品の `metadata.yaml` と本文のリンクで示します。
 
 全件の機械可読一覧は [`index.yaml`](index.yaml) を参照してください。
+
+<!-- agentic-art:catalog:start -->
+<!-- agentic-art:catalog:end -->

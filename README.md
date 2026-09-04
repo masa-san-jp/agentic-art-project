@@ -66,6 +66,7 @@ agentic-art-orchestration
 ```text
 .
 ├── README.md                 # コンセプトと代表作品の紹介
+├── public-project.yaml       # 公開projectionのレイアウト契約
 ├── LICENSE                   # 公開資料のライセンス
 ├── docs/                     # プロジェクト全体に関する公開資料
 │   ├── production-system.md  # 自律的な制作システムの説明
@@ -95,7 +96,7 @@ agentic-art-orchestration
     └── diagrams/             # プロジェクト全体の説明図
 ```
 
-`docs/`、`shared/` は必要な資料が存在する場合だけ作成します。作品に属する画像やその他のメディアを、ルートの `shared/` に置いてはいけません。
+`public-project.yaml` は公開projectionの対象レイアウトを宣言します。`docs/`、`shared/` は必要な資料が存在する場合だけ作成します。作品に属する画像やその他のメディアを、ルートの `shared/` に置いてはいけません。
 
 ## 制作プランと作品記録
 
@@ -130,7 +131,7 @@ works/W0001-title/
     └── process/
 ```
 
-`README.md` は人間が読むための紹介ページ、`plan.md` または `record.md` は内容の正本、`metadata.yaml` は一覧化・検索・自動処理に使う構造化情報です。
+`README.md` は人間が読むための紹介ページ、`plan.md` または `record.md` は内容の正本、`metadata.yaml` は一覧化・検索・自動処理に使う構造化情報です。`index.yaml` は公開projection互換の `records` と再利用禁止IDを示す `retired_ids` を持ちます。
 
 ## 識別子と命名
 
