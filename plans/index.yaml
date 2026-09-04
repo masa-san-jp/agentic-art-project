@@ -54,4 +54,13 @@ records:
     status: published
     visibility: public
     rights_status: cleared
+  - id: P0007
+    slug: near-not-received
+    title: 近接不在 — Near, Not Received
+    path: plans/P0007-near-not-received
+    source_key: plan:5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
+    content_sha256: 5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
+    status: published
+    visibility: public
+    rights_status: cleared
 retired_ids: []
