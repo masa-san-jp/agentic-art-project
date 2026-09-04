@@ -1,3 +1,48 @@
 version: 1
-records: []
+records:
+  - id: P0001
+    slug: owner-of-choice
+    title: 選択の持ち主 — 翻訳のあとに残るもの
+    path: plans/P0001-owner-of-choice
+    source_key: plan:525fcd31ff35c11603baac67d9adca86ac4b89baa533372dcf14510006aae8af
+    content_sha256: 525fcd31ff35c11603baac67d9adca86ac4b89baa533372dcf14510006aae8af
+    status: published
+    visibility: public
+    rights_status: cleared
+  - id: P0002
+    slug: moving-gap
+    title: 移動する隙間による近接場の交換
+    path: plans/P0002-moving-gap
+    source_key: plan:6968d922845591e47244b8af11f623a25ecf57414e807e2f28c48079ca030036
+    content_sha256: 6968d922845591e47244b8af11f623a25ecf57414e807e2f28c48079ca030036
+    status: published
+    visibility: public
+    rights_status: cleared
+  - id: P0003
+    slug: yohaku-breath
+    title: 関わり方を選び直す距離 — 余白の呼吸
+    path: plans/P0003-yohaku-breath
+    source_key: plan:cb887f2b2771554083b0c54aed32ff276d64c473be364682bf896d3146e090c9
+    content_sha256: cb887f2b2771554083b0c54aed32ff276d64c473be364682bf896d3146e090c9
+    status: published
+    visibility: public
+    rights_status: cleared
+  - id: P0004
+    slug: necessary-retreat
+    title: 必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント
+    path: plans/P0004-necessary-retreat
+    source_key: plan:da3c0578dcb6dad1b00e1b8c80d90d9a8768aa6b72993573186ec91f117f6fce
+    content_sha256: da3c0578dcb6dad1b00e1b8c80d90d9a8768aa6b72993573186ec91f117f6fce
+    status: published
+    visibility: public
+    rights_status: cleared
+  - id: P0005
+    slug: close-but-cannot-reach
+    title: 近いのに届かない — 枠を見る側に置く
+    path: plans/P0005-close-but-cannot-reach
+    source_key: plan:ba95efb8113cb117703165b8accf4e281fa52aaa8c53970cfc8e80cd5331135a
+    content_sha256: ba95efb8113cb117703165b8accf4e281fa52aaa8c53970cfc8e80cd5331135a
+    status: published
+    visibility: public
+    rights_status: cleared
 retired_ids: []

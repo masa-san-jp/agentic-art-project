@@ -38,6 +38,8 @@ agentic-art-orchestration
 
 このリポジトリはオーケストレーションの実行環境や内部ログを収録する場所ではありません。自律的な制作の結果を、個別の制作プランと作品記録として追跡可能な形で公開する場所です。
 
+公開対象の選定と、100件規模の制作プランを生み出す仕組みについては [`docs/production-system.md`](docs/production-system.md) を参照してください。
+
 ## 関連リポジトリ
 
 | リポジトリ | 役割 |
@@ -60,6 +62,16 @@ agentic-art-orchestration
 
 作品の短い紹介文。
 -->
+
+## 公開された制作プラン
+
+制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や受入試験の通過を意味しません。
+
+- [選択の持ち主 — 翻訳のあとに残るもの](plans/P0001-owner-of-choice/README.md)
+- [移動する隙間による近接場の交換](plans/P0002-moving-gap/README.md)
+- [関わり方を選び直す距離 — 余白の呼吸](plans/P0003-yohaku-breath/README.md)
+- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
+- [近いのに届かない — 枠を見る側に置く](plans/P0005-close-but-cannot-reach/README.md)
 
 ## リポジトリの構造
 
