@@ -5,4 +5,6 @@
 - [制作プラン本文](plan.md)
 - [メタデータ](metadata.yaml)
 
+`plan.md`はProduction正本のbyte-for-byte投影です。このREADMEは紹介だけを担います。
+
 具体的な空間構成は未確定で、公開レコードは試作前の仮説と検証条件を示します。

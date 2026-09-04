@@ -36,6 +36,8 @@ agentic-art-orchestration
 
 `agentic-art-orchestration` は、エージェントが制作プランを生み出し、制作物と記録を出力するための仕組みを管理します。このリポジトリは、その出力のうち公開可能な制作プラン、作品、制作記録を、他の人が読めるカタログとして整理します。
 
+正規の`plan.md`は`agentic-art-production`の`03_plan/production-plan.md`を要約せずbyte-for-byteで受け取ります。各recordの`README.md`は紹介文ですが、制作に使う正本は`plan.md`です。正本を確認できない旧要約は`summary.md`へ隔離し、「正本待ち（制作不可）」と表示します。
+
 このリポジトリはオーケストレーションの実行環境や内部ログを収録する場所ではありません。自律的な制作の結果を、個別の制作プランと作品記録として追跡可能な形で公開する場所です。
 
 公開対象の選定と、100件規模の制作プランを生み出す仕組みについては [`docs/production-system.md`](docs/production-system.md) を参照してください。リポジトリ群のURLと関係性は [`docs/repositories.yaml`](docs/repositories.yaml) を正本とします。
@@ -91,11 +93,11 @@ agentic-art-orchestration（親・制御面）
 制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や受入試験の通過を意味しません。以下の一覧は [`plans/index.yaml`](plans/index.yaml) から生成されます。
 
 <!-- agentic-art:catalog:start -->
-- [選択の持ち主 — 翻訳のあとに残るもの](plans/P0001-owner-of-choice/README.md)
+- [選択の持ち主 — 翻訳のあとに残るもの — 正本待ち（制作不可）](plans/P0001-owner-of-choice/README.md)
 - [移動する隙間による近接場の交換](plans/P0002-moving-gap/README.md)
 - [関わり方を選び直す距離 — 余白の呼吸](plans/P0003-yohaku-breath/README.md)
-- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
-- [近いのに届かない — 枠を見る側に置く](plans/P0005-close-but-cannot-reach/README.md)
+- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント — 正本待ち（制作不可）](plans/P0004-necessary-retreat/README.md)
+- [近いのに届かない — 枠を見る側に置く — 正本待ち（制作不可）](plans/P0005-close-but-cannot-reach/README.md)
 - [距離が選ぶ境界 — 近づいても触れない休止の場](plans/P0006-distance-selects-boundary/README.md)
 - [近接不在 — Near, Not Received](plans/P0007-near-not-received/README.md)
 <!-- agentic-art:catalog:end -->
@@ -173,7 +175,7 @@ works/W0001-title/
     └── process/
 ```
 
-`README.md` は人間が読むための紹介ページ、`plan.md` または `record.md` は内容の正本、`metadata.yaml` は一覧化・検索・自動処理に使う構造化情報です。`index.yaml` は公開projection互換の `records` と再利用禁止IDを示す `retired_ids` を持ちます。
+`README.md` は人間が読むための紹介ページ、`plan.md` または `record.md` は内容の正本、`metadata.yaml` は一覧化・検索・自動処理に使う構造化情報です。`plan.md`はProduction正本の無変換投影に限ります。正本がない旧要約は`summary.md`であり、`plan.md`として扱いません。`index.yaml` は公開projection互換の `records` と再利用禁止IDを示す `retired_ids` を持ちます。
 
 ## 識別子と命名
 
@@ -205,7 +207,7 @@ works/W0001-title/
 # plans/P0001-title/metadata.yaml
 id: P0001
 title: 制作プランのタイトル
-status: published
+status: ready-for-publication
 visibility: public
 rights_status: cleared
 related_works:
@@ -237,30 +239,32 @@ source_plans:
 
 公開レコードの `metadata.yaml` には、少なくとも `visibility: public` と `rights_status: cleared` を設定します。公開可否または権利状態が `unknown`、`internal`、`restricted` の資料は、このリポジトリへ収録しません。
 
-`agentic-art-orchestration` の出力を取り込む場合も、公開対象を確認してから、このリポジトリの構造に合わせて整理します。オーケストレーション側の内部ディレクトリ構造を、そのままコピーしません。
+`agentic-art-orchestration` の出力を取り込む場合も、公開対象を確認してから、このリポジトリの構造に合わせて整理します。オーケストレーション側の内部ディレクトリ構造を、そのままコピーしません。ただしProduction正本の`production-plan.md`だけは本文を変換せず`plan.md`へコピーします。
 
 ## 参照元からの取り込み
 
 参照元の一つのフォルダを、そのまま一つの公開レコードにコピーするとは限りません。次の基準で整理します。
 
-- 人間が読むための確定版の制作プランは `plans/Pxxxx-slug/plan.md` に整理します。
+- 正規制作プランは`AUTOMATIC_PLAN`経路がProductionの`03_plan/production-plan.md`をbyte-for-byteで`plans/Pxxxx-slug/plan.md`へ投影します。手作業で本文を作りません。
 - 作品と制作物の記録は `works/Wxxxx-slug/record.md` に整理します。
 - 作品固有の画像、印刷データ、映像、音声、公開可能な制作スクリプトは、対応する作品の `media/` に整理します。
 - 100件のプラン生成方法など、個別作品に属さない仕組みの説明は `docs/production-system.md` に整理します。
 - 同じプロジェクトの旧版・別形式の文書はすべて個別レコードにしません。公開する正本を一つ選び、必要な版情報を `metadata.yaml` に記録します。
 - `.gdoc` はGoogle Docsへの参照情報であり、公開本文ではありません。`.gdoc`ファイルをそのままコピーせず、公開可能性を確認したうえで本文をMarkdownに変換するか、公開URLを明示します。
-- `handoff/`、`research-project/`、`production-plan/08_runtime/` などの内部運用ツリーは、そのまま公開ディレクトリへ移しません。公開に必要な情報だけを、人間向けのプランまたは作品記録へ要約します。
+- `handoff/`、`research-project/`、`production-plan/08_runtime/` などの内部運用ツリーは、そのまま公開ディレクトリへ移しません。planの紹介は`README.md`、作品記録の編集は`record.md`で行い、正規`plan.md`は要約しません。
+- 正本が確認できない旧要約は`summary.md`、`status: blocked-missing-canonical`として保存し、制作可能なplanと表示しません。
 - 同一内容のbundle、canonical source、export結果を重複して収録しません。正本と出典を `metadata.yaml` で示します。
 
 ## 人間とエージェントの作業ルール
 
 1. 作業前にルートの `README.md`、対象カテゴリの一覧ページ、対象レコードの `README.md` と `metadata.yaml` を確認します。
 2. 新しい制作プランまたは作品を追加するときは、既存の識別子を確認して新しいIDを付与します。
-3. 新しいレコードには、個別の `README.md`、本文ファイル、`metadata.yaml` を作成します。
+3. 新しいplan recordは親の`AUTOMATIC_PLAN`投影だけで追加し、個別の`README.md`、無変換`plan.md`、`metadata.yaml`を揃えます。
 4. 作品固有のメディアは、必ず対応する `works/Wxxxx-title/media/` に置きます。
 5. プランと作品の関係を、双方のメタデータと本文のリンクで追跡できるようにします。
 6. 相対リンク、画像リンク、一覧ページのリンクが有効であることを確認します。
 7. 既存のレコードを変更するときは、変更理由と影響範囲を確認し、無関係なレコードを変更しません。
 8. 公開可否が判断できないファイルは追加せず、確認が必要なものとして扱います。
+9. `python3 tools/validate.py --check`でcanonical hash、no-transform provenance、Production生成sectionを検証します。
 
 この構造により、ルート README は「展示入口」、`plans/` と `works/` は「公開カタログ」、各レコードのディレクトリは「個別の詳細ページ」として機能します。

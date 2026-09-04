@@ -1,20 +1,24 @@
 id: P0002
 title: 移動する隙間による近接場の交換
 slug: moving-gap
-status: published
-plan_state: planning
+status: ready-for-publication
 visibility: public
 rights_status: cleared
-publication_basis: user-authorized public plan summary; original text only, with external sources linked rather than reproduced
-content_sha256: 6968d922845591e47244b8af11f623a25ecf57414e807e2f28c48079ca030036
-public_record_rights_scope: original_public_summary_only
-production_clearance: pending
-source:
+content_sha256: 08bb30823762456872039c13979aeaee0eaa9fe48d10ba87395500328711b451
+canonical_plan_available: true
+projection:
+  contract_version: canonical-plan-projection/v1
+  mode: AUTOMATIC_PLAN
+  producer: tools/run.py
+  canonical_artifact: production-plan.md
+  body_transform: none
+provenance:
   source_system: agentic-art-orchestration
-  source_project: auto-auto-plan-repository-202
-  source_generated_at: 2026-09-02
-  source_revision: 1
-  projection: sanitized-public-plan
+  source_ref: sha256:08bb30823762456872039c13979aeaee0eaa9fe48d10ba87395500328711b451
+  source_repository: agentic-art-production
+  source_commit: a35d635b05fe8df1b3016410166fcdbc8fa48986
+  source_run_id: auto-auto-plan-repository-202
+  canonical_sha256: 08bb30823762456872039c13979aeaee0eaa9fe48d10ba87395500328711b451
 related_works: []
 tags:
   - agentic-art
