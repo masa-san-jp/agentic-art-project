@@ -1,0 +1,25 @@
+id: P0006
+title: 距離が選ぶ境界 — 近づいても触れない休止の場
+slug: distance-selects-boundary
+status: published
+plan_state: planning
+visibility: public
+rights_status: cleared
+publication_basis: explicit user-authorized public plan summary; original text and generated diagrams only
+public_record_rights_scope: original_public_summary_and_generated_diagrams
+production_clearance: pending
+content_sha256: 67735d1c5a4c2dbc9f624d32e5237f5c3657fb264ce7cc2c1fc54e49a1728b08
+source:
+  source_system: agentic-art-orchestration
+  source_project: boundary-distance-20260905
+  source_handoff: HO20260908
+  source_generated_at: 2026-09-05
+  source_revision: 1
+  projection: sanitized-public-plan
+related_works: []
+tags:
+  - agentic-art
+  - distance
+  - non-contact
+  - rest
+  - installation
