@@ -58,8 +58,8 @@ records:
     slug: near-not-received
     title: 近接不在 — Near, Not Received
     path: plans/P0007-near-not-received
-    source_key: plan:5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
-    content_sha256: 5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
+    source_key: plan:e8a75a205892214ae8e6edd600e680cfd6593b493881e0589931d14adaa3f9ed
+    content_sha256: e8a75a205892214ae8e6edd600e680cfd6593b493881e0589931d14adaa3f9ed
     status: published
     visibility: public
     rights_status: cleared

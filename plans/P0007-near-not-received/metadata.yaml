@@ -2,19 +2,26 @@ id: P0007
 title: 近接不在 — Near, Not Received
 slug: near-not-received
 status: published
-plan_state: planning
+plan_state: execution-ready
 visibility: public
 rights_status: cleared
-publication_basis: explicit user-authorized public plan summary; original text only; external sources linked; internal research and handoff omitted
-public_record_rights_scope: original_public_summary_only
+publication_basis: explicit user-authorized overwrite of P0007; original execution specification and original templates only; external sources linked; internal research and handoff omitted
+public_record_rights_scope: original_public_execution_specification_and_original_templates
 production_clearance: pending
-content_sha256: 5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
+execution_contract:
+  executor: one person
+  environment: indoor tabletop
+  maximum_work_hours: 10
+  budget_cap_jpy: 15000
+  external_dependencies: none for self-contained build
+  completion_definition: A1-A9 all PASS with completion record
+content_sha256: e8a75a205892214ae8e6edd600e680cfd6593b493881e0589931d14adaa3f9ed
 source:
   source_system: agentic-art-orchestration
   source_project: auto-new-plan-20260904-001-d3fa82c0d944
   source_handoff: HO001
   source_generated_at: 2026-09-05
-  source_revision: 1
+  source_revision: 2
   projection: sanitized-public-plan
 related_works: []
 tags:
@@ -22,4 +29,6 @@ tags:
   - distance
   - non-receipt
   - packets
+  - tabletop
+  - self-contained
   - installation
