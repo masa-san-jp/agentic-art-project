@@ -62,11 +62,11 @@ Agentic Artでは、人間が一つの完成案を直接指定するのではな
 - 作品・計画・素材の外部公開を確定する操作
 - Gitのcommit、push、PR、merge、release、visibility変更
 
-公開用の計画レコードは、生成されたプランを人間が読める形にしたものです。レコードが`published`であっても、そこに書かれた制作を実行済み、受入試験を通過済み、展示許可済みとは解釈しません。
+公開用の計画レコードは、Production が生成した `production-plan.md` の完全な正本を無変換で投影したものです。要約・翻訳・抜粋・手書き本文は正規 `plan.md` ではありません。レコードが`published`であっても、そこに書かれた制作を実行済み、受入試験を通過済み、展示許可済みとは解釈しません。正本を確認できない旧要約は `blocked-missing-canonical` として隔離します。
 
 ## 公開projectionの考え方
 
-`agentic-art-project`へ取り込むのは、オーケストレーション出力のうち、公開用に整理した正本だけです。内部の`research-project/`、`handoff/`、実行ログ、会話、エージェント向けcontext、credential、ローカルパスはそのままコピーしません。
+`agentic-art-project`へ取り込むのは、オーケストレーション出力のうち、Production の正本 `production-plan.md` を無変換で投影したものだけです。内部の`research-project/`、`handoff/`、実行ログ、会話、エージェント向けcontext、credential、ローカルパスはそのままコピーしません。
 
 公開レコードは次の単位で整理します。
 

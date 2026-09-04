@@ -2,6 +2,8 @@ import importlib.util
 import unittest
 from pathlib import Path
 
+from tools import validate
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("catalog_sync", ROOT / "tools/catalog_sync.py")
@@ -34,6 +36,17 @@ class CatalogSyncTests(unittest.TestCase):
     def test_marker_pair_must_be_unique_and_ordered(self):
         with self.assertRaises(catalog_sync.CatalogError):
             catalog_sync.replace_block("start end end", "start", "end", "body", "fixture")
+
+    def test_public_catalog_passes_canonical_or_blocked_classification(self):
+        self.assertEqual([], validate.validate_catalog())
+
+    def test_summary_body_is_not_a_canonical_plan(self):
+        self.assertTrue(validate.canonical_plan_findings(b"# Public summary\n\nShortened plan.\n"))
+
+    def test_complete_production_shape_is_canonical(self):
+        lines = ["# 統合制作計画書", "", "### 計画メタデータ", "", "| 計画 | PL001 |", "| 計画状態 | PLANNING |", "| 制作着手可否 | 着手可 |", "| handoff | HO001 revision 1 |", "| 要件カバレッジ | 100% |", "| クリティカルパス | `TK001` |", ""]
+        lines.extend(item for heading in validate.CANONICAL_HEADINGS[2:] for item in (heading, "", "content", ""))
+        self.assertEqual([], validate.canonical_plan_findings("\n".join(lines).encode()))
 
 
 if __name__ == "__main__":

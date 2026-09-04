@@ -94,13 +94,15 @@ def _parse_list_records(path: Path, section: str) -> list[dict[str, str]]:
 
 def load_plans(path: Path = PLAN_INDEX) -> list[dict[str, str]]:
     records = _parse_list_records(path, "records")
-    required = {"id", "title", "path", "status", "visibility", "rights_status"}
+    required = {"id", "title", "path", "status", "visibility", "rights_status", "plan_state"}
     for record in records:
         missing = sorted(required - record.keys())
         if missing:
             raise CatalogError(f"{path}: {record.get('id', '<unknown>')} missing {', '.join(missing)}")
         if record["status"] != "published" or record["visibility"] != "public" or record["rights_status"] != "cleared":
             raise CatalogError(f"{path}: {record['id']} is not an eligible public catalog record")
+        if record["plan_state"] not in {"canonical-plan", "blocked-missing-canonical"}:
+            raise CatalogError(f"{path}: {record['id']} has an invalid plan_state")
         if not record["path"].startswith("plans/"):
             raise CatalogError(f"{path}: {record['id']} path must be under plans/")
     return sorted(records, key=lambda item: item["id"])

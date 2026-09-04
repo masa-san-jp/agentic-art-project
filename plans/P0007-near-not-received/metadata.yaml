@@ -2,12 +2,14 @@ id: P0007
 title: 近接不在 — Near, Not Received
 slug: near-not-received
 status: published
-plan_state: planning
+plan_state: blocked-missing-canonical
+classification: blocked-missing-canonical
+execution_status: blocked
 visibility: public
 rights_status: cleared
 publication_basis: explicit user-authorized public plan summary; original text only; external sources linked; internal research and handoff omitted
 public_record_rights_scope: original_public_summary_only
-production_clearance: pending
+production_clearance: blocked
 content_sha256: 5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
 source:
   source_system: agentic-art-orchestration

@@ -2,12 +2,14 @@ id: P0005
 title: 近いのに届かない — 枠を見る側に置く
 slug: close-but-cannot-reach
 status: published
-plan_state: planning
+plan_state: blocked-missing-canonical
+classification: blocked-missing-canonical
+execution_status: blocked
 visibility: public
 rights_status: cleared
 publication_basis: user-authorized public plan summary; internal source material, private links, and generated media omitted
 public_record_rights_scope: original_public_summary_only
-production_clearance: pending
+production_clearance: blocked
 content_sha256: ba95efb8113cb117703165b8accf4e281fa52aaa8c53970cfc8e80cd5331135a
 source:
   source_system: agentic-art-orchestration

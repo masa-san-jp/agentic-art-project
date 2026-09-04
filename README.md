@@ -88,7 +88,7 @@ agentic-art-orchestration（親・制御面）
 
 ## 公開された制作プラン
 
-制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や受入試験の通過を意味しません。以下の一覧は [`plans/index.yaml`](plans/index.yaml) から生成されます。
+制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や受入試験の通過を意味しません。`plans/index.yaml` の `plan_state: canonical-plan` は Production 正本の無変換投影、`blocked-missing-canonical` は正本未確認の旧要約であり、後者は制作可能な計画として扱いません。以下の一覧は [`plans/index.yaml`](plans/index.yaml) から生成されます。
 
 <!-- agentic-art:catalog:start -->
 - [選択の持ち主 — 翻訳のあとに残るもの](plans/P0001-owner-of-choice/README.md)

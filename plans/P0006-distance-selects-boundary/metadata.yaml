@@ -2,12 +2,14 @@ id: P0006
 title: 距離が選ぶ境界 — 近づいても触れない休止の場
 slug: distance-selects-boundary
 status: published
-plan_state: planning
+plan_state: blocked-missing-canonical
+classification: blocked-missing-canonical
+execution_status: blocked
 visibility: public
 rights_status: cleared
 publication_basis: explicit user-authorized public plan summary; original text and generated diagrams only
 public_record_rights_scope: original_public_summary_and_generated_diagrams
-production_clearance: pending
+production_clearance: blocked
 content_sha256: 67735d1c5a4c2dbc9f624d32e5237f5c3657fb264ce7cc2c1fc54e49a1728b08
 source:
   source_system: agentic-art-orchestration

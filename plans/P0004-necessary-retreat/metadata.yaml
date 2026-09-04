@@ -2,13 +2,15 @@ id: P0004
 title: 必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント
 slug: necessary-retreat
 status: published
-plan_state: planning
+plan_state: blocked-missing-canonical
+classification: blocked-missing-canonical
+execution_status: blocked
 visibility: public
 rights_status: cleared
 publication_basis: user-authorized public plan summary; original text only, with external sources linked rather than reproduced
 content_sha256: da3c0578dcb6dad1b00e1b8c80d90d9a8768aa6b72993573186ec91f117f6fce
 public_record_rights_scope: original_public_summary_only
-production_clearance: pending
+production_clearance: blocked
 source:
   source_system: agentic-art-orchestration
   source_project: necessary-retreat-v4
