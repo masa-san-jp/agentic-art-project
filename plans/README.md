@@ -21,4 +21,5 @@ Agentic Art の制作プラン一覧です。
 - [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](P0004-necessary-retreat/README.md)
 - [近いのに届かない — 枠を見る側に置く](P0005-close-but-cannot-reach/README.md)
 - [距離が選ぶ境界 — 近づいても触れない休止の場](P0006-distance-selects-boundary/README.md)
+- [近接不在 — Near, Not Received](P0007-near-not-received/README.md)
 <!-- agentic-art:catalog:end -->
