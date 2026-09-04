@@ -54,6 +54,7 @@ METADATA_ROWS = (
     "| クリティカルパス |",
 )
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
+HEX40 = re.compile(r"^[0-9a-f]{40}$")
 
 
 class CatalogValidationError(ValueError):
@@ -77,12 +78,15 @@ def _top_level(text: str, key: str) -> str | None:
 
 def _nested(text: str, section: str, key: str) -> str | None:
     section_match = re.search(rf"^{re.escape(section)}:\s*$", text, re.MULTILINE)
+    if not section_match and section == "projection":
+        section_match = re.search(r"^  projection:\s*$", text, re.MULTILINE)
     if not section_match:
         return None
     remainder = text[section_match.end():]
-    next_section = re.search(r"^\S[^:]*:\s*$", remainder, re.MULTILINE)
+    next_section_pattern = r"^  \S[^:]*:\s*$" if section_match.group(0).startswith("  ") else r"^\S[^:]*:\s*$"
+    next_section = re.search(next_section_pattern, remainder, re.MULTILINE)
     block = remainder[: next_section.start()] if next_section else remainder
-    match = re.search(rf"^  {re.escape(key)}:\s*(.*?)\s*$", block, re.MULTILINE)
+    match = re.search(rf"^\s+{re.escape(key)}:\s*(.*?)\s*$", block, re.MULTILINE)
     return _scalar(match.group(1)) if match else None
 
 
@@ -145,7 +149,7 @@ def _validate_metadata(plan_id: str, metadata_path: Path, plan_bytes: bytes, pla
         findings.append(f"{metadata_path}: provenance canonical_sha256 does not match plan.md")
     if _nested(text, "provenance", "source_repository") != "agentic-art-production":
         findings.append(f"{metadata_path}: provenance source_repository must be agentic-art-production")
-    if not HEX64.fullmatch((_nested(text, "provenance", "source_commit") or "")):
+    if not HEX40.fullmatch((_nested(text, "provenance", "source_commit") or "")):
         findings.append(f"{metadata_path}: provenance source_commit must be a 40-character SHA")
     if not _nested(text, "provenance", "source_run_id"):
         findings.append(f"{metadata_path}: provenance source_run_id is required")

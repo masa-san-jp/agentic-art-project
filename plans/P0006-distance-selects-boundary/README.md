@@ -9,6 +9,6 @@
 - [ビジュアルリファレンスボード](media/visual-reference-board.svg)
 - [コンセプト・モックアップ](media/concept-mockup.svg)
 
-このレコードの本文は旧要約であり、Production 正本の無変換投影をまだ確認できていないため、`blocked-missing-canonical` として制作可能な計画から隔離されています。
+このレコードの `plan.md` は、`agentic-art-production` が生成した正式な `production-plan.md` の無変換投影です。計画状態は `PLANNING` で、物理作業・購入・契約・展示・受入試験の実行済みを意味しません。
 
 この公開レコードは、試作前の制作仮説と検証条件を記録するものです。実物の制作、会場設営、受入試験、健康上の効果、展示許可を示すものではありません。

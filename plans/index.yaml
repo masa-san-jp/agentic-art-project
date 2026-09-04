@@ -54,10 +54,10 @@ records:
     slug: distance-selects-boundary
     title: 距離が選ぶ境界 — 近づいても触れない休止の場
     path: plans/P0006-distance-selects-boundary
-    source_key: plan:67735d1c5a4c2dbc9f624d32e5237f5c3657fb264ce7cc2c1fc54e49a1728b08
-    content_sha256: 67735d1c5a4c2dbc9f624d32e5237f5c3657fb264ce7cc2c1fc54e49a1728b08
+    source_key: plan:846bf1a3f8e213ebece2449c5c922623b3f9e6e9a77523be3b55d474cb25c624
+    content_sha256: 846bf1a3f8e213ebece2449c5c922623b3f9e6e9a77523be3b55d474cb25c624
     status: published
-    plan_state: blocked-missing-canonical
+    plan_state: canonical-plan
     visibility: public
     rights_status: cleared
   - id: P0007
