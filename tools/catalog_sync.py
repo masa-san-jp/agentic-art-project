@@ -103,7 +103,7 @@ def load_plans(path: Path = PLAN_INDEX) -> list[dict[str, str]]:
         missing = sorted(required - record.keys())
         if missing:
             raise CatalogError(f"{path}: {record.get('id', '<unknown>')} missing {', '.join(missing)}")
-        if record["status"] not in {"ready-for-publication", "blocked-missing-canonical"} or record["visibility"] != "public" or record["rights_status"] != "cleared":
+        if record["status"] != "ready-for-publication" or record["visibility"] != "public" or record["rights_status"] != "cleared":
             raise CatalogError(f"{path}: {record['id']} is not an eligible public catalog record")
         if not record["path"].startswith("plans/"):
             raise CatalogError(f"{path}: {record['id']} path must be under plans/")
@@ -129,9 +129,9 @@ def _safe_title(title: str) -> str:
 def render_plan_catalog(plans: Iterable[dict[str, str]], *, root: bool) -> str:
     lines: list[str] = []
     for plan in plans:
+        if plan["status"] != "ready-for-publication":
+            raise CatalogError("noncanonical records belong in metadata-only migration, not the public catalog")
         title = _safe_title(plan["title"])
-        if plan["status"] == "blocked-missing-canonical":
-            title = f"{title} — 正本待ち（制作不可）"
         path = Path(plan["path"])
         link = f"{path}/README.md" if root else f"{path.name}/README.md"
         lines.append(f"- [{title}]({link})")

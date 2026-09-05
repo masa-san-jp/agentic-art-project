@@ -36,7 +36,7 @@ agentic-art-orchestration
 
 `agentic-art-orchestration` は、エージェントが制作プランを生み出し、制作物と記録を出力するための仕組みを管理します。このリポジトリは、その出力のうち公開可能な制作プラン、作品、制作記録を、他の人が読めるカタログとして整理します。
 
-正規の`plan.md`は`agentic-art-production`の`03_plan/production-plan.md`を要約せずbyte-for-byteで受け取ります。各recordの`README.md`は紹介文ですが、制作に使う正本は`plan.md`です。正本を確認できない旧要約は`summary.md`へ隔離し、「正本待ち（制作不可）」と表示します。
+正規の`plan.md`はProductionの完全な無変換bytesとattestation/v1、projection/v2の来歴を要求します。正本不明の旧要約は現行カタログへ残さず、metadata-onlyの`plans/migration.yaml`でIDを予約する契約です。現在の既存レコード移行は未承認・未適用であり、validator/catalogの失敗と具体的な移行対象は[実装checkpoint](docs/project-6-checkpoint.md)へ記録しています。
 
 このリポジトリはオーケストレーションの実行環境や内部ログを収録する場所ではありません。自律的な制作の結果を、個別の制作プランと作品記録として追跡可能な形で公開する場所です。
 
@@ -175,7 +175,7 @@ works/W0001-title/
     └── process/
 ```
 
-`README.md` は人間が読むための紹介ページ、`plan.md` または `record.md` は内容の正本、`metadata.yaml` は一覧化・検索・自動処理に使う構造化情報です。`plan.md`はProduction正本の無変換投影に限ります。正本がない旧要約は`summary.md`であり、`plan.md`として扱いません。`index.yaml` は公開projection互換の `records` と再利用禁止IDを示す `retired_ids` を持ちます。
+`README.md`は紹介ページ、`plan.md`はattestationで検証するProduction正本、`metadata.yaml`とindexはstable source identity、revision、body/attestation hashを共有します。公開IDは本文hashから分離します。`plans/migration.yaml`の予約IDも再利用しません。意味的coverageとrendererはProductionだけが所有します。
 
 ## 識別子と命名
 
@@ -252,7 +252,7 @@ source_plans:
 - 同じプロジェクトの旧版・別形式の文書はすべて個別レコードにしません。公開する正本を一つ選び、必要な版情報を `metadata.yaml` に記録します。
 - `.gdoc` はGoogle Docsへの参照情報であり、公開本文ではありません。`.gdoc`ファイルをそのままコピーせず、公開可能性を確認したうえで本文をMarkdownに変換するか、公開URLを明示します。
 - `handoff/`、`research-project/`、`production-plan/08_runtime/` などの内部運用ツリーは、そのまま公開ディレクトリへ移しません。planの紹介は`README.md`、作品記録の編集は`record.md`で行い、正規`plan.md`は要約しません。
-- 正本が確認できない旧要約は`summary.md`、`status: blocked-missing-canonical`として保存し、制作可能なplanと表示しません。
+- 正本不明の旧要約はmetadata-only migrationの対象です。`python3 tools/migration_plan.py`は読取専用で対象と解除条件を出し、実移行・削除・公開を行いません。
 - 同一内容のbundle、canonical source、export結果を重複して収録しません。正本と出典を `metadata.yaml` で示します。
 
 ## 人間とエージェントの作業ルール
