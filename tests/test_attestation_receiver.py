@@ -24,6 +24,7 @@ class AttestationReceiverTests(unittest.TestCase):
             "projection_contract":"canonical-plan-projection/v2","projection_mode":"AUTOMATIC_PLAN","body_transform":"none",
             "plan_state":"canonical","production_state":"PLANNING","external_effects_authorized":"false","source_run_id":"synthetic-receiver"}
         self.metadata['source_key']='plan:'+self.metadata['source_identity']
+        self.metadata.update(contract_version='canonical-plan-projection/v2',mode='AUTOMATIC_PLAN',canonical_artifact='production-plan.md',assets=json.dumps(self.a['assets'],sort_keys=True,separators=(',',':')))
         self.index=dict(self.metadata,path='plans/P0099-synthetic')
         (self.directory/'metadata.yaml').write_text('\n'.join(k+': '+json.dumps(v) for k,v in self.metadata.items())+'\n')
         (self.directory/'README.md').write_text('[制作プラン本文](plan.md)\n')
@@ -51,7 +52,7 @@ class AttestationReceiverTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'missing'):self.check()
 
     def test_revision_provenance_and_receipt_fields_fail_closed(self):
-        for field in ('source_identity','plan_revision','production_commit','source_run_id','attestation_sha256','body_transform','projection_contract'):
+        for field in ('source_identity','plan_revision','production_commit','source_run_id','attestation_sha256','body_transform','projection_contract','contract_version','mode','canonical_artifact','assets'):
             previous=self.metadata.pop(field)
             with self.subTest(field=field),self.assertRaises(ValueError):self.check()
             self.metadata[field]=previous
