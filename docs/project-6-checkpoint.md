@@ -45,10 +45,18 @@ blocking_reason/unblock_condition in plans/migration.yaml. Do not copy old summa
 text to another public filename. Run catalog_sync.py --write only after that
 authorized classification is applied; then rerun all three native gates.
 
-Projection/v2 integration with Orchestration #193 is NOT_RUN; receiver metadata
-fixture is synthetic. No stable identity, creator or artistic provenance has been
+Projection/v2 synthetic integration with Orchestration #193 PR202 is PASS: actual
+Production CLI validation, exact-byte parent projection and this receiver boundary.
+It is not AAK-02 live agent acceptance. No stable identity, creator or artistic provenance has been
 inferred for the legacy records. The old PR9 is retained; this change is stacked
 on its exact candidate for review and does not modify that branch.
 
 No private/raw, real viewer response, profile, internal handoff or conversation is
 added. Publication, merge, release and actual data migration remain human-gated.
+
+Latest metadata extension: local 70ccaa63370a2fb1f4d9d60b4750cac7b7747904,
+remote 939411c72aa8cdc77a4831170f2d049126e24b4f, exact tree
+d7334f70c6c34d05de23795cbdf983a62f734eba. Require contract_version, mode,
+canonical_artifact and the JSON-string owner asset manifest in flat metadata/index.
+Focused six tests PASS again. Full 18: 16 PASS / 1 FAIL / 1 ERROR, same untouched
+P0001-P0007 migration gate. No failure is waived; AAK-13 dependency stays blocked.
