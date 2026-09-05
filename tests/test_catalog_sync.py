@@ -36,12 +36,9 @@ class CatalogSyncTests(unittest.TestCase):
         with self.assertRaises(catalog_sync.CatalogError):
             catalog_sync.replace_block("start end end", "start", "end", "body", "fixture")
 
-    def test_blocked_plan_is_rendered_as_not_producible(self):
-        plans = catalog_sync.load_plans()
-        blocked = [plan for plan in plans if plan["status"] == "blocked-missing-canonical"]
-        self.assertTrue(blocked)
-        rendered = catalog_sync.render_plan_catalog(blocked, root=False)
-        self.assertIn("正本待ち（制作不可）", rendered)
+    def test_blocked_plan_cannot_enter_canonical_catalog(self):
+        with self.assertRaises(catalog_sync.CatalogError):
+            catalog_sync.render_plan_catalog([{"status": "blocked-missing-canonical"}], root=False)
 
     def test_parent_quoted_indentless_yaml_is_accepted(self):
         content = '''"version": 1
