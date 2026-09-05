@@ -49,6 +49,11 @@ def check_envelope(directory, metadata, index):
     for field, value in expected.items():
         if metadata.get(field) != value or index.get(field) != value:
             raise ValueError("metadata/index attestation mismatch: " + field)
+    for field, value in {'contract_version':'canonical-plan-projection/v2','mode':'AUTOMATIC_PLAN','canonical_artifact':'production-plan.md'}.items():
+        if metadata.get(field)!=value or index.get(field)!=value:
+            raise ValueError('projection metadata contract mismatch: '+field)
+    if json.loads(metadata.get('assets','null'))!=a['assets'] or metadata.get('assets')!=index.get('assets'):
+        raise ValueError('projection metadata asset manifest mismatch')
     if not metadata.get("source_run_id") or metadata.get("source_run_id") != index.get("source_run_id") or not metadata.get("production_state") or metadata.get("production_state") != index.get("production_state"):
         raise ValueError("source run and separate production state required")
     review = a["publication_review"]
