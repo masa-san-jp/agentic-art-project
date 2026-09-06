@@ -16,7 +16,8 @@ read-only capability. This document records execution, not new requirements.
 - [x] Add closed record lineage metadata, generated lineage index, migration dry-run and read-only snapshot export.
 - [x] Verify inheritance, new-origin records, revision conflicts, canonical-only references and conservative creation stages.
 - [x] Run all Issue10 checks and retain exact code/synthetic Git evidence.
-- [ ] Publish separate owner draft PR and parent checkpoint before lease release.
+- [x] Publish separate owner [draft PR13](https://github.com/masa-san-jp/agentic-art-project/pull/13), with exact normal-push head verification.
+- Parent checkpoint publication/release is owned by the parent execution state.
 
 ## Surprises & Discoveries
 
@@ -49,7 +50,8 @@ Code candidate `d3347e3177cf23c58a415c301760e9452246e965` and retained real-Git
 synthetic evidence are recorded in [aak-13-evidence.json](aak-13-evidence.json).
 AC1..5 PASS on synthetic fixtures; AAK02 live acceptance remains NOT_RUN.
 The evidence Git stores are local temporary artifacts, not remotely durable
-knowledge stores; tests reconstruct equivalent cases. Draft PR delivery is next.
+knowledge stores; tests reconstruct equivalent cases. Draft PR13 is delivered. GitHub CI failed before any step because of account
+payments/spending limits; it is not counted as a passing quality gate.
 Actual P0004 body/assets and unknown attribution remain unchanged. No merge,
 real-data migration, public work creation or release is performed.
 

@@ -99,5 +99,13 @@
     "full": "32 PASS in 5.221s",
     "native_validator": "PASS",
     "schemas_and_examples": "3 PASS"
-  }
+  },
+  "remote_ci": {
+    "status": "FAILED_BEFORE_STEPS",
+    "job_url": "https://github.com/masa-san-jp/agentic-art-project/actions/runs/34019734720/job/101449966437",
+    "steps": [],
+    "reason": "GitHub account payments/spending-limit blocker; no job started",
+    "counted_as_quality_gate": false
+  },
+  "pull_request": "https://github.com/masa-san-jp/agentic-art-project/pull/13"
 }
