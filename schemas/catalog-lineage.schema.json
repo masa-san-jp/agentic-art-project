@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "catalog-lineage/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "record_id",
+    "revision",
+    "origin_instance_id",
+    "creator_id",
+    "source_identity",
+    "content_sha256",
+    "canonical_revision",
+    "derived_from",
+    "source_plans",
+    "comparison",
+    "stage",
+    "stage_evidence"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "catalog-lineage/v1"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^[PW][0-9]{4}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "origin_instance_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "creator_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "source_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^(?:[0-9a-f]{64}|unknown)$"
+    },
+    "canonical_revision": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "derived_from": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin_instance_id",
+          "record_id",
+          "revision",
+          "source_repository",
+          "source_commit",
+          "source_locator",
+          "content_sha256"
+        ],
+        "properties": {
+          "origin_instance_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "record_id": {
+            "type": "string",
+            "pattern": "^[PW][0-9]{4}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_repository": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+          },
+          "source_commit": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "source_locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "source_plans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin_instance_id",
+          "record_id",
+          "revision",
+          "source_repository",
+          "source_commit",
+          "source_locator",
+          "content_sha256"
+        ],
+        "properties": {
+          "origin_instance_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "record_id": {
+            "type": "string",
+            "pattern": "^[PW][0-9]{4}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_repository": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+          },
+          "source_commit": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "source_locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "theme",
+        "mechanism"
+      ],
+      "properties": {
+        "theme": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "source_locator"
+          ],
+          "properties": {
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 500
+            },
+            "source_locator": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "mechanism": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "source_locator"
+          ],
+          "properties": {
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 500
+            },
+            "source_locator": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "stage": {
+      "enum": [
+        "PLANNED",
+        "PRODUCED",
+        "EXHIBITED",
+        "UNKNOWN"
+      ]
+    },
+    "stage_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_locator",
+          "content_sha256",
+          "epistemic_status"
+        ],
+        "properties": {
+          "source_locator": {
+            "type": "string",
+            "pattern": "^media/"
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "epistemic_status": {
+            "enum": [
+              "observed",
+              "simulated"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "description": "Project-owned supplementary lineage metadata. Runtime additionally verifies canonical source bytes, public evidence, attribution preservation and Git revision history."
+}

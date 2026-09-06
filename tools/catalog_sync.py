@@ -19,6 +19,8 @@ from typing import Iterable
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 PLAN_INDEX = ROOT / "plans/index.yaml"
 PLAN_README = ROOT / "plans/README.md"
 ROOT_README = ROOT / "README.md"
@@ -92,6 +94,8 @@ def _parse_list_records(path: Path, section: str) -> list[dict[str, str]]:
     if current is not None:
         records.append(current)
     if not records:
+        if any(line.strip() in {f"{section}: []", f'"{section}": []'} for line in lines):
+            return []
         raise CatalogError(f"{path}: section {section!r} contains no entries")
     return records
 
@@ -160,27 +164,34 @@ def replace_block(text: str, start: str, end: str, body: str, source: str) -> st
     return f"{before}\n{inner}\n{after}"
 
 
-def expected_files() -> dict[Path, str]:
-    plans = load_plans()
-    repositories = load_repositories()
-    root_text = ROOT_README.read_text(encoding="utf-8")
-    plans_text = PLAN_README.read_text(encoding="utf-8")
-    return {
-        ROOT_README: replace_block(
-            replace_block(root_text, CATALOG_START, CATALOG_END, render_plan_catalog(plans, root=True), str(ROOT_README)),
+def expected_files(root: Path | None = None) -> dict[Path, str]:
+    base = ROOT if root is None else root
+    root_readme, plan_readme = base / "README.md", base / "plans/README.md"
+    plans = load_plans(base / "plans/index.yaml")
+    repositories = load_repositories(base / "docs/repositories.yaml")
+    root_text = root_readme.read_text(encoding="utf-8")
+    plans_text = plan_readme.read_text(encoding="utf-8")
+    output = {
+        root_readme: replace_block(
+            replace_block(root_text, CATALOG_START, CATALOG_END, render_plan_catalog(plans, root=True), str(root_readme)),
             REPOSITORIES_START,
             REPOSITORIES_END,
             render_repository_catalog(repositories),
-            str(ROOT_README),
+            str(root_readme),
         ),
-        PLAN_README: replace_block(
+        plan_readme: replace_block(
             plans_text,
             CATALOG_START,
             CATALOG_END,
             render_plan_catalog(plans, root=False),
-            str(PLAN_README),
+            str(plan_readme),
         ),
     }
+    from tools.validate import mapping_fields
+    if mapping_fields(base / "public-project.yaml").get("catalog_lineage.contract_version") == "catalog-lineage/v1":
+        from tools.catalog_lineage import canonical, index_document
+        output[base / "plans/lineage-index.json"] = canonical(index_document(base)).decode()
+    return output
 
 
 def synchronize(*, write: bool) -> int:
@@ -189,7 +200,7 @@ def synchronize(*, write: bool) -> int:
     except (OSError, CatalogError) as exc:
         print(f"catalog-sync: {exc}", file=sys.stderr)
         return 2
-    stale = [path for path, content in expected.items() if path.read_text(encoding="utf-8") != content]
+    stale = [path for path, content in expected.items() if not path.exists() or path.read_text(encoding="utf-8") != content]
     if not stale:
         print("catalog-sync: catalog blocks are up to date")
         return 0

@@ -12,6 +12,9 @@
 4. `plans/index.yaml`または`works/index.yaml`
 5. 対象recordの`metadata.yaml`、`README.md`、本文
 6. Issue SSOTと最も近いtest
+7. AAK-13では[カタログ系譜と参照](docs/catalog-lineage.md)、`lineage.json`、生成`plans/lineage-index.json`を読む。
+
+AAK-13の正本は[仕様](https://github.com/masa-san-jp/agentic-art-orchestration/blob/b0e7c7f8d0a1f756fa708deef4fb380a62e45e0d/docs/20260905-agentic-art-autonomy-and-knowledge-cycle-specification.md#aak-13)と[実装計画](https://github.com/masa-san-jp/agentic-art-orchestration/blob/b0e7c7f8d0a1f756fa708deef4fb380a62e45e0d/docs/20260905-agentic-art-autonomy-and-knowledge-cycle-implementation-plan.md#aak-13)。公開projectionのexport-only境界を維持し、独立したread-onlyの`catalog-reference/v1`を追加する限定変更である。
 
 ## Canonical plan invariant
 
@@ -20,6 +23,10 @@
 - 公開安全検査に失敗した正本を編集して通さない。公開をblockedにし、親Issueへ解除条件を返す。
 - Issue #6の更新契約に従い、正本不明の旧要約は現行公開カタログへ複製せず、P ID/source候補/理由/解除条件をmetadata-onlyのplans/migration.yamlへ予約する。予約IDを再利用せず、正本回収時だけ同じP IDへ復帰させる。
 - 正規planは`canonical-plan-projection/v2`、`AUTOMATIC_PLAN`、`body_transform: none`、stable identity/revision、Production repository/commit、run ID、body/attestation SHA-256とproduction-public-plan-attestation/v1を持つ。Productionの見出し・意味schemaは複製しない。
+- `lineage.json`は本文と別の帰属・系譜metadata。既存作者/originをactive creatorへ置換しない。不明な帰属はunknownのままにし、Git commit作者から作品作者を推定しない。
+- 新規recordのannotationは明示instance-profileのinstance/creatorを使い、履歴にあるP/W IDをnew扱いにしない。revision更新は以前のcommitと参照を保持する。生成indexは手編集しない。
+- `catalog_lineage.py export`は正規recordをcleanなGit snapshotから読み、参照だけを返す。BLOCKED/unknownを成功扱いせず、`code_commit`/`code_dirty`と`knowledge_commit`を区別する。
+- planはPLANNEDであり、制作/展示の実績ではない。workの段階には別のreview済み公開証拠を要求し、simulatedをobservedと数えない。
 
 ## Work protocol
 
@@ -32,6 +39,7 @@
 ## Safety and authority
 
 - このrepoはexport-onlyであり、入力knowledge、親run state、内部log、会話、prompt、handoff、credential、PRIVATE_RAW、RESTRICTEDを所有しない。
+- read-only catalog-referenceは上記projectionとは別能力であり、親のknowledge write dispatchを許可するものではない。任意の出力repoは明示rootまたは外部output-destinations/v1から解決する。
 - `public-project.yaml`はlayoutとcanonical plan受理契約、`plans/index.yaml`はplan catalogの正本である。
 - workの公開、GitHubへのpush/PR、既定branchへのmerge、release、visibility変更は別の人間gateに従う。
 - branch作成、commit、Draft PRはIssueで明示されたtaskに限る。merge、release、削除、force pushを自動実行しない。

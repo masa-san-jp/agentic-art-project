@@ -21,7 +21,19 @@ def safe_asset(path):
     return path
 
 
-def check_envelope(directory, metadata, index):
+def configured_producer(root=None):
+    from tools.catalog_sync import load_repositories
+    code_root = Path(__file__).resolve().parents[1]
+    registry = (Path(root) if root is not None else code_root) / "docs/repositories.yaml"
+    if not registry.is_file():
+        registry = code_root / "docs/repositories.yaml"
+    matches = [row["full_name"] for row in load_repositories(registry) if row["id"] == "agentic-art-production"]
+    if len(matches) != 1 or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", matches[0]):
+        raise ValueError("configured Production repository required")
+    return matches[0]
+
+
+def check_envelope(directory, metadata, index, *, producer_repository=None):
     directory = Path(directory)
     if directory.is_symlink() or not directory.is_dir():
         raise ValueError("public record directory is missing or unsafe")
@@ -41,7 +53,7 @@ def check_envelope(directory, metadata, index):
         raise ValueError("attestation integrity mismatch")
     if a["body_transform"] != "none" or a["external_effects_authorized"] is not False or a["validator"]["status"] != "PASSED":
         raise ValueError("validated no-transform attestation required")
-    if a["producer"]["repository"] != "masa-san-jp/agentic-art-production" or not re.fullmatch(r"[0-9a-f]{40}", a["producer"]["commit"]) or not a["producer"]["generator"] or not a["producer"]["renderer_contract_version"]:
+    if a["producer"]["repository"] != (producer_repository or configured_producer()) or not re.fullmatch(r"[0-9a-f]{40}", a["producer"]["commit"]) or not a["producer"]["generator"] or not a["producer"]["renderer_contract_version"]:
         raise ValueError("Production producer provenance missing")
     if not a["coverage"] or any(row.get("status") != "VALIDATED" for row in a["coverage"]):
         raise ValueError("Production semantic validation evidence missing")

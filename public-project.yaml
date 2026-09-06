@@ -5,6 +5,12 @@ collections:
 catalog_markers:
   start: "<!-- agentic-art:catalog:start -->"
   end: "<!-- agentic-art:catalog:end -->"
+catalog_lineage:
+  contract_version: catalog-lineage/v1
+  record_metadata: lineage.json
+  generated_index: plans/lineage-index.json
+  reference_contract: catalog-reference/v1
+  export_mode: read-only
 canonical_plan:
   source_repository: agentic-art-production
   source_artifact: 03_plan/production-plan.md
