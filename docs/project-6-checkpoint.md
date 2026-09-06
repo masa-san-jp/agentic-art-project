@@ -13,7 +13,7 @@ Issue #6の受信契約と実データ移行を実装した。公開カタログ
 
 - `python3 tools/validate.py --check`: PASS
 - `python3 tools/catalog_sync.py --check`: PASS
-- `python3 -m unittest discover -s tests -v`: 19 tests PASS
+- `python3 -m unittest discover -s tests -v`: 20 tests PASS
 - Production → Orchestration → Projectの実コード境界テスト: PASS
 - summary、見出し模倣、1-byte改変、偽attestation、欠落provenance、asset改変、rights未確認、symlinkはfail closedする。
 
