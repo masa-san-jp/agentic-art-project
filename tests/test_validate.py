@@ -76,8 +76,8 @@ class PublicCatalogValidationTests(unittest.TestCase):
             shutil.copytree(ROOT / record["path"], target)
             metadata = target / "metadata.yaml"
             changed = metadata.read_text(encoding="utf-8")
-            changed = changed.replace("mode: AUTOMATIC_PLAN\n", "mode: MANUAL\n")
-            changed = changed.replace("production_commit: 69567e88131e3f033d010791fb5849e1b2ebff8d\n", "")
+            changed = changed.replace('"mode": "AUTOMATIC_PLAN"\n', '"mode": "MANUAL"\n')
+            changed = changed.replace('"production_commit": "69567e88131e3f033d010791fb5849e1b2ebff8d"\n', "")
             metadata.write_text(changed, encoding="utf-8")
             errors = validator.validate_record(root, record)
         self.assertTrue(any("mismatch" in error for error in errors))
