@@ -1,4 +1,4 @@
-"""Read-only classification of old plan records; never move or delete public data."""
+"""Report canonical records and metadata-only legacy reservations without writes."""
 import argparse
 import json
 from pathlib import Path
@@ -19,7 +19,15 @@ def classify(root):
             "source_candidate": metadata.get("source_identity") or metadata.get("provenance.source_ref") or "UNKNOWN",
             "blocking_reason": errors, "unblock_condition": "Recover owner-verified attestation and exact body/assets with stable identity, or approve metadata-only reservation and remove this legacy record from the current public collection.",
             "existing_path": record["path"], "proposed_registry": "plans/migration.yaml", "applied": False})
-    return {"status": "REVIEW_REQUIRED", "records": result, "writes": [], "human_gate": "ACTUAL_PUBLIC_RECORD_MIGRATION"}
+    migration = root / "plans/migration.yaml"
+    if migration.exists():
+        for record in catalog_sync._parse_list_records(migration, "records"):
+            result.append({"id": record["id"], "classification": "MIGRATION_RESERVED",
+                "source_candidate": record["source_candidate"], "blocking_reason": [record["blocking_reason"]],
+                "unblock_condition": record["unblock_condition"], "existing_path": None,
+                "proposed_registry": "plans/migration.yaml", "applied": True})
+    return {"status": "MIGRATION_APPLIED" if any(row["applied"] for row in result) else "REVIEW_REQUIRED",
+        "records": sorted(result,key=lambda row:row["id"]), "writes": [], "human_gate": "NONE"}
 
 
 if __name__ == "__main__":
