@@ -1,0 +1,26 @@
+version: 1
+records:
+  - id: P0001
+    source_candidate: production/owner-of-choice
+    blocking_reason: Production公開証明と現行rendererによる完全な正本が未回収
+    unblock_condition: 元handoffから現行Productionで再生成し、公開審査とattestationを通す
+  - id: P0002
+    source_candidate: run/auto-auto-plan-repository-202
+    blocking_reason: Markdown本文はあるがProduction公開証明と安定source identityがない
+    unblock_condition: 対応するProduction projectを回収または再実行し、同一バイト本文とattestationを投影する
+  - id: P0003
+    source_candidate: run/auto-run-yohaku-001
+    blocking_reason: Markdown本文はあるがProduction公開証明と安定source identityがない
+    unblock_condition: 対応するProduction projectを回収または再実行し、同一バイト本文とattestationを投影する
+  - id: P0005
+    source_candidate: production/close-but-cannot-reach
+    blocking_reason: ローカルにはGoogle Docs参照ファイルしかなく検証可能なProduction正本がない
+    unblock_condition: 正本projectまたはhandoffを回収し、現行Productionで再生成してattestationを通す
+  - id: P0006
+    source_candidate: run/boundary-distance-20260905
+    blocking_reason: 詳細本文はあるがProduction公開証明と安定source identityがない
+    unblock_condition: 対応するProduction projectを回収または再実行し、同一バイト本文とattestationを投影する
+  - id: P0007
+    source_candidate: run/auto-new-plan-20260904-001-d3fa82c0d944
+    blocking_reason: 詳細本文はあるがProduction公開証明と安定source identityがない
+    unblock_condition: 対応するProduction projectを回収または再実行し、同一バイト本文とattestationを投影する

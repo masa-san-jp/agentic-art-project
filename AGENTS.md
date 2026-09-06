@@ -18,7 +18,7 @@
 - 正規の`plans/*/plan.md`は、`agentic-art-production`の`03_plan/production-plan.md`を`agentic-art-orchestration`の`AUTOMATIC_PLAN`経路がbyte-for-byteで投影したものだけである。
 - エージェントは`plan.md`を執筆、要約、翻訳、再構成、抜粋しない。紹介文や要約は`README.md`にだけ置く。
 - 公開安全検査に失敗した正本を編集して通さない。公開をblockedにし、親Issueへ解除条件を返す。
-- Issue #6の更新契約に従い、正本不明の旧要約は現行公開カタログへ複製せず、P ID/source候補/理由/解除条件をmetadata-onlyのplans/migration.yamlへ予約する。実レコード移行は別のhuman gateであり、本実装中は適用せず阻害理由を保存する。
+- Issue #6の更新契約に従い、正本不明の旧要約は現行公開カタログへ複製せず、P ID/source候補/理由/解除条件をmetadata-onlyのplans/migration.yamlへ予約する。予約IDを再利用せず、正本回収時だけ同じP IDへ復帰させる。
 - 正規planは`canonical-plan-projection/v2`、`AUTOMATIC_PLAN`、`body_transform: none`、stable identity/revision、Production repository/commit、run ID、body/attestation SHA-256とproduction-public-plan-attestation/v1を持つ。Productionの見出し・意味schemaは複製しない。
 
 ## Work protocol

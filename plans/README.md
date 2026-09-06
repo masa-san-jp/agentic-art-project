@@ -4,7 +4,7 @@ Agentic Art の制作プラン一覧です。
 
 制作プランは一件につき一つのディレクトリで管理します。各プランのディレクトリ名は `P0001-short-slug` の形式とし、紹介は`README.md`、Production正本の無変換投影は`plan.md`に置きます。
 
-`ready-for-publication`はProduction正本を確認済みです。`正本待ち（制作不可）`は過去の要約を`summary.md`として追跡するblocked recordであり、制作プランとして使用できません。
+`ready-for-publication`はProduction正本、公開証明、無変換投影の来歴を確認済みです。正本を確認できない旧レコードは一覧や個別ディレクトリに残さず、IDと復旧条件だけを[`migration.yaml`](migration.yaml)に記録します。旧本文はGit履歴からのみ参照できます。
 
 全件の機械可読一覧は [`index.yaml`](index.yaml) を参照してください。`index.yaml` が制作プランのSSOTであり、下の一覧とルートREADMEの制作プラン一覧は `python3 tools/catalog_sync.py --write` で同期します。
 
@@ -15,13 +15,7 @@ Agentic Art の制作プラン一覧です。
 100件規模のプランを生み出す仕組みの説明は、個別プランではなく [`docs/production-system.md`](../docs/production-system.md) に収録しています。実物作品、原寸データ、大容量メディア、制作手順は、作品の公開可否と権利状態を確認したうえで `works/` に別途収録します。
 
 <!-- agentic-art:catalog:start -->
-- [選択の持ち主 — 翻訳のあとに残るもの — 正本待ち（制作不可）](P0001-owner-of-choice/README.md)
-- [移動する隙間による近接場の交換](P0002-moving-gap/README.md)
-- [関わり方を選び直す距離 — 余白の呼吸](P0003-yohaku-breath/README.md)
-- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント — 正本待ち（制作不可）](P0004-necessary-retreat/README.md)
-- [近いのに届かない — 枠を見る側に置く — 正本待ち（制作不可）](P0005-close-but-cannot-reach/README.md)
-- [距離が選ぶ境界 — 近づいても触れない休止の場](P0006-distance-selects-boundary/README.md)
-- [近接不在 — Near, Not Received](P0007-near-not-received/README.md)
+- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](P0004-necessary-retreat/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。

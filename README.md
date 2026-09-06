@@ -36,7 +36,7 @@ agentic-art-orchestration
 
 `agentic-art-orchestration` は、エージェントが制作プランを生み出し、制作物と記録を出力するための仕組みを管理します。このリポジトリは、その出力のうち公開可能な制作プラン、作品、制作記録を、他の人が読めるカタログとして整理します。
 
-正規の`plan.md`はProductionの完全な無変換bytesとattestation/v1、projection/v2の来歴を要求します。正本不明の旧要約は現行カタログへ残さず、metadata-onlyの`plans/migration.yaml`でIDを予約する契約です。現在の既存レコード移行は未承認・未適用であり、validator/catalogの失敗と具体的な移行対象は[実装checkpoint](docs/project-6-checkpoint.md)へ記録しています。
+正規の`plan.md`はProductionの完全な無変換bytesとattestation/v1、projection/v2の来歴を要求します。正本不明の旧要約は現行カタログへ残さず、metadata-onlyの`plans/migration.yaml`でIDを予約します。2026-09-06の移行ではP0004を現行Productionから再生成した完全な正本へ置換し、正本を証明できないP0001・P0002・P0003・P0005・P0006・P0007を移行待ちへ隔離しました。詳細は[実装checkpoint](docs/project-6-checkpoint.md)を参照してください。
 
 このリポジトリはオーケストレーションの実行環境や内部ログを収録する場所ではありません。自律的な制作の結果を、個別の制作プランと作品記録として追跡可能な形で公開する場所です。
 
@@ -93,13 +93,7 @@ agentic-art-orchestration（親・制御面）
 制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や受入試験の通過を意味しません。以下の一覧は [`plans/index.yaml`](plans/index.yaml) から生成されます。
 
 <!-- agentic-art:catalog:start -->
-- [選択の持ち主 — 翻訳のあとに残るもの — 正本待ち（制作不可）](plans/P0001-owner-of-choice/README.md)
-- [移動する隙間による近接場の交換](plans/P0002-moving-gap/README.md)
-- [関わり方を選び直す距離 — 余白の呼吸](plans/P0003-yohaku-breath/README.md)
-- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント — 正本待ち（制作不可）](plans/P0004-necessary-retreat/README.md)
-- [近いのに届かない — 枠を見る側に置く — 正本待ち（制作不可）](plans/P0005-close-but-cannot-reach/README.md)
-- [距離が選ぶ境界 — 近づいても触れない休止の場](plans/P0006-distance-selects-boundary/README.md)
-- [近接不在 — Near, Not Received](plans/P0007-near-not-received/README.md)
+- [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
 <!-- agentic-art:catalog:end -->
 
 ## リポジトリの構造
