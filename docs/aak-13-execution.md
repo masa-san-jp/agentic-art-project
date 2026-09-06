@@ -15,7 +15,8 @@ read-only capability. This document records execution, not new requirements.
 - [x] Parent records AAK13 claim and isolated parent/child branches; no native Project queue/claim CLI exists.
 - [x] Add closed record lineage metadata, generated lineage index, migration dry-run and read-only snapshot export.
 - [x] Verify inheritance, new-origin records, revision conflicts, canonical-only references and conservative creation stages.
-- [ ] Run all Issue10 checks, commit owner evidence, create a separate draft PR, and publish parent checkpoint before lease release.
+- [x] Run all Issue10 checks and retain exact code/synthetic Git evidence.
+- [ ] Publish separate owner draft PR and parent checkpoint before lease release.
 
 ## Surprises & Discoveries
 
@@ -44,7 +45,11 @@ explicit configuration, without a fixed official output repository name.
 
 Code verification PASS: 12 focused and 32 full native tests, validator, catalog sync,
 three schema/example checks, and actual Production-parent-Project boundary.
-Retained Git snapshot evidence and draft PR delivery are the next checkpoint.
+Code candidate `d3347e3177cf23c58a415c301760e9452246e965` and retained real-Git
+synthetic evidence are recorded in [aak-13-evidence.json](aak-13-evidence.json).
+AC1..5 PASS on synthetic fixtures; AAK02 live acceptance remains NOT_RUN.
+The evidence Git stores are local temporary artifacts, not remotely durable
+knowledge stores; tests reconstruct equivalent cases. Draft PR delivery is next.
 Actual P0004 body/assets and unknown attribution remain unchanged. No merge,
 real-data migration, public work creation or release is performed.
 
