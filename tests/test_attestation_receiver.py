@@ -44,12 +44,21 @@ class AttestationReceiverTests(unittest.TestCase):
 
     def test_missing_and_forged_attestation_fail(self):
         path=self.directory/'public-plan-attestation.json'
-        changed=copy.deepcopy(self.a);changed['plan_revision']+=1;path.write_bytes(canonical(changed))
+        changed=copy.deepcopy(self.a);changed['plan_revision']+=1;path.write_bytes(canonical(changed)+b'\n')
         with self.assertRaisesRegex(ValueError,'integrity'):self.check()
-        changed['integrity']['content_sha256']='sha256:'+digest(canonical({k:v for k,v in changed.items() if k!='integrity'}));path.write_bytes(canonical(changed))
+        changed['integrity']['content_sha256']='sha256:'+digest(canonical({k:v for k,v in changed.items() if k!='integrity'}));path.write_bytes(canonical(changed)+b'\n')
         with self.assertRaisesRegex(ValueError,'mismatch'):self.check()
         path.unlink()
         with self.assertRaisesRegex(ValueError,'missing'):self.check()
+
+    def test_reformatted_attestation_and_symlinked_record_fail(self):
+        path=self.directory/'public-plan-attestation.json'
+        path.write_text(json.dumps(self.a,ensure_ascii=False,indent=2)+'\n')
+        with self.assertRaisesRegex(ValueError,'bytes are not canonical'):self.check()
+        path.write_bytes(canonical(self.a)+b'\n')
+        linked=self.root/'plans/P0100-linked';linked.symlink_to(self.directory,target_is_directory=True)
+        with self.assertRaisesRegex(ValueError,'directory is missing or unsafe'):
+            check_envelope(linked,self.metadata,self.index)
 
     def test_revision_provenance_and_receipt_fields_fail_closed(self):
         for field in ('source_identity','plan_revision','production_commit','source_run_id','attestation_sha256','body_transform','projection_contract','contract_version','mode','canonical_artifact','assets'):
@@ -67,6 +76,6 @@ class AttestationReceiverTests(unittest.TestCase):
 
     def test_unresolved_rights_even_with_rehashed_envelope_fail(self):
         self.a['publication_review']['rights']='UNKNOWN';self.a['integrity']['content_sha256']='sha256:'+digest(canonical({k:v for k,v in self.a.items() if k!='integrity'}))
-        path=self.directory/'public-plan-attestation.json';path.write_bytes(canonical(self.a))
+        path=self.directory/'public-plan-attestation.json';path.write_bytes(canonical(self.a)+b'\n')
         for record in (self.metadata,self.index):record['attestation_sha256']=digest(path.read_bytes())
         with self.assertRaisesRegex(ValueError,'review'):self.check()

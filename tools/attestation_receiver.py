@@ -22,10 +22,18 @@ def safe_asset(path):
 
 
 def check_envelope(directory, metadata, index):
+    directory = Path(directory)
+    if directory.is_symlink() or not directory.is_dir():
+        raise ValueError("public record directory is missing or unsafe")
+    # macOS exposes temporary roots through aliases such as /tmp -> /private/tmp.
+    # Resolve the trusted record root once, then reject only links below it.
+    directory = directory.resolve(strict=True)
     path = directory / "public-plan-attestation.json"
     if not path.is_file() or path.is_symlink():
         raise ValueError("Production attestation is missing or unsafe")
     raw = path.read_bytes(); a = json.loads(raw)
+    if raw != canonical(a) + b"\n":
+        raise ValueError("Production attestation bytes are not canonical")
     if a.get("contract_version") != "production-public-plan-attestation/v1":
         raise ValueError("Production attestation contract required")
     integrity = a["integrity"]
