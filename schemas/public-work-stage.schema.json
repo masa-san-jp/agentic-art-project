@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "public-work-stage/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "record_id",
+    "origin_instance_id",
+    "creator_id",
+    "stage",
+    "epistemic_status",
+    "observed_at",
+    "evidence_ref"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "public-work-stage/v1"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^W[0-9]{4}$"
+    },
+    "origin_instance_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "creator_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "stage": {
+      "enum": [
+        "PRODUCED",
+        "EXHIBITED"
+      ]
+    },
+    "epistemic_status": {
+      "enum": [
+        "observed",
+        "simulated"
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_ref": {
+      "type": "string",
+      "pattern": "^(https://|public-work://)"
+    }
+  },
+  "description": "Reviewed public evidence declaration, distinct from a production plan. Simulated evidence is never independent observed evidence."
+}

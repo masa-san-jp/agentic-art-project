@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "catalog-reference/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "status",
+    "code_commit",
+    "code_dirty",
+    "knowledge_commit",
+    "catalog_repository",
+    "records",
+    "blocked",
+    "writes"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "catalog-reference/v1"
+    },
+    "status": {
+      "enum": [
+        "PASSED",
+        "BLOCKED",
+        "NO_NEW_EVIDENCE"
+      ]
+    },
+    "code_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "code_dirty": {
+      "type": "boolean"
+    },
+    "knowledge_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "catalog_repository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin_instance_id",
+          "record_id",
+          "revision",
+          "source_repository",
+          "source_commit",
+          "source_locator",
+          "content_sha256",
+          "creator_id",
+          "source_identity",
+          "canonical_revision",
+          "collection",
+          "stage",
+          "epistemic_status",
+          "stage_evidence",
+          "comparison",
+          "derived_from",
+          "source_plans"
+        ],
+        "properties": {
+          "origin_instance_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "record_id": {
+            "type": "string",
+            "pattern": "^[PW][0-9]{4}$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_repository": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+          },
+          "source_commit": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "source_locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "creator_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+          },
+          "source_identity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "canonical_revision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "collection": {
+            "enum": [
+              "plans",
+              "works"
+            ]
+          },
+          "stage": {
+            "enum": [
+              "PLANNED",
+              "PRODUCED",
+              "EXHIBITED",
+              "UNKNOWN"
+            ]
+          },
+          "epistemic_status": {
+            "enum": [
+              "proposed",
+              "observed",
+              "simulated",
+              "unknown"
+            ]
+          },
+          "stage_evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "source_locator",
+                "content_sha256",
+                "epistemic_status"
+              ],
+              "properties": {
+                "source_locator": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "content_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "epistemic_status": {
+                  "enum": [
+                    "observed",
+                    "simulated"
+                  ]
+                }
+              }
+            }
+          },
+          "comparison": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "theme",
+              "mechanism"
+            ],
+            "properties": {
+              "theme": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "source_locator"
+                ],
+                "properties": {
+                  "value": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 500
+                  },
+                  "source_locator": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "mechanism": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "source_locator"
+                ],
+                "properties": {
+                  "value": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 500
+                  },
+                  "source_locator": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "derived_from": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "origin_instance_id",
+                "record_id",
+                "revision",
+                "source_repository",
+                "source_commit",
+                "source_locator",
+                "content_sha256"
+              ],
+              "properties": {
+                "origin_instance_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                },
+                "record_id": {
+                  "type": "string",
+                  "pattern": "^[PW][0-9]{4}$"
+                },
+                "revision": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "source_repository": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+                },
+                "source_commit": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$"
+                },
+                "source_locator": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "content_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          },
+          "source_plans": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "origin_instance_id",
+                "record_id",
+                "revision",
+                "source_repository",
+                "source_commit",
+                "source_locator",
+                "content_sha256"
+              ],
+              "properties": {
+                "origin_instance_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+                },
+                "record_id": {
+                  "type": "string",
+                  "pattern": "^[PW][0-9]{4}$"
+                },
+                "revision": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "source_repository": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+                },
+                "source_commit": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$"
+                },
+                "source_locator": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "content_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "blocked": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "record_id",
+          "status"
+        ],
+        "properties": {
+          "record_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "UNKNOWN_ATTRIBUTION",
+              "BLOCKED"
+            ]
+          }
+        }
+      }
+    },
+    "writes": {
+      "type": "array",
+      "maxItems": 0
+    }
+  },
+  "description": "Read-only references into a fixed public catalog Git snapshot. Successful code qualification is separate from the returned knowledge commit; code_dirty must be false for qualified use."
+}

@@ -10,7 +10,7 @@ repositories:
     full_name: masa-san-jp/agentic-art-project
     url: https://github.com/masa-san-jp/agentic-art-project
     role: 公開成果物カタログ
-    relation: オーケストレーションの出力から公開用の制作プラン、作品、制作記録を収録する
+    relation: 公開projectionはexport-onlyで収録し、正規履歴のcatalog-reference/v1を独立したread-only能力として提供する
   - id: agentic-art-research
     full_name: masa-san-jp/agentic-art-research
     url: https://github.com/masa-san-jp/agentic-art-research

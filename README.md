@@ -6,6 +6,8 @@
 
 ## コンセプト
 
+芸術の契機を「精霊や風が運び、人間が受け取って具象化する」と捉え、その過程を支える制作プランと系譜を残します。
+
 Agentic Art は、人間が一つひとつの作品を直接設計するのではなく、エージェント群が与えられたテーマや条件をもとに、複数の制作プランを自律的に考案し、そのプランから制作物と制作記録を生み出していく試みです。
 
 ここでいう自律性は、単一のエージェントが孤立して作品を生成することを意味しません。制作に必要な役割や判断をエージェント群に分担させ、オーケストレーションの仕組みによって、プランの生成、展開、記録を一連の制作プロセスとして実行することを意味します。
@@ -40,6 +42,28 @@ agentic-art-orchestration
 
 このリポジトリはオーケストレーションの実行環境や内部ログを収録する場所ではありません。自律的な制作の結果を、個別の制作プランと作品記録として追跡可能な形で公開する場所です。
 
+## 作者・系譜と履歴の再参照
+
+各recordの`lineage.json`で、origin、creator、改訂、派生元と元planを本文から分離して管理します。
+clone/forkは元作者の作品を引き継ぎます。新しい利用者の自作へ読み替えません。P/W IDは保存し、
+別catalogに同じIDがある場合もoriginとIDを組にして参照します。既存P0004は正本を確認済みですが、
+作者とoriginの記録はまだないためunknownです。能動的な利用者やGit commit作者で補完しません。
+
+公開projectionは出力専用のまま、`catalog-reference/v1`が比較用の独立した読み取り能力を提供します。
+正本・権利・hash・帰属の検査を通ったrecordだけを、固定Git commitと本文locatorで返します。
+exportは元catalogを書き換えません。計画はPLANNED、作品の実績は別の公開証拠に基づく段階として示し、
+simulatedとobservedを分けます。詳しい入口と訂正手順は[カタログ系譜と参照](docs/catalog-lineage.md)を参照してください。
+
+```sh
+python3 tools/catalog_lineage.py migration --root <absolute-catalog-root>
+python3 tools/catalog_lineage.py export --root <absolute-catalog-root> --repository <owner/catalog> --snapshot <knowledge-commit>
+```
+
+外部`output-destinations/v1`を使う場合は`--root`の代わりに`--destinations-file <external-profile.yaml>`を指定します。
+未記録の帰属は`UNKNOWN_ATTRIBUTION`としてBLOCKEDに残ります。現在のP0004がこの状態であることは、
+planの正本検証に通っていることとは別です。生成[系譜index](plans/lineage-index.json)を手編集せず、
+`python3 tools/catalog_sync.py --write`で同期します。
+
 公開対象の選定と、100件規模の制作プランを生み出す仕組みについては [`docs/production-system.md`](docs/production-system.md) を参照してください。リポジトリ群のURLと関係性は [`docs/repositories.yaml`](docs/repositories.yaml) を正本とします。
 
 ## 関連リポジトリと関係性
@@ -63,7 +87,7 @@ agentic-art-orchestration（親・制御面）
 | リポジトリ | 役割 | このプロジェクトとの関係 |
 |---|---|---|
 | [agentic-art-orchestration](https://github.com/masa-san-jp/agentic-art-orchestration) | オーケストレーション親・制御面 | 入力、研究、制作をつなぎ、公開可能な制作プランをこのリポジトリへ投影する |
-| [agentic-art-project](https://github.com/masa-san-jp/agentic-art-project) | 公開成果物カタログ | オーケストレーションの出力から公開用の制作プラン、作品、制作記録を収録する |
+| [agentic-art-project](https://github.com/masa-san-jp/agentic-art-project) | 公開成果物カタログ | 公開projectionはexport-onlyで収録し、正規履歴のcatalog-reference/v1を独立したread-only能力として提供する |
 | [agentic-art-research](https://github.com/masa-san-jp/agentic-art-research) | 制作リサーチ実行・成果物 | オーケストレーションから参照される下流リポジトリで、内部資料はこのカタログへ複製しない |
 | [agentic-art-production](https://github.com/masa-san-jp/agentic-art-production) | 制作実行・結果記録 | 制作引き渡しを受けて制作物と記録を扱い、作品公開は別の人間ゲートを通る |
 | [self-model-notes](https://github.com/masa-san-jp/self-model-notes) | 自己モデル入力ナレッジベース | オーケストレーションが参照する上流入力であり、このカタログの収録対象ではない |

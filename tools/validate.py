@@ -15,7 +15,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from tools import catalog_sync  # noqa: E402
-from tools.attestation_receiver import check_envelope
+from tools.attestation_receiver import check_envelope, configured_producer
 
 
 HASH64 = re.compile(r"^[0-9a-f]{64}$")
@@ -122,7 +122,7 @@ def validate_record(root: Path, record: dict[str, str]) -> list[str]:
     if (directory / "summary.md").exists():
         errors.append(f"{location}: summary must not remain in canonical collection")
     try:
-        check_envelope(directory, metadata, record)
+        check_envelope(directory, metadata, record, producer_repository=configured_producer(root))
     except (ValueError, OSError, KeyError, TypeError, AttributeError) as exc:
         errors.append(f"{location}: {exc}")
 
@@ -159,10 +159,17 @@ def validate(root: Path = ROOT) -> list[str]:
         errors.append("plans/index.yaml: indexed plan directories differ from the filesystem")
     for record in records:
         errors.extend(validate_record(root, record))
+    from tools.catalog_lineage import index_document
     try:
-        expected = catalog_sync.expected_files()
+        for item in index_document(root)["records"]:
+            if item["status"] == "BLOCKED":
+                errors.append(f"{item['path']}: {item['reason']}")
+    except (ValueError, OSError, KeyError, TypeError):
+        errors.append("catalog lineage: invalid metadata or collection")
+    try:
+        expected = catalog_sync.expected_files(root)
         for path, content in expected.items():
-            if path.read_text(encoding="utf-8") != content:
+            if not path.exists() or path.read_text(encoding="utf-8") != content:
                 errors.append(f"{path.relative_to(root)}: generated catalog block is stale")
     except (OSError, UnicodeError, catalog_sync.CatalogError) as exc:
         errors.append(f"catalog: {exc}")
