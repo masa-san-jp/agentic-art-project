@@ -41,6 +41,7 @@ AAK-13の正本は[仕様](https://github.com/masa-san-jp/agentic-art-orchestrat
 - このrepoはexport-onlyであり、入力knowledge、親run state、内部log、会話、prompt、handoff、credential、PRIVATE_RAW、RESTRICTEDを所有しない。
 - read-only catalog-referenceは上記projectionとは別能力であり、親のknowledge write dispatchを許可するものではない。任意の出力repoは明示rootまたは外部output-destinations/v1から解決する。
 - `public-project.yaml`はlayoutとcanonical plan受理契約、`plans/index.yaml`はplan catalogの正本である。
+- `.agentic-art/`はroot直下の非追跡ローカル作業領域である。設定、run state、内部出力、一時stagingをここへ置き、公開record・catalog・lineageへ参照を持ち込まない。fresh cloneで不在でも正常であり、validatorは必要な場合だけ利用者が作成した領域を読み取り検査する。
 - workの公開、GitHubへのpush/PR、既定branchへのmerge、release、visibility変更は別の人間gateに従う。
 - branch作成、commit、Draft PRはIssueで明示されたtaskに限る。merge、release、削除、force pushを自動実行しない。
 
@@ -51,3 +52,11 @@ AAK-13の正本は[仕様](https://github.com/masa-san-jp/agentic-art-orchestrat
 - validator、unit tests、diff check
 - commit、PR、未解決、次の一操作
 - 機微情報と内部artifactを保存していないこと
+
+## Repo-local workspace
+
+- `.agentic-art/`は公開成果物ではなく、root-anchored `.gitignore`で除外されたローカル専用領域です。`config.yaml`、`state/`、`internal/`、`staging/`だけを固定用途として使用します。
+- fresh cloneでこのディレクトリが存在しない状態は正常です。必要になった利用者だけが作成し、既存の内部資料を自動移動・コピーしません。
+- 公開昇格は`staging/`からのrecursive copyではありません。Production正本、attestation、権利・同意・安全性、provenanceを受信validatorで確認してから、公開allowlistのrecordだけを通常のレビュー付きworkflowで追加します。
+- BLOCK時はvalidatorのfindingを記録し、`.agentic-art/`の内容を削除・移動せず、原因を解消して再検証します。tracked fileが見つかっても`git rm`やhistory rewriteは自動実行しません。
+- 利用手順と非破壊復旧は[`docs/local-workspace.md`](docs/local-workspace.md)を正本とします。

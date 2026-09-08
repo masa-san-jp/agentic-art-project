@@ -90,6 +90,12 @@ agentic-art-orchestration
 
 このリポジトリはオーケストレーションの実行環境や内部ログを収録する場所ではありません。自律的な制作の結果を、個別の制作プランと作品記録として追跡可能な形で公開する場所です。
 
+## ローカル制作作業領域
+
+cloneしたcheckout内で制作の中間出力や非公開stateを扱う場合は、root直下の`.agentic-art/`を利用できます。この領域はGitから除外され、fresh cloneに存在しなくても正常です。公開対象へ昇格できるのは、Production正本・attestation・権利と同意の検証を通過した成果だけです。
+
+利用者向けの作成、検証、公開前check、BLOCK時の非破壊復旧は[`docs/local-workspace.md`](docs/local-workspace.md)にまとめています。内部出力を公開recordへrecursive copyしたり、設定値・run state・絶対pathをmetadataやREADMEへ転記したりしないでください。
+
 ## 作者・系譜と履歴の再参照
 
 各recordの`lineage.json`で、origin、creator、改訂、派生元と元planを本文から分離して管理します。
