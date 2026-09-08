@@ -1,66 +1,28 @@
-version: 1
-records:
-  - id: P0001
-    slug: owner-of-choice
-    title: 選択の持ち主 — 翻訳のあとに残るもの
-    path: plans/P0001-owner-of-choice
-    source_key: plan:525fcd31ff35c11603baac67d9adca86ac4b89baa533372dcf14510006aae8af
-    content_sha256: 525fcd31ff35c11603baac67d9adca86ac4b89baa533372dcf14510006aae8af
-    status: published
-    visibility: public
-    rights_status: cleared
-  - id: P0002
-    slug: moving-gap
-    title: 移動する隙間による近接場の交換
-    path: plans/P0002-moving-gap
-    source_key: plan:6968d922845591e47244b8af11f623a25ecf57414e807e2f28c48079ca030036
-    content_sha256: 6968d922845591e47244b8af11f623a25ecf57414e807e2f28c48079ca030036
-    status: published
-    visibility: public
-    rights_status: cleared
-  - id: P0003
-    slug: yohaku-breath
-    title: 関わり方を選び直す距離 — 余白の呼吸
-    path: plans/P0003-yohaku-breath
-    source_key: plan:cb887f2b2771554083b0c54aed32ff276d64c473be364682bf896d3146e090c9
-    content_sha256: cb887f2b2771554083b0c54aed32ff276d64c473be364682bf896d3146e090c9
-    status: published
-    visibility: public
-    rights_status: cleared
-  - id: P0004
-    slug: necessary-retreat
-    title: 必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント
-    path: plans/P0004-necessary-retreat
-    source_key: plan:da3c0578dcb6dad1b00e1b8c80d90d9a8768aa6b72993573186ec91f117f6fce
-    content_sha256: da3c0578dcb6dad1b00e1b8c80d90d9a8768aa6b72993573186ec91f117f6fce
-    status: published
-    visibility: public
-    rights_status: cleared
-  - id: P0005
-    slug: close-but-cannot-reach
-    title: 近いのに届かない — 枠を見る側に置く
-    path: plans/P0005-close-but-cannot-reach
-    source_key: plan:ba95efb8113cb117703165b8accf4e281fa52aaa8c53970cfc8e80cd5331135a
-    content_sha256: ba95efb8113cb117703165b8accf4e281fa52aaa8c53970cfc8e80cd5331135a
-    status: published
-    visibility: public
-    rights_status: cleared
-  - id: P0006
-    slug: distance-selects-boundary
-    title: 距離が選ぶ境界 — 近づいても触れない休止の場
-    path: plans/P0006-distance-selects-boundary
-    source_key: plan:67735d1c5a4c2dbc9f624d32e5237f5c3657fb264ce7cc2c1fc54e49a1728b08
-    content_sha256: 67735d1c5a4c2dbc9f624d32e5237f5c3657fb264ce7cc2c1fc54e49a1728b08
-    status: published
-    visibility: public
-    rights_status: cleared
-  - id: P0007
-    slug: near-not-received
-    title: 近接不在 — Near, Not Received
-    path: plans/P0007-near-not-received
-    source_key: plan:5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
-    content_sha256: 5c84cbeb4196ae1c3212714192ddd7665861a0084b3226a8266313f3fe4d6b4a
-    status: published
-    visibility: public
-    rights_status: cleared
-retired_ids: []
+"version": 1
+"records":
+- "id": "P0004"
+  "slug": "necessary-retreat"
+  "title": "必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント"
+  "source_key": "plan:production/necessary-retreat-v4#PL001"
+  "source_identity": "production/necessary-retreat-v4#PL001"
+  "plan_revision": "1"
+  "production_repository": "masa-san-jp/agentic-art-production"
+  "production_commit": "69567e88131e3f033d010791fb5849e1b2ebff8d"
+  "source_run_id": "migration-necessary-retreat-v4-20260906"
+  "content_sha256": "b6d103079c84ab1b6e9f6a12fe00346ca1f17300a38bda2ee201a4f792ffdc5f"
+  "attestation_sha256": "cc7da4d1e4a5315dbbfe0360c62c3a67de944fe8d0639787ea3151d7a471f3fa"
+  "projection_contract": "canonical-plan-projection/v2"
+  "projection_mode": "AUTOMATIC_PLAN"
+  "body_transform": "none"
+  "plan_state": "canonical"
+  "production_state": "PLANNING"
+  "visibility": "public"
+  "external_effects_authorized": "false"
+  "status": "ready-for-publication"
+  "rights_status": "cleared"
+  "contract_version": "canonical-plan-projection/v2"
+  "mode": "AUTOMATIC_PLAN"
+  "canonical_artifact": "production-plan.md"
+  "assets": "[{\"byte_length\":2169,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/concept-mockup.svg\",\"rights_ref\":\"generated-by-agentic-art-production/from-user-authorized-project-source\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:0b235e1ff1d7b5171dd02cb26b6528f4a3981a0d9a2bd6fde246f2f2010c2f05\"},{\"byte_length\":4777,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/visual-reference-board.svg\",\"rights_ref\":\"generated-by-agentic-art-production/from-user-authorized-project-source\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:925eddc7605bc44001c4619f382aa0e099fccb357826fe63bff1a17f4b678ac8\"}]"
+  "path": "plans/P0004-necessary-retreat"
+"retired_ids": []

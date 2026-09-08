@@ -29,7 +29,7 @@ CATALOG_END = "<!-- agentic-art:catalog:end -->"
 REPOSITORIES_START = "<!-- agentic-art:repositories:start -->"
 REPOSITORIES_END = "<!-- agentic-art:repositories:end -->"
 
-_FIELD = re.compile(r"^(?P<indent>\s+)(?P<key>[a-z][a-z0-9_]*):\s*(?P<value>.*)$")
+_FIELD = re.compile(r'^(?P<indent>\s+)(?P<key>"?[a-z][a-z0-9_]*"?):\s*(?P<value>.*)$')
 
 
 class CatalogError(ValueError):
@@ -54,37 +54,41 @@ def _scalar(value: str) -> str:
 
 
 def _parse_list_records(path: Path, section: str) -> list[dict[str, str]]:
-    """Parse the deliberately narrow list-of-flat-mappings YAML used here."""
+    """Parse the narrow flat mappings emitted by this repo or the parent."""
 
     lines = path.read_text(encoding="utf-8").splitlines()
     in_section = False
     records: list[dict[str, str]] = []
     current: dict[str, str] | None = None
+    item_indent: int | None = None
     for line_number, line in enumerate(lines, start=1):
         if not line.strip() or line.lstrip().startswith("#"):
             continue
-        if line == f"{section}:":
+        if line in {f"{section}:", f'"{section}":'}:
             in_section = True
             continue
         if not in_section:
             continue
-        if line and not line.startswith(" "):
-            break
-        if line.startswith("  - "):
+        item_match = re.match(r"^(?P<indent> *)- (?P<first>.+)$", line)
+        if item_match is not None and len(item_match.group("indent")) in {0, 2}:
             if current is not None:
                 records.append(current)
-            first = line[4:]
-            match = _FIELD.match("    " + first)
-            if match is None or match.group("key") != "id":
+            item_indent = len(item_match.group("indent"))
+            match = _FIELD.match("  " + item_match.group("first"))
+            key = match.group("key").strip('"') if match is not None else None
+            if match is None or key != "id":
                 raise CatalogError(f"{path}:{line_number}: each entry must start with id")
             current = {"id": _scalar(match.group("value"))}
             continue
+        if line and not line.startswith(" "):
+            break
         if current is None:
             raise CatalogError(f"{path}:{line_number}: field appears before an entry")
         match = _FIELD.match(line)
-        if match is None or len(match.group("indent")) != 4:
-            raise CatalogError(f"{path}:{line_number}: expected a four-space field")
-        current[match.group("key")] = _scalar(match.group("value"))
+        expected_indent = (item_indent or 0) + 2
+        if match is None or len(match.group("indent")) != expected_indent:
+            raise CatalogError(f"{path}:{line_number}: expected a {expected_indent}-space field")
+        current[match.group("key").strip('"')] = _scalar(match.group("value"))
     if current is not None:
         records.append(current)
     if not records:
@@ -99,7 +103,7 @@ def load_plans(path: Path = PLAN_INDEX) -> list[dict[str, str]]:
         missing = sorted(required - record.keys())
         if missing:
             raise CatalogError(f"{path}: {record.get('id', '<unknown>')} missing {', '.join(missing)}")
-        if record["status"] != "published" or record["visibility"] != "public" or record["rights_status"] != "cleared":
+        if record["status"] != "ready-for-publication" or record["visibility"] != "public" or record["rights_status"] != "cleared":
             raise CatalogError(f"{path}: {record['id']} is not an eligible public catalog record")
         if not record["path"].startswith("plans/"):
             raise CatalogError(f"{path}: {record['id']} path must be under plans/")
@@ -125,6 +129,8 @@ def _safe_title(title: str) -> str:
 def render_plan_catalog(plans: Iterable[dict[str, str]], *, root: bool) -> str:
     lines: list[str] = []
     for plan in plans:
+        if plan["status"] != "ready-for-publication":
+            raise CatalogError("noncanonical records belong in metadata-only migration, not the public catalog")
         title = _safe_title(plan["title"])
         path = Path(plan["path"])
         link = f"{path}/README.md" if root else f"{path.name}/README.md"

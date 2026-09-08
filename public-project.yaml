@@ -5,6 +5,14 @@ collections:
 catalog_markers:
   start: "<!-- agentic-art:catalog:start -->"
   end: "<!-- agentic-art:catalog:end -->"
+canonical_plan:
+  source_repository: agentic-art-production
+  source_artifact: 03_plan/production-plan.md
+  target_artifact: plan.md
+  projection_contract: canonical-plan-projection/v2
+  body_transform: none
+  receiver_validator: python3 tools/validate.py --check
+  migration_registry: plans/migration.yaml
 media_policy:
   max_file_bytes: 50000000
   allowed_extensions:

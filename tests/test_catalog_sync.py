@@ -1,4 +1,5 @@
 import importlib.util
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -34,6 +35,30 @@ class CatalogSyncTests(unittest.TestCase):
     def test_marker_pair_must_be_unique_and_ordered(self):
         with self.assertRaises(catalog_sync.CatalogError):
             catalog_sync.replace_block("start end end", "start", "end", "body", "fixture")
+
+    def test_blocked_plan_cannot_enter_canonical_catalog(self):
+        with self.assertRaises(catalog_sync.CatalogError):
+            catalog_sync.render_plan_catalog([{"status": "blocked-missing-canonical"}], root=False)
+
+    def test_parent_quoted_indentless_yaml_is_accepted(self):
+        content = '''"version": 1
+"records":
+- "id": "P0008"
+  "slug": "automatic-plan"
+  "title": "Automatic plan"
+  "path": "plans/P0008-automatic-plan"
+  "source_key": "plan:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  "status": "ready-for-publication"
+  "visibility": "public"
+  "rights_status": "cleared"
+"retired_ids": []
+'''
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "index.yaml"
+            path.write_text(content, encoding="utf-8")
+            records = catalog_sync.load_plans(path)
+        self.assertEqual(["P0008"], [record["id"] for record in records])
 
 
 if __name__ == "__main__":
