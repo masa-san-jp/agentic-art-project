@@ -59,6 +59,7 @@ class CatalogLineageTests(unittest.TestCase):
         git(self.root, "init", "-q", "-b", "main")
         (self.root / "docs").mkdir()
         shutil.copyfile(ROOT / "docs/repositories.yaml", self.root / "docs/repositories.yaml")
+        shutil.copyfile(ROOT / ".gitignore", self.root / ".gitignore")
         shutil.copyfile(ROOT / "public-project.yaml", self.root / "public-project.yaml")
         (self.root / "README.md").write_text("# Synthetic catalog\n" + catalog_sync.CATALOG_START + "\n" + catalog_sync.CATALOG_END + "\n" + catalog_sync.REPOSITORIES_START + "\n" + catalog_sync.REPOSITORIES_END + "\n")
         write_rows(self.root / "plans/index.yaml", [])

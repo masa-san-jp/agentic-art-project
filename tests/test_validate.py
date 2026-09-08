@@ -16,6 +16,24 @@ class PublicCatalogValidationTests(unittest.TestCase):
     def test_repository_is_valid(self):
         self.assertEqual([], validator.validate(ROOT))
 
+    def test_repo_local_workspace_contract_is_valid(self):
+        self.assertEqual([], validator.validate_local_workspace(ROOT))
+        self.assertEqual(".agentic-art", validator.LOCAL_WORKSPACE_CONTRACT["root"])
+
+    def test_repo_local_workspace_mapping_is_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "public-project.yaml"
+            shutil.copyfile(ROOT / "public-project.yaml", path)
+            path.write_text(
+                path.read_text(encoding="utf-8").replace(
+                    "  tracking: ignored\ncatalog_lineage:",
+                    "  tracking: ignored\n  unexpected: value\ncatalog_lineage:",
+                ),
+                encoding="utf-8",
+            )
+            errors = validator.validate_layout(Path(temporary))
+        self.assertTrue(any("local_workspace" in error for error in errors))
+
     def test_summary_cannot_pass_as_a_canonical_plan(self):
         summary = "# Public summary\n\nA shortened production idea.\n".encode("utf-8")
         errors = validator.canonical_plan_errors(summary, "fixture/plan.md")

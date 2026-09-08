@@ -5,6 +5,14 @@ collections:
 catalog_markers:
   start: "<!-- agentic-art:catalog:start -->"
   end: "<!-- agentic-art:catalog:end -->"
+local_workspace:
+  contract_version: repo-local-project-workspace/v1
+  root: .agentic-art
+  config: .agentic-art/config.yaml
+  state: .agentic-art/state
+  internal: .agentic-art/internal
+  staging: .agentic-art/staging
+  tracking: ignored
 catalog_lineage:
   contract_version: catalog-lineage/v1
   record_metadata: lineage.json

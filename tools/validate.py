@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -32,6 +34,155 @@ LAYOUT_CONTRACT = {
     "canonical_plan.receiver_validator": "python3 tools/validate.py --check",
     "canonical_plan.migration_registry": "plans/migration.yaml",
 }
+LOCAL_WORKSPACE_CONTRACT = {
+    "contract_version": "repo-local-project-workspace/v1",
+    "root": ".agentic-art",
+    "config": ".agentic-art/config.yaml",
+    "state": ".agentic-art/state",
+    "internal": ".agentic-art/internal",
+    "staging": ".agentic-art/staging",
+    "tracking": "ignored",
+}
+LOCAL_WORKSPACE_IGNORE_RULE = "/.agentic-art/"
+LOCAL_WORKSPACE_PROBE = ".agentic-art/probe"
+LOCAL_WORKSPACE_TOKEN = re.compile(r"\.agentic-art(?:[/\\]|$)")
+
+
+def _lexists(path: Path) -> bool:
+    """Return whether a path exists without following a broken symlink."""
+    return os.path.lexists(path)
+
+
+def _public_files(root: Path) -> list[Path]:
+    """Return public paths whose contents can become catalog evidence.
+
+    Documentation is intentionally excluded: docs/local-workspace.md and the
+    root README explain the private boundary, while records and catalogs must
+    never carry a path into it.
+    """
+    candidates = [
+        root / "README.md",
+        root / "plans/index.yaml",
+        root / "plans/README.md",
+        root / "works/index.yaml",
+        root / "works/README.md",
+        root / "plans/lineage-index.json",
+    ]
+    for collection in (root / "plans", root / "works", root / "shared"):
+        if collection.is_symlink():
+            candidates.append(collection)
+        elif collection.is_dir():
+            candidates.extend(path for path in collection.rglob("*") if path.is_file() or path.is_symlink())
+    unique: dict[str, Path] = {}
+    for path in candidates:
+        if not (path.is_file() or path.is_symlink()):
+            continue
+        try:
+            key = path.relative_to(root).as_posix()
+        except ValueError:
+            continue
+        unique[key] = path
+    return [unique[key] for key in sorted(unique)]
+
+
+def _markdown_links(text: str) -> list[str]:
+    """Extract inline and reference-style Markdown destinations."""
+    inline = re.findall(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+['\"][^)]*['\"])?\)", text)
+    references = re.findall(r"^\s*\[[^\]]+\]:\s*(\S+)", text, flags=re.MULTILINE)
+    return inline + references
+
+
+def validate_public_workspace_references(root: Path) -> list[str]:
+    """Reject private workspace paths from public records and catalog evidence."""
+    errors: list[str] = []
+    for path in _public_files(root):
+        if path.is_symlink():
+            errors.append("PUBLIC_LOCAL_WORKSPACE_SYMLINK: public catalog contains an unsafe symlink")
+            continue
+        try:
+            text = path.read_bytes().decode("utf-8")
+        except UnicodeDecodeError:
+            # Binary public media has no textual locator to inspect here.
+            continue
+        except OSError:
+            errors.append("PUBLIC_LOCAL_WORKSPACE_READ: public catalog file is unreadable")
+            continue
+        relative = path.relative_to(root).as_posix()
+        if relative == "README.md":
+            if any(LOCAL_WORKSPACE_TOKEN.search(link) for link in _markdown_links(text)):
+                errors.append("PUBLIC_LOCAL_WORKSPACE_REFERENCE: README link enters the private workspace")
+        elif LOCAL_WORKSPACE_TOKEN.search(text):
+            errors.append("PUBLIC_LOCAL_WORKSPACE_REFERENCE: public record or catalog enters the private workspace")
+    return sorted(set(errors))
+
+
+def validate_local_workspace(root: Path) -> list[str]:
+    """Validate the private repo-local workspace boundary without writing."""
+    errors: list[str] = []
+    ignore_path = root / ".gitignore"
+    try:
+        ignore_lines = ignore_path.read_text(encoding="utf-8").splitlines()
+    except (OSError, UnicodeError):
+        ignore_lines = []
+    if LOCAL_WORKSPACE_IGNORE_RULE not in ignore_lines:
+        errors.append("LOCAL_WORKSPACE_IGNORE: root-anchored /.agentic-art/ rule is required")
+
+    workspace = root / ".agentic-art"
+    fixed_paths = (
+        (workspace, True),
+        (workspace / "config.yaml", False),
+        (workspace / "state", True),
+        (workspace / "internal", True),
+        (workspace / "staging", True),
+    )
+    unsafe_workspace = False
+    for path, directory_expected in fixed_paths:
+        if not _lexists(path):
+            continue
+        if path.is_symlink():
+            unsafe_workspace = True
+            continue
+        if directory_expected and not path.is_dir():
+            errors.append("LOCAL_WORKSPACE_LAYOUT: fixed workspace directory has the wrong type")
+        elif not directory_expected and not path.is_file():
+            errors.append("LOCAL_WORKSPACE_LAYOUT: fixed workspace config has the wrong type")
+    if unsafe_workspace:
+        errors.append("LOCAL_WORKSPACE_SYMLINK: workspace or fixed child is a symlink")
+
+    git_metadata = root / ".git"
+    if _lexists(git_metadata):
+        try:
+            ignore_result = subprocess.run(
+                ["git", "check-ignore", "-q", "--no-index", LOCAL_WORKSPACE_PROBE],
+                cwd=root,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+            tracked_result = subprocess.run(
+                ["git", "ls-files", "--", ".agentic-art"],
+                cwd=root,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+        except (OSError, subprocess.SubprocessError):
+            errors.append("LOCAL_WORKSPACE_GIT: Git boundary could not be verified")
+        else:
+            if ignore_result.returncode != 0:
+                errors.append("LOCAL_WORKSPACE_IGNORE: Git does not ignore /.agentic-art/probe")
+            if tracked_result.returncode != 0:
+                errors.append("LOCAL_WORKSPACE_GIT: Git tracked-file query failed")
+            elif tracked_result.stdout.strip():
+                errors.append("LOCAL_WORKSPACE_TRACKED: private workspace contains tracked files")
+
+    errors.extend(validate_public_workspace_references(root))
+    return sorted(set(errors))
+
+
+def local_workspace_git_status(root: Path) -> str:
+    """Describe whether Git-boundary checks apply to this tree."""
+    return "CHECKED" if _lexists(root / ".git") else "NOT_APPLICABLE"
 
 
 def sha256_file(path: Path) -> str:
@@ -58,6 +209,8 @@ def mapping_fields(path: Path) -> dict[str, str]:
         value = (match.group("value") or "").strip()
         dotted = ".".join([item[1] for item in parents] + [key])
         if value:
+            if dotted in fields:
+                raise ValueError(f"{path}:{number}: duplicate mapping field")
             fields[dotted] = catalog_sync._scalar(value)
         else:
             parents.append((indent, key))
@@ -81,6 +234,13 @@ def validate_layout(root: Path) -> list[str]:
     for key, expected in LAYOUT_CONTRACT.items():
         if fields.get(key) != expected:
             errors.append(f"public-project.yaml: {key} must be {expected!r}")
+    local_fields = {
+        key.removeprefix("local_workspace."): value
+        for key, value in fields.items()
+        if key.startswith("local_workspace.")
+    }
+    if local_fields != LOCAL_WORKSPACE_CONTRACT:
+        errors.append("public-project.yaml: local_workspace must match the closed v1 contract")
     return errors
 
 
@@ -131,6 +291,7 @@ def validate_record(root: Path, record: dict[str, str]) -> list[str]:
 
 def validate(root: Path = ROOT) -> list[str]:
     errors = validate_layout(root)
+    errors.extend(validate_local_workspace(root))
     try:
         records = catalog_sync.load_plans(root / "plans/index.yaml")
     except (OSError, UnicodeError, catalog_sync.CatalogError) as exc:
@@ -179,13 +340,15 @@ def validate(root: Path = ROOT) -> list[str]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="validate without writing")
-    parser.parse_args(argv)
-    errors = validate()
+    parser.add_argument("--root", type=Path, default=ROOT, help="catalog root to validate")
+    args = parser.parse_args(argv)
+    root = args.root.resolve()
+    errors = validate(root)
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
-    print("OK: public catalog and canonical plans are valid")
+    print(f"OK: public catalog and canonical plans are valid (local workspace Git boundary: {local_workspace_git_status(root)})")
     return 0
 
 
