@@ -194,9 +194,9 @@ def expected_files(root: Path | None = None) -> dict[Path, str]:
     return output
 
 
-def synchronize(*, write: bool) -> int:
+def synchronize(*, write: bool, root: Path = ROOT) -> int:
     try:
-        expected = expected_files()
+        expected = expected_files(root)
     except (OSError, CatalogError) as exc:
         print(f"catalog-sync: {exc}", file=sys.stderr)
         return 2
@@ -206,12 +206,12 @@ def synchronize(*, write: bool) -> int:
         return 0
     if not write:
         for path in stale:
-            print(f"catalog-sync: stale generated block: {path.relative_to(ROOT)}", file=sys.stderr)
+            print(f"catalog-sync: stale generated block: {path.relative_to(root)}", file=sys.stderr)
         print("catalog-sync: run `python3 tools/catalog_sync.py --write`", file=sys.stderr)
         return 1
     for path in stale:
         path.write_text(expected[path], encoding="utf-8")
-        print(f"catalog-sync: updated {path.relative_to(ROOT)}")
+        print(f"catalog-sync: updated {path.relative_to(root)}")
     return 0
 
 
@@ -220,8 +220,9 @@ def main(argv: list[str] | None = None) -> int:
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--check", action="store_true", help="fail when generated README blocks are stale")
     mode.add_argument("--write", action="store_true", help="rewrite generated README blocks")
+    parser.add_argument("--root", type=Path, default=ROOT, help="Explicit local catalog root")
     args = parser.parse_args(argv)
-    return synchronize(write=args.write)
+    return synchronize(root=args.root.resolve(), write=args.write)
 
 
 if __name__ == "__main__":
