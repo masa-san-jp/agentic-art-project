@@ -60,3 +60,7 @@ AAK-13の正本は[仕様](https://github.com/masa-san-jp/agentic-art-orchestrat
 - 公開昇格は`staging/`からのrecursive copyではありません。Production正本、attestation、権利・同意・安全性、provenanceを受信validatorで確認してから、公開allowlistのrecordだけを通常のレビュー付きworkflowで追加します。
 - BLOCK時はvalidatorのfindingを記録し、`.agentic-art/`の内容を削除・移動せず、原因を解消して再検証します。tracked fileが見つかっても`git rm`やhistory rewriteは自動実行しません。
 - 利用手順と非破壊復旧は[`docs/local-workspace.md`](docs/local-workspace.md)を正本とします。
+
+## Issue 18 local delivery verification
+
+Local projection completion uses `tools/local_delivery.py` with caller-supplied expected IDs, body hashes and attribution. It is read-only and does not require Git commit. Do not replace immutable snapshot export with worktree reads or describe a local receipt as remote synchronization. Implementation branch: fix/local-delivery-receipt-18; source base: 4ab9a85681e744592b0e02b701a20437cd7a5349. Verify native validator, catalog sync, full suite and diff before qualifying this change.

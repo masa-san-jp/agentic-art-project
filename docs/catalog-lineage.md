@@ -118,3 +118,11 @@ python3 tools/catalog_sync.py --check
 python3 -m unittest discover -s tests -v
 git diff --check
 ```
+
+## Local delivery receipt (Issue 18)
+
+`python3 tools/local_delivery.py --root <catalog-worktree> --expected <external-expectations.json>` verifies canonical receiver bytes before a Git commit. The external JSON array supplies `record_id`, `content_sha256` (bare SHA-256), `creator_id`, `origin_instance_id`, and `source_identity` for each expected new plan. The owner validates the catalog, canonical attestation/assets and lineage and returns `local-plan-delivery-receipt/v1`. Keep this receipt in caller-owned external state, not in the public catalog.
+
+`scope=LOCAL_WORKTREE`, `git_saved=false`, and `remote_synced=false` distinguish this check from Git knowledge/export and publication. No files, Git index or refs are written. Revalidation is necessary after edits. Existing `catalog_lineage.py export` still requires a clean fixed Git snapshot. Neither a local receipt nor a preexisting record with a different identity satisfies a requested remote delivery.
+
+For a newly projected plan without attribution metadata, use the existing owner writer: `python3 tools/catalog_lineage.py annotate --root <catalog> --record-id <P-ID> --instance-profile <explicit-profile> --mode new --initialize-new --apply`. The owner derives lineage and still rejects inherited IDs, unauthorized writes and revision conflicts. This writer is separate from the read-only receipt; no parent-owned lineage schema is needed.

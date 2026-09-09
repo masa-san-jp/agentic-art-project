@@ -340,3 +340,5 @@ source_plans:
 9. `python3 tools/validate.py --check`でcanonical hash、no-transform provenance、Production生成sectionを検証します。
 
 この構造により、ルート README は「展示入口」、`plans/` と `works/` は「公開カタログ」、各レコードのディレクトリは「個別の詳細ページ」として機能します。
+
+Projectへのローカル納品確認には `python3 tools/local_delivery.py --root <catalog> --expected <external-json>` を使用します。本文・画像・帰属をownerが検証し、commit/push済みとは区別したreceiptを返します。[入力と再検証手順](docs/catalog-lineage.md#local-delivery-receipt-issue-18)。

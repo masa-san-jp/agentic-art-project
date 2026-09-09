@@ -441,6 +441,7 @@ def main(argv=None):
     parser.add_argument("--snapshot")
     parser.add_argument("--record-id")
     parser.add_argument("--input", type=Path)
+    parser.add_argument("--initialize-new", action="store_true", help="Derive owner lineage for a new projected record from the explicit instance")
     parser.add_argument("--instance-profile", type=Path)
     parser.add_argument("--mode", choices=["new", "preserve"])
     parser.add_argument("--expected-sha256")
@@ -455,8 +456,17 @@ def main(argv=None):
             if args.apply: raise LineageError("MIGRATION_PREVIEW_ONLY")
             result = migration_preview(root)
         else:
-            if not args.input or not args.instance_profile: raise LineageError("ANNOTATION_INPUT_REQUIRED")
-            result = annotate(root, args.record_id, load_json(args.input), instance=mapping_fields(args.instance_profile),
+            if not args.instance_profile or bool(args.input) == bool(args.initialize_new): raise LineageError("ANNOTATION_INPUT_REQUIRED")
+            instance = load_json(args.instance_profile) if args.instance_profile.suffix == ".json" else mapping_fields(args.instance_profile)
+            if args.initialize_new:
+                if args.mode != "new": raise LineageError("NEW_ANNOTATION_MODE_REQUIRED")
+                kind, row = next(((k,r) for k,r in records(root) if r['id']==args.record_id),(None,None))
+                if kind != 'plans': raise LineageError("NEW_PLAN_REQUIRED")
+                value = default_lineage(root, kind, row)
+                value.update(origin_instance_id=instance['instance_id'],creator_id=instance['creator_id'])
+            else:
+                value = load_json(args.input)
+            result = annotate(root, args.record_id, value, instance=instance,
                               mode=args.mode, expected_sha256=args.expected_sha256, apply=args.apply)
         print(canonical(result).decode(), end="")
         return 2 if result["status"] == "BLOCKED" else 0
