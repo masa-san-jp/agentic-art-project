@@ -21,6 +21,7 @@ Agentic Art の制作プラン一覧です。
 - [移動する空白 — Moving Gap](P0010-moving-gap/README.md)
 - [余白の呼吸 — Yohaku Breath](P0011-yohaku-breath/README.md)
 - [近いが届かない — Close but Cannot Reach](P0012-close-but-cannot-reach/README.md)
+- [距離が境界を選ぶ — Distance Selects Boundary](P0013-distance-selects-boundary/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。

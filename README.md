@@ -80,6 +80,7 @@ agentic-art-orchestration  制作全体の制御
 - [移動する空白 — Moving Gap](plans/P0010-moving-gap/README.md)
 - [余白の呼吸 — Yohaku Breath](plans/P0011-yohaku-breath/README.md)
 - [近いが届かない — Close but Cannot Reach](plans/P0012-close-but-cannot-reach/README.md)
+- [距離が境界を選ぶ — Distance Selects Boundary](plans/P0013-distance-selects-boundary/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
