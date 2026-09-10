@@ -27,7 +27,8 @@ Agentic Art は、AIで画像を生成すること自体を目的にしたプロ
 - 公開された制作プラン：[plans/](plans/README.md)
 - 公開された作品：[works/](works/README.md)
 - 制作システムの説明：[`docs/production-system.md`](docs/production-system.md)
-- エージェント群の全体像：[`agentic-art-orchestration`](https://github.com/masa-san-jp/agentic-art-orchestration)
+- エージェント群の全体像：[`docs/repository-map.md`](docs/repository-map.md)
+- 実行・契約の正本：[`agentic-art-orchestration`](https://github.com/masa-san-jp/agentic-art-orchestration)
 
 制作の仕組みを知りたい人は orchestration へ、公開された成果を見たい人は `plans/` と `works/` へ進んでください。
 
@@ -72,12 +73,15 @@ agentic-art-orchestration  制作全体の制御
 
 各リポジトリの詳しい契約、実行手順、現在の状態は、それぞれのREADMEと [`docs/repositories.yaml`](docs/repositories.yaml) を参照してください。このREADMEでは、各リポジトリの内部仕様を複製しません。
 
+8リポジトリの責務とデータの流れを一枚で確認したい場合は、[リポジトリ関係図](docs/repository-map.md)を先に読んでください。`docs/repositories.yaml`は機械可読な定義、`agentic-art-orchestration/docs/repository-map.md`はシステム全体の正本案内です。
+
 ## 公開カタログ
 
 制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や展示実績を意味しません。
 
 <!-- agentic-art:catalog:start -->
 - [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
+- [aak07-agent-20260910-p4](plans/P0008-aak07-agent-20260910-p4/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
@@ -92,6 +96,15 @@ agentic-art-orchestration  制作全体の制御
 - 公開可否や権利状態が確認できない資料
 
 制作プランの正本性、権利確認、系譜、移行待ちレコードの扱いは、[制作システム](docs/production-system.md) と [カタログ系譜](docs/catalog-lineage.md) にまとめています。
+
+## 自動投影とリモート公開の違い
+
+このカタログへの「公開」は、二つの段階を含みます。
+
+1. `agentic-art-orchestration`が、Productionで検証されたcanonical planをこのProjectのcheckoutへ投影し、Project側のvalidatorで受け入れを確認する。
+2. その変更をGitへcommitし、GitHubへpush・PR・mergeして、リモートのカタログとして公開する。
+
+自動ハーネスが担当するのは第1段階の公開投影です。第2段階のGit操作、merge、release、外部共有、権利・同意範囲の変更は、投影が成功しただけでは実行されません。したがって、ローカルcheckoutに存在するrecordは、リモートの`main`へ公開済みであることを意味しません。
 
 ## 技術者・運用者向け
 
