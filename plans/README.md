@@ -22,7 +22,6 @@ Agentic Art の制作プラン一覧です。
 - [余白の呼吸 — Yohaku Breath（旧P0003復旧版）](P0011-legacy-yohaku-breath/README.md)
 - [近いが届かない — Close but Cannot Reach（旧P0005復旧版）](P0012-legacy-close-but-cannot-reach/README.md)
 - [距離が境界を選ぶ — Distance Selects Boundary（旧P0006復旧版）](P0013-legacy-distance-selects-boundary/README.md)
-- [近くても受領されない — Near, Not Received（旧P0007復旧版）](P0014-legacy-near-not-received/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。
