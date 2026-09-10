@@ -77,6 +77,7 @@ agentic-art-orchestration  制作全体の制御
 - [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
 - [aak07-agent-20260910-p4](plans/P0008-aak07-agent-20260910-p4/README.md)
 - [選択の所有 — Owner of Choice](plans/P0009-owner-of-choice/README.md)
+- [移動する空白 — Moving Gap](plans/P0010-moving-gap/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
