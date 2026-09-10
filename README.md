@@ -78,6 +78,7 @@ agentic-art-orchestration  制作全体の制御
 - [aak07-agent-20260910-p4](plans/P0008-aak07-agent-20260910-p4/README.md)
 - [選択の所有 — Owner of Choice（旧P0001復旧版）](plans/P0009-legacy-owner-of-choice/README.md)
 - [移動する空白 — Moving Gap（旧P0002復旧版）](plans/P0010-legacy-moving-gap/README.md)
+- [余白の呼吸 — Yohaku Breath（旧P0003復旧版）](plans/P0011-legacy-yohaku-breath/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
