@@ -79,6 +79,7 @@ agentic-art-orchestration  制作全体の制御
 - [選択の所有 — Owner of Choice](plans/P0009-owner-of-choice/README.md)
 - [移動する空白 — Moving Gap](plans/P0010-moving-gap/README.md)
 - [余白の呼吸 — Yohaku Breath](plans/P0011-yohaku-breath/README.md)
+- [近いが届かない — Close but Cannot Reach](plans/P0012-close-but-cannot-reach/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
