@@ -19,6 +19,7 @@ Agentic Art の制作プラン一覧です。
 - [aak07-agent-20260910-p4](P0008-aak07-agent-20260910-p4/README.md)
 - [選択の所有 — Owner of Choice](P0009-owner-of-choice/README.md)
 - [移動する空白 — Moving Gap](P0010-moving-gap/README.md)
+- [余白の呼吸 — Yohaku Breath](P0011-yohaku-breath/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。
