@@ -19,7 +19,9 @@ class LocalWorkspaceTests(unittest.TestCase):
             ROOT,
             root,
             dirs_exist_ok=True,
-            ignore=shutil.ignore_patterns(".git", "__pycache__", "*.py[cod]"),
+            ignore=shutil.ignore_patterns(
+                ".git", ".agentic-art", "__pycache__", "*.py[cod]"
+            ),
         )
         if git:
             self.git(root, "init", "-q")
