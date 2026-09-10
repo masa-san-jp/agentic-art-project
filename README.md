@@ -81,6 +81,7 @@ agentic-art-orchestration  制作全体の制御
 - [余白の呼吸 — Yohaku Breath](plans/P0011-yohaku-breath/README.md)
 - [近いが届かない — Close but Cannot Reach](plans/P0012-close-but-cannot-reach/README.md)
 - [距離が境界を選ぶ — Distance Selects Boundary](plans/P0013-distance-selects-boundary/README.md)
+- [近くても受領されない — Near, Not Received](plans/P0014-near-not-received/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
