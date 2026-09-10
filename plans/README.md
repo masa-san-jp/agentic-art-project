@@ -15,14 +15,14 @@ Agentic Art の制作プラン一覧です。
 100件規模のプランを生み出す仕組みの説明は、個別プランではなく [`docs/production-system.md`](../docs/production-system.md) に収録しています。実物作品、原寸データ、大容量メディア、制作手順は、作品の公開可否と権利状態を確認したうえで `works/` に別途収録します。
 
 <!-- agentic-art:catalog:start -->
+- [選択の所有 — Owner of Choice](P0001-owner-of-choice/README.md)
+- [移動する空白 — Moving Gap](P0002-moving-gap/README.md)
+- [余白の呼吸 — Yohaku Breath](P0003-yohaku-breath/README.md)
 - [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](P0004-necessary-retreat/README.md)
+- [近いが届かない — Close but Cannot Reach](P0005-close-but-cannot-reach/README.md)
+- [距離が境界を選ぶ — Distance Selects Boundary](P0006-distance-selects-boundary/README.md)
+- [近くても受領されない — Near, Not Received](P0007-near-not-received/README.md)
 - [aak07-agent-20260910-p4](P0008-aak07-agent-20260910-p4/README.md)
-- [選択の所有 — Owner of Choice](P0009-owner-of-choice/README.md)
-- [移動する空白 — Moving Gap](P0010-moving-gap/README.md)
-- [余白の呼吸 — Yohaku Breath](P0011-yohaku-breath/README.md)
-- [近いが届かない — Close but Cannot Reach](P0012-close-but-cannot-reach/README.md)
-- [距離が境界を選ぶ — Distance Selects Boundary](P0013-distance-selects-boundary/README.md)
-- [近くても受領されない — Near, Not Received](P0014-near-not-received/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。
