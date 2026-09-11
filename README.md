@@ -28,8 +28,8 @@ Agentic Artは、この問いに対する態度として、芸術の契機を「
 
 ## このリポジトリの地図
 
-- 公開された制作プラン：[plans/](plans/README.md)
-- 公開された作品：[works/](works/README.md)
+- Agentic Artによる制作プラン：[plans/]/(https://github.com/masa-san-jp/agentic-art-project/tree/main/plans)
+- 実際に制作された作品：[works/]((https://github.com/masa-san-jp/agentic-art-project/tree/main/works)
 - 制作システムの説明：[`docs/production-system.md`](docs/production-system.md)
 - エージェント群の全体像：[`docs/repository-map.md`](docs/repository-map.md)
 - 実行・契約の正本：[`agentic-art-orchestration`](https://github.com/masa-san-jp/agentic-art-orchestration)
