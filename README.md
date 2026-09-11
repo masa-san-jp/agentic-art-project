@@ -38,22 +38,24 @@ Agentic Artは、この問いに対する態度として、芸術の契機を「
 
 各リポジトリは別々の知識や成果を所有し、`agentic-art-orchestration` がそれらをオーケストレーションします。
 
-```text
-self-model-notes ─┐
-art-history-notes ├─ 入力signal ─┐
-marketing-trends-notes ┘        │
-                                 ▼
-viewer-response-notes ─ feedback → agentic-art-orchestration
-                                      │ 制御・pin・検証
-                                      ▼
-                              agentic-art-research
-                                      │ research handoff
-                                      ▼
-                              agentic-art-production
-                                      │ 検証済みcanonical plan / result
-                                      ▼
-                              agentic-art-project
-                                  公開カタログ
+```mermaid
+flowchart TD
+    A[self-model-notes]
+    B[art-history-notes]
+    C[marketing-trends-notes]
+    D[viewer-response-notes]
+    O[agentic-art-orchestration]
+    R[agentic-art-research]
+    P[agentic-art-production]
+    J["agentic-art-project<br/>公開カタログ"]
+
+    A -- 入力signal --> O
+    B -- 入力signal --> O
+    C -- 入力signal --> O
+    D -- feedback --> O
+    O -- "制御・pin・検証" --> R
+    R -- research handoff --> P
+    P -- "検証済みcanonical plan / result" --> J
 ```
 
 <!-- agentic-art:repositories:start -->
