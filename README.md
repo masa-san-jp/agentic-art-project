@@ -80,7 +80,14 @@ flowchart TD
 制作プランは、同じ入力から分岐した制作上の仮説と、その仮説を検証するための条件を読むための記録です。完成作品や展示実績を意味しません。
 
 <!-- agentic-art:catalog:start -->
+- [選択の所有 — Owner of Choice](plans/P0001-owner-of-choice/README.md)
+- [移動する空白 — Moving Gap](plans/P0002-moving-gap/README.md)
+- [余白の呼吸 — Yohaku Breath](plans/P0003-yohaku-breath/README.md)
 - [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
+- [近いが届かない — Close but Cannot Reach](plans/P0005-close-but-cannot-reach/README.md)
+- [距離が境界を選ぶ — Distance Selects Boundary](plans/P0006-distance-selects-boundary/README.md)
+- [近くても受領されない — Near, Not Received](plans/P0007-near-not-received/README.md)
+- [aak07-agent-20260910-p4](plans/P0008-aak07-agent-20260910-p4/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
