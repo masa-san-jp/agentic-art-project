@@ -1,0 +1,24 @@
+id: P0002
+slug: moving-gap
+title: 移動する空白 — Moving Gap
+source_key: plan:production/moving-gap#PL001
+source_identity: production/moving-gap#PL001
+plan_revision: '1'
+production_repository: masa-san-jp/agentic-art-production
+production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
+source_run_id: LEGACY-DISTINCT-P0002-BASE-20260910
+content_sha256: f8b83474a772e7c54c9ad44189b295a19a9187afb84fac7283e7ac22bb904b9a
+attestation_sha256: ab90fb3f8166b16bf42e65d28cbe381dc4d2a06f201395fea31d0dccae99293c
+projection_contract: canonical-plan-projection/v2
+projection_mode: AUTOMATIC_PLAN
+body_transform: none
+plan_state: canonical
+production_state: PLANNING
+visibility: public
+external_effects_authorized: 'false'
+status: ready-for-publication
+rights_status: cleared
+contract_version: canonical-plan-projection/v2
+mode: AUTOMATIC_PLAN
+canonical_artifact: production-plan.md
+assets: '[{"byte_length":2061,"media_type":"image/svg+xml","path":"03_plan/media/concept-mockup.svg","rights_ref":"automatic-plan-authority/production/moving-gap#PL001","rights_status":"PUBLIC_CLEARED","sha256":"sha256:7edeb88630022b26d55f3a491bb6785c1b3457cc4b5cb21b4ff886b5e573c3ba"},{"byte_length":3533,"media_type":"image/svg+xml","path":"03_plan/media/visual-reference-board.svg","rights_ref":"automatic-plan-authority/production/moving-gap#PL001","rights_status":"PUBLIC_CLEARED","sha256":"sha256:c5dd7d71eadb5f867f4599d970bf91c3632e0ca7175d66b811705084eafbfb98"}]'

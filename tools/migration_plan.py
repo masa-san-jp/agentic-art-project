@@ -26,7 +26,13 @@ def classify(root):
                 "source_candidate": record["source_candidate"], "blocking_reason": [record["blocking_reason"]],
                 "unblock_condition": record["unblock_condition"], "existing_path": None,
                 "proposed_registry": "plans/migration.yaml", "applied": True})
-    return {"status": "MIGRATION_APPLIED" if any(row["applied"] for row in result) else "REVIEW_REQUIRED",
+    if any(row["applied"] for row in result):
+        status = "MIGRATION_APPLIED"
+    elif result and all(row["classification"] == "CANONICAL" for row in result):
+        status = "COMPLETE"
+    else:
+        status = "REVIEW_REQUIRED"
+    return {"status": status,
         "records": sorted(result,key=lambda row:row["id"]), "writes": [], "human_gate": "NONE"}
 
 

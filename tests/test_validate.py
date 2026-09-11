@@ -61,17 +61,13 @@ class PublicCatalogValidationTests(unittest.TestCase):
         content = b"# Integrated plan\n## Schedule\n## Budget\n"
         self.assertTrue(validator.canonical_plan_errors(content, "fixture/plan.md"))
 
-    def test_only_canonical_records_are_live_and_legacy_ids_are_reserved(self):
+    def test_all_published_records_are_canonical_and_no_ids_remain_reserved(self):
         records = validator.catalog_sync._parse_list_records(ROOT / "plans/index.yaml", "records")
         for record in records:
             self.assertEqual([], validator.validate_record(ROOT, record))
         migration = validator.catalog_sync._parse_list_records(ROOT / "plans/migration.yaml", "records")
-        self.assertEqual(
-            {"P0001", "P0002", "P0003", "P0005", "P0006", "P0007"},
-            {record["id"] for record in migration},
-        )
-        for record in migration:
-            self.assertFalse(any((ROOT / "plans").glob(record["id"] + "-*")))
+        self.assertEqual([], migration)
+        self.assertEqual({f"P{i:04d}" for i in range(1, 9)}, {record["id"] for record in records})
         self.assertFalse(list((ROOT / "plans").glob("P*/summary.md")))
 
     def test_tampered_plan_body_is_rejected_by_hash(self):
@@ -94,8 +90,11 @@ class PublicCatalogValidationTests(unittest.TestCase):
             shutil.copytree(ROOT / record["path"], target)
             metadata = target / "metadata.yaml"
             changed = metadata.read_text(encoding="utf-8")
-            changed = changed.replace('"mode": "AUTOMATIC_PLAN"\n', '"mode": "MANUAL"\n')
-            changed = changed.replace('"production_commit": "69567e88131e3f033d010791fb5849e1b2ebff8d"\n', "")
+            changed = changed.replace("mode: AUTOMATIC_PLAN\n", "mode: MANUAL\n")
+            changed = changed.replace(
+                "production_commit: eec39272c5c4827a1caf27fa928de18b58882e96\n",
+                "production_commit: " + ("0" * 40) + "\n",
+            )
             metadata.write_text(changed, encoding="utf-8")
             errors = validator.validate_record(root, record)
         self.assertTrue(any("mismatch" in error for error in errors))
