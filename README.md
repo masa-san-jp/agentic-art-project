@@ -1,5 +1,9 @@
 # Agentic Art Project
 
+<img width="1920" height="1076" alt="image" src="https://github.com/user-attachments/assets/f811d9af-5fb9-4710-9f50-650c7da3e3df" />
+
+Agentic Artは、かつて精霊やミューズが芸術塚たちにインスピレーションを与えたように、AIが作家にインスピレーションを与えるための仕組みです。
+
 ## コンセプト
 
 ### 根底にある問い
