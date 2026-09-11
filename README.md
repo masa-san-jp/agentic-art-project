@@ -36,16 +36,24 @@ Agentic Artは、この問いに対する態度として、芸術の契機を「
 
 ## エージェントハーネス群の全体像
 
-各リポジトリは別々の知識や成果を所有し、`agentic-art-orchestration` がそれらを制作の流れとしてつなぎます。内部データを一つのリポジトリへ集約する構成ではありません。
+各リポジトリは別々の知識や成果を所有し、`agentic-art-orchestration` がそれらをオーケストレーションします。
 
 ```text
-入力知識・鑑賞者の反応
-            ↓
-agentic-art-orchestration  制作全体の制御
-       ┌────┼──────────────┐
-       ↓    ↓              ↓
- research production   project
- 調査     制作実行       公開カタログ
+self-model-notes ─┐
+art-history-notes ├─ 入力signal ─┐
+marketing-trends-notes ┘        │
+                                 ▼
+viewer-response-notes ─ feedback → agentic-art-orchestration
+                                      │ 制御・pin・検証
+                                      ▼
+                              agentic-art-research
+                                      │ research handoff
+                                      ▼
+                              agentic-art-production
+                                      │ 検証済みcanonical plan / result
+                                      ▼
+                              agentic-art-project
+                                  公開カタログ
 ```
 
 <!-- agentic-art:repositories:start -->
