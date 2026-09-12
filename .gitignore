@@ -4,3 +4,16 @@ __pycache__/
 
 # Agentic Art local workspace: private state, internal output, and staging
 /.agentic-art/
+
+# Print masters and video are too heavy for the public catalog.
+# A public work record carries only a light sample image that conveys the work;
+# the masters stay in the local workspace under /.agentic-art/internal/.
+*.tif
+*.tiff
+*.psd
+*.pdf
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wav
