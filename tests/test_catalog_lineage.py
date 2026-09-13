@@ -11,6 +11,7 @@ import unittest
 
 from tools import catalog_lineage as lineage, catalog_sync
 from tools.attestation_receiver import canonical as attestation_bytes, digest
+from tools.local_delivery import verify as verify_local_delivery
 from tools.validate import validate, validate_record
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -217,6 +218,43 @@ class CatalogLineageTests(unittest.TestCase):
         result = lineage.export_catalog(self.root, "example/catalog")
         self.assertEqual("PLANNED", result["records"][0]["stage"])
         self.assertEqual("proposed", result["records"][0]["epistemic_status"])
+
+    def test_prototype_media_subdirectory_passes_catalog_and_local_delivery(self):
+        row = self.plan()
+        directory = self.root / row["path"]
+        source = directory / "media/concept-mockup.svg"
+        target = directory / "media/prototype/prototype-1.svg"
+        target.parent.mkdir()
+        source.rename(target)
+        body = (directory / "plan.md").read_bytes().replace(
+            b"media/concept-mockup.svg", b"media/prototype/prototype-1.svg"
+        )
+        (directory / "plan.md").write_bytes(body)
+        attestation_path = directory / "public-plan-attestation.json"
+        attestation = json.loads(attestation_path.read_text())
+        for asset in attestation["assets"]:
+            if asset["path"] == "03_plan/media/concept-mockup.svg":
+                asset["path"] = "03_plan/media/prototype/prototype-1.svg"
+        for asset in attestation["publication_review"]["assets"]:
+            if asset["path"] == "03_plan/media/concept-mockup.svg":
+                asset["path"] = "03_plan/media/prototype/prototype-1.svg"
+        attestation["human_plan"]["byte_length"] = len(body)
+        attestation["human_plan"]["sha256"] = "sha256:" + digest(body)
+        attestation["publication_review"]["body_sha256"] = attestation["human_plan"]["sha256"]
+        attestation["integrity"]["content_sha256"] = "sha256:" + digest(attestation_bytes({k: v for k, v in attestation.items() if k != "integrity"}))
+        attestation_path.write_bytes(attestation_bytes(attestation) + b"\n")
+        row["content_sha256"] = digest(body)
+        row["attestation_sha256"] = digest(attestation_path.read_bytes())
+        row["assets"] = json.dumps(attestation["assets"], sort_keys=True, separators=(",", ":"))
+        metadata(self.root, row)
+        write_rows(self.root / "plans/index.yaml", [row])
+        value = self.label(row)
+        self.synchronize()
+        commit(self.root, "synthetic prototype catalog")
+        self.assertEqual([], validate(self.root))
+        self.assertEqual("PASSED", lineage.export_catalog(self.root, "example/catalog")["status"])
+        expected = [{key: value[key] for key in ("record_id", "content_sha256", "creator_id", "origin_instance_id", "source_identity")}]
+        self.assertEqual("VERIFIED", verify_local_delivery(self.root, expected)["status"])
 
     def test_aak13_ac5_work_stages_require_distinct_reviewed_public_evidence(self):
         _, _, first = self.published()

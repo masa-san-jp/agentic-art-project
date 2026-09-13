@@ -124,6 +124,8 @@ flowchart TD
 - `metadata.yaml`：ID、状態、権利、関連するプランや作品
 - `media/`：公開可能な画像、映像、音声など
 
+デジタル試作を含むplan recordでは、`media/prototype/`のSVG previewを参照できます。これはProductionが寸法・素材・構成から決定論的に描画した`simulated`な確認用出力で、実物の制作・展示・受入を示すものではありません。Production内部の`04_prototype/outputs/`は公開recordへ投影しません。
+
 更新時は、一覧の正本を編集してからREADMEの管理ブロックを同期します。
 
 ```bash
