@@ -1,0 +1,26 @@
+{
+  "contract_version": "ap-03-project-verification/v1",
+  "task": "AP-03-PROJECT",
+  "parent_issue_ssot": "https://github.com/masa-san-jp/agentic-art-orchestration/issues/241",
+  "owner_repository": "masa-san-jp/agentic-art-project",
+  "source_commit": "c0e172ef719594074eee467a78e221a697781c97",
+  "candidate_commit": "c0e172ef719594074eee467a78e221a697781c97",
+  "branch": "agent/ap03-project-20260912",
+  "change_decision": "NO_CODE_DELTA_REQUIRED",
+  "reason": "Existing owner main already provides the explicit local receiver, creator/origin attribution, catalog lineage, generated index and read-only Git boundary required by AP-03. Native tests and catalog sync pass at the qualified source commit.",
+  "acceptance": {
+    "local_receiver": {"status": "PASS", "evidence": "tests/test_local_delivery.py and tools/local_delivery.py"},
+    "attribution_and_lineage": {"status": "PASS", "evidence": "tests/test_catalog_lineage.py and tools/catalog_lineage.py"},
+    "index_and_catalog_sync": {"status": "PASS", "evidence": "tests/test_catalog_sync.py and tools/catalog_sync.py --check"},
+    "remote_and_publication_boundary": {"status": "PASS", "evidence": "AGENTS.md, README.md and read-only native checks"}
+  },
+  "checks": {
+    "validator": {"status": "PASS", "command": ".venv/bin/python tools/validate.py --check"},
+    "full_suite": {"status": "PASS", "command": ".venv/bin/python -m unittest discover -s tests -v", "summary": "46 tests in 9.390s; OK"},
+    "catalog_sync": {"status": "PASS", "command": ".venv/bin/python tools/catalog_sync.py --check"},
+    "diff": {"status": "PASS", "command": "git diff --check"}
+  },
+  "boundaries": {"catalog_write": "NOT_RUN", "remote_default_branch": "UNCHANGED", "merge": "NOT_RUN", "release": "NOT_RUN", "external_artifacts": "NOT_CREATED"},
+  "privacy": {"raw_conversation_stored": false, "credentials_stored": false, "private_raw_stored": false, "restricted_stored": false},
+  "next_action": "Publish this evidence-only owner branch and open a draft PR; do not merge, release or publish catalog changes."
+}
