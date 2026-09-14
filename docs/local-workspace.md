@@ -40,6 +40,8 @@ Productionの`04_prototype/outputs/`はデジタル試作の非公開原本で�
 - `metadata.yaml`、`index.yaml`、`lineage.json`、README、result fixtureへ、workspaceのpath・内容・設定値・credential・run state・絶対pathを転記しません。
 - 公開READMEとcatalogは紹介と公開recordへのリンクだけを持ち、workspace内へのリンクやmedia pathを持ちません。
 
+Production planにリンクされたpreviewは`public-plan-attestation.json`の資産です。既存recordのREADMEだけに添付された説明用画像を保持する場合は、record内の`supplemental-media.json`に`project-supplemental-public-media/v1`として明示します。形式は[`schemas/project-supplemental-public-media.schema.json`](../schemas/project-supplemental-public-media.schema.json)で固定し、このmanifestはProjectが公開済みrecordとして保持する補助資料のhash・MIME・サイズ・根拠commitを記録します。Productionのplan本文やattestationへ後付けせず、manifestの画像はREADMEからだけリンクし、plan.mdからはリンクしないでください。
+
 公開前後に実行する検査:
 
 ```sh

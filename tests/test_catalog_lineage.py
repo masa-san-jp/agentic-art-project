@@ -135,6 +135,33 @@ class CatalogLineageTests(unittest.TestCase):
             with self.subTest(mode=mode), self.assertRaises(lineage.LineageError):
                 lineage.annotate(self.root, unknown["id"], invented, instance=actor("b", "fork"), mode=mode, expected_sha256=None, apply=True)
 
+    def test_readme_only_supplemental_media_is_included_in_catalog_snapshot(self):
+        row = self.plan(known=True)
+        directory = self.root / row["path"]
+        data = b"\xff\xd8synthetic README documentation\xff\xd9"
+        (directory / "media/sample.jpg").write_bytes(data)
+        (directory / "README.md").write_text("[Canonical plan](plan.md)\n![README sample](media/sample.jpg)\n")
+        manifest = {
+            "assets": [{
+                "byte_length": len(data), "media_type": "image/jpeg", "path": "media/sample.jpg",
+                "purpose": "README_DOCUMENTATION", "rights_ref": "existing-public-record/P0001",
+                "rights_status": "PUBLIC_CLEARED", "sha256": "sha256:" + digest(data),
+            }],
+            "contract_version": "project-supplemental-public-media/v1",
+            "record_id": row["id"],
+            "source": {"basis": "existing-public-record", "commit": git(self.root, "rev-parse", "HEAD"),
+                       "locator": row["path"], "repository": "agentic-art-project"},
+        }
+        (directory / "supplemental-media.json").write_bytes(attestation_bytes(manifest) + b"\n")
+        value = self.label(row)
+        self.synchronize()
+        commit(self.root, "synthetic supplemental media")
+        self.assertEqual("VALIDATED", lineage.index_document(self.root)["records"][0]["status"])
+        report = lineage.export_catalog(self.root, "example/catalog")
+        self.assertEqual("PASSED", report["status"])
+        self.assertEqual(row["content_sha256"], report["records"][0]["content_sha256"])
+        self.assertEqual(value["creator_id"], report["records"][0]["creator_id"])
+
     def test_aak13_ac2_fork_retains_inherited_origin_and_new_record_uses_active_instance(self):
         first, _, _ = self.published()
         fork = self.parent / "fork"

@@ -107,6 +107,27 @@ class AttestationReceiverTests(unittest.TestCase):
         self.assertEqual(self.a, self.check())
         self.assertEqual([], validate_record(self.root, self.index))
 
+    def test_readme_only_supplemental_media_is_hash_bound_without_plan_attestation(self):
+        data = b"\xff\xd8synthetic README documentation\xff\xd9"
+        (self.directory / "media/sample.jpg").write_bytes(data)
+        (self.directory / "README.md").write_text(
+            "[制作プラン本文](plan.md)\n![README見本](media/sample.jpg)\n"
+        )
+        manifest = {
+            "assets": [{
+                "byte_length": len(data), "media_type": "image/jpeg", "path": "media/sample.jpg",
+                "purpose": "README_DOCUMENTATION", "rights_ref": "existing-public-record/P0099",
+                "rights_status": "PUBLIC_CLEARED", "sha256": "sha256:" + digest(data),
+            }],
+            "contract_version": "project-supplemental-public-media/v1",
+            "record_id": "P0099",
+            "source": {"basis": "existing-public-record", "commit": "0" * 40,
+                       "locator": "plans/P0099-synthetic", "repository": "agentic-art-project"},
+        }
+        (self.directory / "supplemental-media.json").write_bytes(canonical(manifest) + b"\n")
+        self.assertEqual(self.a, self.check())
+        self.assertEqual([], validate_record(self.root, self.index))
+
     def test_unresolved_rights_even_with_rehashed_envelope_fail(self):
         self.a['publication_review']['rights']='UNKNOWN';self.a['integrity']['content_sha256']='sha256:'+digest(canonical({k:v for k,v in self.a.items() if k!='integrity'}))
         path=self.directory/'public-plan-attestation.json';path.write_bytes(canonical(self.a)+b'\n')
