@@ -33,10 +33,14 @@ git status --short --untracked-files=all
 
 `internal/`から`plans/`や`works/`へrecursive copyしません。公開recordを追加・更新する場合は、公開に必要なファイルを明示的なallowlistとして用意し、既存の受信契約を通します。
 
+Productionの`04_prototype/outputs/`はデジタル試作の非公開原本です。公開recordへ投影できるのは、Productionのcanonical planがリンクし、attestationでhashと公開権利が確認された`03_plan/media/prototype/`のpreviewだけです。previewは`simulated`な確認用出力であり、実物制作の証拠として扱いません。
+
 - planはProductionの`03_plan/production-plan.md`と同一bytesで、canonical attestation、stable identity/revision、列挙asset、権利・同意・安全性の審査が一致する必要があります。
 - workはplanのattestationを流用せず、work固有のprovenance、権利、同意、安全性、公開証拠を確認します。
 - `metadata.yaml`、`index.yaml`、`lineage.json`、README、result fixtureへ、workspaceのpath・内容・設定値・credential・run state・絶対pathを転記しません。
 - 公開READMEとcatalogは紹介と公開recordへのリンクだけを持ち、workspace内へのリンクやmedia pathを持ちません。
+
+Production planにリンクされたpreviewは`public-plan-attestation.json`の資産です。既存recordのREADMEだけに添付された説明用画像を保持する場合は、record内の`supplemental-media.json`に`project-supplemental-public-media/v1`として明示します。形式は[`schemas/project-supplemental-public-media.schema.json`](../schemas/project-supplemental-public-media.schema.json)で固定し、このmanifestはProjectが公開済みrecordとして保持する補助資料のhash・MIME・サイズ・根拠commitを記録します。Productionのplan本文やattestationへ後付けせず、manifestの画像はREADMEからだけリンクし、plan.mdからはリンクしないでください。
 
 公開前後に実行する検査:
 

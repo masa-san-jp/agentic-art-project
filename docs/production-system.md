@@ -77,7 +77,7 @@ plans/P0001-example/
 └── metadata.yaml   # 識別子、状態、canonical hash、no-transform provenance
 ```
 
-画像や動画などのメディアは、公開許諾と権利状態が確認された場合だけ、対応する作品レコードの`media/`へ収録します。計画本文の説明用素材を、内部出力から自動的に持ち込むことはしません。
+画像や動画などのメディアは、公開許諾と権利状態が確認された場合だけ、対応する作品レコードの`media/`へ収録します。Productionが生成したデジタル試作previewは、attestationで列挙された公開可能な資産として`media/prototype/`へ投影できます。previewは寸法・素材・構成を確認するための`simulated`な試作であり、実物制作や展示の実績ではありません。`04_prototype/outputs/`などの内部原本や未許諾素材を自動的に持ち込みません。
 
 ## READMEとカタログの同期
 

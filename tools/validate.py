@@ -4,12 +4,15 @@
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import hashlib
+import json
 import os
 import re
 import subprocess
 import sys
 from pathlib import Path
+from pathlib import PurePosixPath
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +49,7 @@ LOCAL_WORKSPACE_CONTRACT = {
 LOCAL_WORKSPACE_IGNORE_RULE = "/.agentic-art/"
 LOCAL_WORKSPACE_PROBE = ".agentic-art/probe"
 LOCAL_WORKSPACE_TOKEN = re.compile(r"\.agentic-art(?:[/\\]|$)")
+MEDIA_ASSET_PREFIX = "03_plan/media/"
 
 
 def _lexists(path: Path) -> bool:
@@ -217,6 +221,134 @@ def mapping_fields(path: Path) -> dict[str, str]:
     return fields
 
 
+def media_policy(root: Path) -> tuple[int, set[str]]:
+    """Read the closed public media policy used by projected plan records."""
+    path = root / "public-project.yaml"
+    fields = mapping_fields(path)
+    max_file_bytes = int(fields["media_policy.max_file_bytes"])
+    lines = path.read_text(encoding="utf-8").splitlines()
+    allowed: list[str] = []
+    in_allowed = False
+    for line in lines:
+        if line == "  allowed_extensions:":
+            in_allowed = True
+            continue
+        if in_allowed:
+            if line.startswith("    - "):
+                allowed.append(line[6:].strip())
+                continue
+            if line and len(line) - len(line.lstrip(" ")) <= 2:
+                break
+    if max_file_bytes <= 0 or not allowed or len(allowed) != len(set(allowed)):
+        raise ValueError("media_policy must define a positive size and unique extensions")
+    if any(not re.fullmatch(r"\.[a-z0-9]+", extension) for extension in allowed):
+        raise ValueError("media_policy extensions must be lowercase dot-prefixed values")
+    return max_file_bytes, set(allowed)
+
+
+def _gitignore_match(pattern: str, relative: str) -> bool:
+    """Match the simple .gitignore forms used by this public repository."""
+    pattern = pattern.strip()
+    if not pattern or pattern.startswith("#"):
+        return False
+    if pattern.endswith("/"):
+        pattern = pattern.rstrip("/")
+    pattern = pattern.lstrip("/")
+    relative = relative.lstrip("/")
+    return fnmatch.fnmatch(relative, pattern) or fnmatch.fnmatch(Path(relative).name, pattern)
+
+
+def is_gitignored(root: Path, relative: str) -> bool:
+    """Return the effective ignore result without requiring a checkout."""
+    if _lexists(root / ".git"):
+        try:
+            result = subprocess.run(
+                ["git", "check-ignore", "-q", "--no-index", "--", relative],
+                cwd=root,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            )
+        except (OSError, subprocess.SubprocessError):
+            result = None
+        if result is not None and result.returncode in {0, 1}:
+            return result.returncode == 0
+    try:
+        lines = (root / ".gitignore").read_text(encoding="utf-8").splitlines()
+    except (OSError, UnicodeError):
+        return False
+    ignored = False
+    for line in lines:
+        pattern = line.strip()
+        if not pattern or pattern.startswith("#"):
+            continue
+        negated = pattern.startswith("!")
+        if negated:
+            pattern = pattern[1:]
+        if _gitignore_match(pattern, relative):
+            ignored = not negated
+    return ignored
+
+
+def validate_media_policy(root: Path) -> list[str]:
+    """Ensure allowed public media extensions are not excluded by Git."""
+    try:
+        _, allowed = media_policy(root)
+    except (OSError, UnicodeError, ValueError, KeyError) as exc:
+        return [f"public-project.yaml: invalid media_policy: {exc}"]
+    plan_dirs = sorted((root / "plans").glob("P[0-9][0-9][0-9][0-9]-*"))
+    locations = [
+        f"{directory.relative_to(root).as_posix()}/media/.media-policy-probe"
+        for directory in plan_dirs
+    ] or ["plans/P0000-media-policy/media/.media-policy-probe"]
+    errors: list[str] = []
+    for extension in sorted(allowed):
+        if any(is_gitignored(root, location + extension) for location in locations):
+            errors.append(f"PUBLIC_MEDIA_POLICY_IGNORED: allowed extension {extension} is ignored by .gitignore")
+    return errors
+
+
+def validate_metadata_assets(root: Path, directory: Path, metadata: dict[str, str], location: str) -> list[str]:
+    """Validate the metadata asset manifest against the public media boundary."""
+    errors: list[str] = []
+    try:
+        max_file_bytes, allowed = media_policy(root)
+        assets = json.loads(metadata.get("assets", ""))
+    except (OSError, UnicodeError, ValueError, TypeError, json.JSONDecodeError) as exc:
+        return [f"{location}/metadata.yaml: invalid public asset manifest: {exc}"]
+    if not isinstance(assets, list) or not assets:
+        return [f"{location}/metadata.yaml: public asset manifest must be a nonempty list"]
+    seen: set[str] = set()
+    for asset in assets:
+        if not isinstance(asset, dict) or not isinstance(asset.get("path"), str):
+            errors.append(f"{location}/metadata.yaml: asset path is required")
+            continue
+        source_path = asset["path"]
+        if not source_path.startswith(MEDIA_ASSET_PREFIX):
+            errors.append(f"{location}/metadata.yaml: asset path must be under 03_plan/media/")
+            continue
+        relative = source_path[len("03_plan/"):]
+        safe = PurePosixPath(relative)
+        if str(safe) != relative or any(part in {"", ".", ".."} for part in safe.parts) or not relative.startswith("media/"):
+            errors.append(f"{location}/metadata.yaml: unsafe public asset path")
+            continue
+        if relative in seen:
+            errors.append(f"{location}/metadata.yaml: duplicate public asset path")
+            continue
+        seen.add(relative)
+        extension = Path(relative).suffix.lower()
+        if extension not in allowed:
+            errors.append(f"{location}/metadata.yaml: asset extension {extension or '<none>'} is not allowed")
+        local_path = directory / Path(*safe.parts)
+        if local_path.is_symlink() or not local_path.is_file():
+            errors.append(f"{location}/metadata.yaml: asset file is missing or unsafe: {relative}")
+        elif local_path.stat().st_size > max_file_bytes:
+            errors.append(f"{location}/metadata.yaml: asset exceeds media_policy.max_file_bytes: {relative}")
+        if is_gitignored(root, f"{location}/{relative}"):
+            errors.append(f"{location}/metadata.yaml: public asset is ignored by .gitignore: {relative}")
+    return errors
+
+
 def canonical_plan_errors(content: bytes, location: str = "plan.md") -> list[str]:
     """A standalone body never establishes canonical status."""
     return [f"{location}: canonical Production attestation and projection provenance required"]
@@ -241,6 +373,7 @@ def validate_layout(root: Path) -> list[str]:
     }
     if local_fields != LOCAL_WORKSPACE_CONTRACT:
         errors.append("public-project.yaml: local_workspace must match the closed v1 contract")
+    errors.extend(validate_media_policy(root))
     return errors
 
 
@@ -264,6 +397,7 @@ def validate_record(root: Path, record: dict[str, str]) -> list[str]:
         metadata = mapping_fields(metadata_path)
     except (OSError, UnicodeError, ValueError) as exc:
         return errors + [f"{location}/metadata.yaml: invalid: {exc}"]
+    errors.extend(validate_metadata_assets(root, directory, metadata, location))
     for key in ("id", "title", "slug", "status", "visibility", "rights_status", "content_sha256"):
         if metadata.get(key) != record.get(key):
             errors.append(f"{location}: metadata {key} differs from index")

@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import shutil
 import tempfile
 import unittest
@@ -80,6 +81,38 @@ class PublicCatalogValidationTests(unittest.TestCase):
             (target / "plan.md").write_text("# tampered\n", encoding="utf-8")
             errors = validator.validate_record(root, record)
         self.assertTrue(any("body hash" in error for error in errors))
+
+    def test_allowed_media_extension_cannot_be_gitignored(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shutil.copyfile(ROOT / "public-project.yaml", root / "public-project.yaml")
+            (root / ".gitignore").write_text("*.svg\n", encoding="utf-8")
+            errors = validator.validate_media_policy(root)
+        self.assertTrue(any("PUBLIC_MEDIA_POLICY_IGNORED" in error for error in errors))
+
+    def test_metadata_asset_manifest_requires_public_media_file(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shutil.copyfile(ROOT / "public-project.yaml", root / "public-project.yaml")
+            shutil.copyfile(ROOT / ".gitignore", root / ".gitignore")
+            directory = root / "plans/P0099-synthetic"
+            shutil.copytree(ROOT / "plans/P0001-owner-of-choice", directory)
+            metadata_path = directory / "metadata.yaml"
+            metadata = validator.mapping_fields(metadata_path)
+            metadata["assets"] = json.dumps([{
+                "path": "03_plan/media/prototype/missing.svg",
+                "sha256": "sha256:" + ("0" * 64),
+                "byte_length": 1,
+                "media_type": "image/svg+xml",
+                "rights_ref": "synthetic",
+                "rights_status": "PUBLIC_CLEARED",
+            }], separators=(",", ":"))
+            metadata_path.write_text(
+                "".join(key + ": " + json.dumps(value, ensure_ascii=False) + "\n" for key, value in metadata.items()),
+                encoding="utf-8",
+            )
+            errors = validator.validate_metadata_assets(root, directory, metadata, "plans/P0099-synthetic")
+        self.assertTrue(any("asset file is missing" in error for error in errors))
 
     def test_missing_provenance_and_manual_projection_are_rejected(self):
         record = validator.catalog_sync._parse_list_records(ROOT / "plans/index.yaml", "records")[0]

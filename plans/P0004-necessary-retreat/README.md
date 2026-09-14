@@ -17,6 +17,7 @@
 - [コンセプト・モックアップ](media/concept-mockup.svg)
 - [Production公開証明](public-plan-attestation.json)
 - [来歴メタデータ](metadata.yaml)
+- [README補助メディアの公開根拠](supplemental-media.json)
 
 本文は agentic-art-production が生成した 03_plan/production-plan.md と同一バイトです。要約・翻訳・節の削除は行っていません。計画には完成像、テーマ、コンセプト、根拠、仕様、工程、受入条件、日程、予算、リスク、承認境界、未解決事項が含まれます。
 

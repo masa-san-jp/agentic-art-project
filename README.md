@@ -124,6 +124,10 @@ flowchart TD
 - `metadata.yaml`：ID、状態、権利、関連するプランや作品
 - `media/`：公開可能な画像、映像、音声など
 
+Productionのplan本文から参照されるpreviewは、attestationで列挙された`media/prototype/`の資産です。READMEだけに添付された既存の説明用画像は、record内の`supplemental-media.json`にhash・MIME・サイズ・公開根拠を固定した場合だけ保持できます。後者はProductionのplan assetや制作実績ではありません。
+
+デジタル試作を含むplan recordでは、`media/prototype/`のSVG previewを参照できます。これはProductionが寸法・素材・構成から決定論的に描画した`simulated`な確認用出力で、実物の制作・展示・受入を示すものではありません。Production内部の`04_prototype/outputs/`は公開recordへ投影しません。
+
 更新時は、一覧の正本を編集してからREADMEの管理ブロックを同期します。
 
 ```bash

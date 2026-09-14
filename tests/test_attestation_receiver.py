@@ -16,6 +16,8 @@ class AttestationReceiverTests(unittest.TestCase):
         t=tempfile.TemporaryDirectory();self.addCleanup(t.cleanup);self.root=Path(t.name)
         self.directory=self.root/'plans/P0099-synthetic'
         shutil.copytree(ROOT/'tests/fixtures/attested-plan',self.directory)
+        shutil.copyfile(ROOT/'public-project.yaml', self.root/'public-project.yaml')
+        shutil.copyfile(ROOT/'.gitignore', self.root/'.gitignore')
         self.a=json.loads((self.directory/'public-plan-attestation.json').read_text())
         self.metadata={"id":"P0099","slug":"synthetic","title":"Synthetic Production fixture","status":"ready-for-publication","visibility":"public","rights_status":"cleared",
             "content_sha256":digest((self.directory/'plan.md').read_bytes()),"attestation_sha256":digest((self.directory/'public-plan-attestation.json').read_bytes()),
@@ -73,6 +75,58 @@ class AttestationReceiverTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.check()
         p.write_bytes(raw);(self.directory/'media/extra.svg').write_bytes(raw)
         with self.assertRaisesRegex(ValueError,'unlisted'):self.check()
+
+    def test_prototype_media_subdirectory_is_accepted(self):
+        source = self.directory / 'media/concept-mockup.svg'
+        target = self.directory / 'media/prototype/prototype-1.svg'
+        target.parent.mkdir()
+        source.rename(target)
+        body = (self.directory / 'plan.md').read_bytes().replace(
+            b'media/concept-mockup.svg', b'media/prototype/prototype-1.svg'
+        )
+        (self.directory / 'plan.md').write_bytes(body)
+        for asset in self.a['assets']:
+            if asset['path'] == '03_plan/media/concept-mockup.svg':
+                asset['path'] = '03_plan/media/prototype/prototype-1.svg'
+        for asset in self.a['publication_review']['assets']:
+            if asset['path'] == '03_plan/media/concept-mockup.svg':
+                asset['path'] = '03_plan/media/prototype/prototype-1.svg'
+        self.a['human_plan']['byte_length'] = len(body)
+        self.a['human_plan']['sha256'] = 'sha256:' + digest(body)
+        self.a['publication_review']['body_sha256'] = self.a['human_plan']['sha256']
+        self.a['integrity']['content_sha256'] = 'sha256:' + digest(canonical({k: v for k, v in self.a.items() if k != 'integrity'}))
+        attestation_path = self.directory / 'public-plan-attestation.json'
+        attestation_path.write_bytes(canonical(self.a) + b'\n')
+        self.metadata['content_sha256'] = digest(body)
+        self.metadata['attestation_sha256'] = digest(attestation_path.read_bytes())
+        self.metadata['assets'] = json.dumps(self.a['assets'], sort_keys=True, separators=(',', ':'))
+        (self.directory / 'metadata.yaml').write_text(
+            '\n'.join(k + ': ' + json.dumps(v) for k, v in self.metadata.items()) + '\n'
+        )
+        self.index.update(self.metadata)
+        self.assertEqual(self.a, self.check())
+        self.assertEqual([], validate_record(self.root, self.index))
+
+    def test_readme_only_supplemental_media_is_hash_bound_without_plan_attestation(self):
+        data = b"\xff\xd8synthetic README documentation\xff\xd9"
+        (self.directory / "media/sample.jpg").write_bytes(data)
+        (self.directory / "README.md").write_text(
+            "[制作プラン本文](plan.md)\n![README見本](media/sample.jpg)\n"
+        )
+        manifest = {
+            "assets": [{
+                "byte_length": len(data), "media_type": "image/jpeg", "path": "media/sample.jpg",
+                "purpose": "README_DOCUMENTATION", "rights_ref": "existing-public-record/P0099",
+                "rights_status": "PUBLIC_CLEARED", "sha256": "sha256:" + digest(data),
+            }],
+            "contract_version": "project-supplemental-public-media/v1",
+            "record_id": "P0099",
+            "source": {"basis": "existing-public-record", "commit": "0" * 40,
+                       "locator": "plans/P0099-synthetic", "repository": "agentic-art-project"},
+        }
+        (self.directory / "supplemental-media.json").write_bytes(canonical(manifest) + b"\n")
+        self.assertEqual(self.a, self.check())
+        self.assertEqual([], validate_record(self.root, self.index))
 
     def test_unresolved_rights_even_with_rehashed_envelope_fail(self):
         self.a['publication_review']['rights']='UNKNOWN';self.a['integrity']['content_sha256']='sha256:'+digest(canonical({k:v for k,v in self.a.items() if k!='integrity'}))

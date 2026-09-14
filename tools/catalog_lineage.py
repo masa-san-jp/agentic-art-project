@@ -245,6 +245,12 @@ def inspect_record(root, kind, row, value=None, git_root=None):
         attestation = load_json(safe_path(root, row["path"] + "/public-plan-attestation.json"))
         media = {asset["path"][8:] for asset in attestation["assets"]}
         allowed = {"README.md", "metadata.yaml", "plan.md", "public-plan-attestation.json", "lineage.json"} | media
+        if (safe_path(root, row["path"] + "/supplemental-media.json")).is_file():
+            from tools.attestation_receiver import SUPPLEMENTAL_MEDIA_FILE
+            allowed.add(SUPPLEMENTAL_MEDIA_FILE)
+            manifest = load_json(safe_path(root, row["path"] + "/" + SUPPLEMENTAL_MEDIA_FILE))
+            media.update(asset["path"] for asset in manifest["assets"])
+            allowed.update(media)
     else:
         _work_errors(root, row, value, git_root)
         allowed = {"README.md", "metadata.yaml", "lineage.json"} | {a["path"] for a in json.loads(row["assets"])}
