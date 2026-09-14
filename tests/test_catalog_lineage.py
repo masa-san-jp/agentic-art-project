@@ -75,12 +75,16 @@ class CatalogLineageTests(unittest.TestCase):
         attestation["project_id"] = "production/synthetic-" + identifier.lower()
         attestation["integrity"]["content_sha256"] = "sha256:" + digest(attestation_bytes({k: v for k, v in attestation.items() if k != "integrity"}))
         (directory / "public-plan-attestation.json").write_bytes(attestation_bytes(attestation) + b"\n")
+        readme = directory / "README.md"
+        readme.write_text("[Canonical plan](plan.md)\n")
         row = {"id": identifier, "slug": "synthetic", "title": "Synthetic plan " + identifier,
                "path": directory.relative_to(self.root).as_posix(), "status": "ready-for-publication",
                "visibility": "public", "rights_status": "cleared", "source_identity": attestation["project_id"] + "#" + attestation["plan_id"],
                "plan_revision": str(attestation["plan_revision"]), "production_repository": attestation["producer"]["repository"],
                "production_commit": attestation["producer"]["commit"], "content_sha256": digest((directory / "plan.md").read_bytes()),
                "attestation_sha256": digest((directory / "public-plan-attestation.json").read_bytes()),
+               "introduction_contract": "project-plan-introduction/v1", "introduction_revision": str(attestation["plan_revision"]),
+               "introduction_sha256": digest(readme.read_bytes()),
                "projection_contract": "canonical-plan-projection/v2", "projection_mode": "AUTOMATIC_PLAN", "body_transform": "none",
                "plan_state": "canonical", "production_state": "PLANNING", "external_effects_authorized": "false",
                "source_run_id": "synthetic-" + identifier, "contract_version": "canonical-plan-projection/v2", "mode": "AUTOMATIC_PLAN",
@@ -89,7 +93,6 @@ class CatalogLineageTests(unittest.TestCase):
         if known:
             row.update(origin_instance_id="origin-a", creator_id="creator-a")
         metadata(self.root, row)
-        (directory / "README.md").write_text("[Canonical plan](plan.md)\n")
         rows = catalog_sync._parse_list_records(self.root / "plans/index.yaml", "records")
         write_rows(self.root / "plans/index.yaml", rows + [row])
         return row
@@ -141,6 +144,10 @@ class CatalogLineageTests(unittest.TestCase):
         data = b"\xff\xd8synthetic README documentation\xff\xd9"
         (directory / "media/sample.jpg").write_bytes(data)
         (directory / "README.md").write_text("[Canonical plan](plan.md)\n![README sample](media/sample.jpg)\n")
+        row["introduction_sha256"] = digest((directory / "README.md").read_bytes())
+        metadata(self.root, row)
+        rows = catalog_sync._parse_list_records(self.root / "plans/index.yaml", "records")
+        write_rows(self.root / "plans/index.yaml", [row if item["id"] == row["id"] else item for item in rows])
         manifest = {
             "assets": [{
                 "byte_length": len(data), "media_type": "image/jpeg", "path": "media/sample.jpg",

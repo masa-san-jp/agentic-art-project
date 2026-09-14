@@ -4,6 +4,9 @@ title: 距離が境界を選ぶ — Distance Selects Boundary
 source_key: plan:production/distance-selects-boundary#PL001
 source_identity: production/distance-selects-boundary#PL001
 plan_revision: '1'
+introduction_contract: project-plan-introduction/v1
+introduction_revision: '1'
+introduction_sha256: fb4abc1fca8b49baca0cfd624731a946be8e33f6be8a3dd20cb99146c1cd6279
 production_repository: masa-san-jp/agentic-art-production
 production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
 source_run_id: LEGACY-DISTINCT-P0006-BASE-20260910

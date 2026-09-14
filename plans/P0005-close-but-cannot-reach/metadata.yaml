@@ -4,6 +4,9 @@ title: 近いが届かない — Close but Cannot Reach
 source_key: plan:production/close-but-cannot-reach#PL001
 source_identity: production/close-but-cannot-reach#PL001
 plan_revision: '1'
+introduction_contract: project-plan-introduction/v1
+introduction_revision: '1'
+introduction_sha256: 1b01bfdcb8bc8e9f3b1835025ee46e146072634c3070180af429a55458538474
 production_repository: masa-san-jp/agentic-art-production
 production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
 source_run_id: LEGACY-DISTINCT-P0005-BASE-20260910

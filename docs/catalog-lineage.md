@@ -103,6 +103,16 @@ only the lineage label. Simulation stays simulated; the validator verifies the
 owner's public evidence declaration, not physical completion by executing effects.
 Work publication and real-world effects retain their existing human gates.
 
+For public plan records, the README introduction is bound to the same canonical
+revision through `project-plan-introduction/v1`: `introduction_sha256` is the exact
+README byte hash and `introduction_revision` must equal `plan_revision`. The receiver
+also requires the value in both `metadata.yaml` and `plans/index.yaml`, while a
+plan lineage's `canonical_revision` must match that plan revision. The lineage's
+own revision remains independent so lineage annotations can evolve without
+rewriting the canonical plan. This keeps the introduction, Production plan body,
+attested assets, metadata and lineage inspectable as one canonical revision
+without changing the Production-owned plan bytes.
+
 ## Generated catalog and checks
 
 `python3 tools/catalog_sync.py --write` regenerates README catalogs, repository

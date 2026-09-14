@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 
 SUPPLEMENTAL_MEDIA_FILE = "supplemental-media.json"
 SUPPLEMENTAL_MEDIA_CONTRACT = "project-supplemental-public-media/v1"
+INTRODUCTION_CONTRACT = "project-plan-introduction/v1"
 
 
 def digest(raw):
@@ -125,6 +126,21 @@ def _supplemental_media(directory, metadata, index, plan_paths):
     return paths
 
 
+def _check_introduction(directory, metadata, index, plan_revision):
+    """Bind the human entry point to the same public plan revision."""
+    readme = directory / "README.md"
+    if readme.is_symlink() or not readme.is_file():
+        raise ValueError("public introduction is missing or unsafe")
+    expected = {
+        "introduction_contract": INTRODUCTION_CONTRACT,
+        "introduction_revision": str(plan_revision),
+        "introduction_sha256": digest(readme.read_bytes()),
+    }
+    for field, value in expected.items():
+        if metadata.get(field) != value or index.get(field) != value:
+            raise ValueError("metadata/index introduction mismatch: " + field)
+
+
 def check_envelope(directory, metadata, index, *, producer_repository=None):
     directory = Path(directory)
     if directory.is_symlink() or not directory.is_dir():
@@ -156,6 +172,7 @@ def check_envelope(directory, metadata, index, *, producer_repository=None):
         raise ValueError("attested body hash/length mismatch")
     if type(a["plan_revision"]) is not int or a["plan_revision"] < 1:
         raise ValueError("positive plan revision required")
+    _check_introduction(directory, metadata, index, a["plan_revision"])
     identity = a["project_id"] + "#" + a["plan_id"]
     expected = {"source_identity": identity, "plan_revision": str(a["plan_revision"]), "production_repository": a["producer"]["repository"], "production_commit": a["producer"]["commit"], "content_sha256": digest(body), "attestation_sha256": digest(raw), "projection_contract": "canonical-plan-projection/v2", "projection_mode": "AUTOMATIC_PLAN", "body_transform": "none", "plan_state": "canonical", "visibility": "public", "external_effects_authorized": "false"}
     for field, value in expected.items():
