@@ -27,9 +27,12 @@ class AttestationReceiverTests(unittest.TestCase):
             "plan_state":"canonical","production_state":"PLANNING","external_effects_authorized":"false","source_run_id":"synthetic-receiver"}
         self.metadata['source_key']='plan:'+self.metadata['source_identity']
         self.metadata.update(contract_version='canonical-plan-projection/v2',mode='AUTOMATIC_PLAN',canonical_artifact='production-plan.md',assets=json.dumps(self.a['assets'],sort_keys=True,separators=(',',':')))
+        (self.directory/'README.md').write_text('[制作プラン本文](plan.md)\n')
+        self.metadata.update(introduction_contract='project-plan-introduction/v1',
+                            introduction_revision=str(self.a['plan_revision']),
+                            introduction_sha256=digest((self.directory/'README.md').read_bytes()))
         self.index=dict(self.metadata,path='plans/P0099-synthetic')
         (self.directory/'metadata.yaml').write_text('\n'.join(k+': '+json.dumps(v) for k,v in self.metadata.items())+'\n')
-        (self.directory/'README.md').write_text('[制作プラン本文](plan.md)\n')
 
     def check(self):return check_envelope(self.directory,self.metadata,self.index)
 
@@ -63,10 +66,20 @@ class AttestationReceiverTests(unittest.TestCase):
             check_envelope(linked,self.metadata,self.index)
 
     def test_revision_provenance_and_receipt_fields_fail_closed(self):
-        for field in ('source_identity','plan_revision','production_commit','source_run_id','attestation_sha256','body_transform','projection_contract','contract_version','mode','canonical_artifact','assets'):
+        for field in ('source_identity','plan_revision','production_commit','source_run_id','attestation_sha256','body_transform','projection_contract','contract_version','mode','canonical_artifact','assets','introduction_contract','introduction_revision','introduction_sha256'):
             previous=self.metadata.pop(field)
             with self.subTest(field=field),self.assertRaises(ValueError):self.check()
             self.metadata[field]=previous
+
+    def test_introduction_is_hash_bound_to_the_public_plan_revision(self):
+        original = (self.directory / 'README.md').read_bytes()
+        (self.directory / 'README.md').write_bytes(original + b'\n')
+        with self.assertRaisesRegex(ValueError, 'introduction'):
+            self.check()
+        (self.directory / 'README.md').write_bytes(original)
+        self.metadata['introduction_revision'] = '2'
+        with self.assertRaisesRegex(ValueError, 'introduction'):
+            self.check()
 
     def test_asset_tamper_missing_and_unlisted_files_fail(self):
         p=self.directory/'media/concept-mockup.svg';raw=p.read_bytes();p.write_bytes(raw+b'\n')
@@ -112,6 +125,11 @@ class AttestationReceiverTests(unittest.TestCase):
         (self.directory / "media/sample.jpg").write_bytes(data)
         (self.directory / "README.md").write_text(
             "[制作プラン本文](plan.md)\n![README見本](media/sample.jpg)\n"
+        )
+        self.metadata['introduction_sha256'] = digest((self.directory / 'README.md').read_bytes())
+        self.index['introduction_sha256'] = self.metadata['introduction_sha256']
+        (self.directory / 'metadata.yaml').write_text(
+            '\n'.join(k + ': ' + json.dumps(v) for k, v in self.metadata.items()) + '\n'
         )
         manifest = {
             "assets": [{

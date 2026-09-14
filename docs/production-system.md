@@ -74,8 +74,10 @@ Agentic Artでは、人間が一つの完成案を直接指定するのではな
 plans/P0001-example/
 ├── README.md       # 展示カタログから読む紹介
 ├── plan.md         # Production正本のbyte-for-byte投影
-└── metadata.yaml   # 識別子、状態、canonical hash、no-transform provenance
+└── metadata.yaml   # 識別子、状態、紹介/本文/assetのrevisionとhash、no-transform provenance
 ```
+
+`README.md`はタイトルとリンクだけの索引ではなく、作品の具体像、素材・形式、発想の由来、制作への入口を示す紹介です。各plan recordの`metadata.yaml`と`plans/index.yaml`には`project-plan-introduction/v1`、`introduction_revision`、`introduction_sha256`を記録します。紹介のSHAはREADMEのバイト列そのもの、revisionはcanonical planの`plan_revision`と同じ値でなければなりません。受信validatorはProduction attestationの本文・asset、紹介、metadataを同時に検証し、lineage validatorは系譜の`canonical_revision`をcanonical plan revisionへ一致させます。lineage自体のrevisionは、後続の来歴注釈を既存本文の変更なしに記録できるよう独立して保持します。
 
 画像や動画などのメディアは、公開許諾と権利状態が確認された場合だけ、対応する作品レコードの`media/`へ収録します。Productionが生成したデジタル試作previewは、attestationで列挙された公開可能な資産として`media/prototype/`へ投影できます。previewは寸法・素材・構成を確認するための`simulated`な試作であり、実物制作や展示の実績ではありません。`04_prototype/outputs/`などの内部原本や未許諾素材を自動的に持ち込みません。
 

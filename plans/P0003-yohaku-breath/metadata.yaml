@@ -4,6 +4,9 @@ title: 余白の呼吸 — Yohaku Breath
 source_key: plan:production/yohaku-breath#PL001
 source_identity: production/yohaku-breath#PL001
 plan_revision: '1'
+introduction_contract: project-plan-introduction/v1
+introduction_revision: '1'
+introduction_sha256: a85836772898ce200ed359a8d9185a3da8a479b70115b929bdfdb66d69cc725d
 production_repository: masa-san-jp/agentic-art-production
 production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
 source_run_id: LEGACY-DISTINCT-P0003-BASE-20260910

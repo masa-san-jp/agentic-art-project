@@ -6,6 +6,9 @@ records:
   source_key: plan:production/owner-of-choice#PL001
   source_identity: production/owner-of-choice#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: c7cc0d5f0d191c10f3bbdf3502dbcf152d00a647e6d54354f46ec7e1e501ada0
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0001-BASE-20260910
@@ -31,6 +34,9 @@ records:
   source_key: plan:production/moving-gap#PL001
   source_identity: production/moving-gap#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: 75e802f3e1d164a0e9156ea419d5034b2600f0f19fe18beec077bd551f36cee1
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0002-BASE-20260910
@@ -56,6 +62,9 @@ records:
   source_key: plan:production/yohaku-breath#PL001
   source_identity: production/yohaku-breath#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: a85836772898ce200ed359a8d9185a3da8a479b70115b929bdfdb66d69cc725d
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0003-BASE-20260910
@@ -81,6 +90,9 @@ records:
   source_key: plan:production/necessary-retreat-v4#PL001
   source_identity: production/necessary-retreat-v4#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: c9173fe7dbef4c52d4a23973228a4f0d684328a3a926cfa6ae03e10a78ee7cfe
   production_repository: masa-san-jp/agentic-art-production
   production_commit: 69567e88131e3f033d010791fb5849e1b2ebff8d
   source_run_id: migration-necessary-retreat-v4-20260906
@@ -106,6 +118,9 @@ records:
   source_key: plan:production/close-but-cannot-reach#PL001
   source_identity: production/close-but-cannot-reach#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: 1b01bfdcb8bc8e9f3b1835025ee46e146072634c3070180af429a55458538474
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0005-BASE-20260910
@@ -131,6 +146,9 @@ records:
   source_key: plan:production/distance-selects-boundary#PL001
   source_identity: production/distance-selects-boundary#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: fb4abc1fca8b49baca0cfd624731a946be8e33f6be8a3dd20cb99146c1cd6279
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0006-BASE-20260910
@@ -156,6 +174,9 @@ records:
   source_key: plan:production/near-not-received#PL001
   source_identity: production/near-not-received#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: 922c71ad48b4c9c7a5dd8905208ce0dec79975d4d02d18cb12914d5567a02150
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0007-BASE-20260910
@@ -181,6 +202,9 @@ records:
   source_key: plan:production/aak07-agent-20260910-p4#PL001
   source_identity: production/aak07-agent-20260910-p4#PL001
   plan_revision: '1'
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: f3859fa2a39cc0b17ede7b327ac68466e14d955084d748e4b91e4c6f2b2fc821
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: PROJECT-LOCAL-PLAN-20260910-04

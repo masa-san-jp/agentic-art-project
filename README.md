@@ -118,7 +118,7 @@ flowchart TD
 
 個別レコードでは、次のファイルを使い分けます。
 
-- `README.md`：人が読むための紹介
+- `README.md`：作品の具体像、形式、発想の由来、制作への入口を示す紹介。`project-plan-introduction/v1`で本文・asset・metadata・lineageと同じrevisionへ束ねる
 - `plan.md`：公開を承認された制作プラン本文
 - `record.md`：作品の制作記録
 - `metadata.yaml`：ID、状態、権利、関連するプランや作品
