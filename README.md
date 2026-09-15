@@ -41,11 +41,16 @@ Agentic Artは、この問いに対する態度として、芸術の契機を「
 
 <img width="780" height="585" alt="image" src="https://github.com/user-attachments/assets/5a55936d-7b40-45c6-ba87-5a40727a5a2d" />
 
+## notes
+
+- [芸術創作のインスピレーションは、風が運んで来る](https://note.com/masa_san_jp/n/n927687f0eeb9)
+- [AIが自律的に芸術のインスピレーションをもたらすためのエージェントハーネス](https://note.com/masa_san_jp/n/n3f5f0bce5d34)
+- [エージェントが自律的に芸術創作のインスピレーションを出力できるために解消しなければいけなかった問題](https://note.com/masa_san_jp/n/ne1a029962327)
 
 ## このリポジトリの地図
 
-- Agentic Artによる制作プラン：[plans/](https://github.com/masa-san-jp/agentic-art-project/tree/main/plans)
-- 実際に制作された作品：[works/](https://github.com/masa-san-jp/agentic-art-project/tree/main/works)
+- Agentic Artによる制作プラン：[`plans/`](https://github.com/masa-san-jp/agentic-art-project/tree/main/plans)
+- 実際に制作された作品：[`works/`](https://github.com/masa-san-jp/agentic-art-project/tree/main/works)
 - 制作システムの説明：[`docs/production-system.md`](docs/production-system.md)
 - エージェント群の全体像：[`docs/repository-map.md`](docs/repository-map.md)
 - 実行・契約の正本：[`agentic-art-orchestration`](https://github.com/masa-san-jp/agentic-art-orchestration)
