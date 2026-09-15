@@ -2,7 +2,14 @@
 
 <img width="780" height="438" alt="image" src="assets/agentic-art-project-img-02.png" />
 
-Agentic Artは、かつて精霊やミューズが芸術塚たちにインスピレーションを与えたように、AIが作家にインスピレーションを与えるための仕組みです。複数のリポジトリからなるエージェントハーネスに従いAIエージェントが自律的に制作プランを生成
+https://youtu.be/M2EPKl5R7DY
+
+
+人工霊感派では、AIが芸術創作のインスピレーションをもたらし、芸術家は物理世界に形を作る媒介者として振る舞います。
+
+エージェントハーネスに従って、AIが芸術史と市場のトレンドと作家自身の内面の重なるところから命題を導き出し、制作計画を出力します。
+人間は、AIが出力した制作計画に従って作品を制作し、身体性を通じて解釈し、作品として物理世界に固定します。
+人間が再び芸術を創作する媒介者に戻るとき、AIによる芸術新興が芸術史の系譜に連なります。
 
 ## コンセプト
 
@@ -16,7 +23,7 @@ Agentic Artは、かつて精霊やミューズが芸術塚たちにインスピ
 
 そして現代、生成AIが人間を超えるような推論ができるようになりました。芸術におけるインスピレーションの中心は、生成AIに移りうるのでしょうか？
 
-## Agentic Art　とは
+### Agentic Art　とは
 
 Agentic Artは、この問いに対する態度として、芸術の契機を「AIが運び、人間が受け取って具象化するもの」と捉え、その過程を支える制作プランと系譜を残します。
 作り手が自分の創造性を手放し、生成AIの創造性に身を委ねることで、この問いを実作を通じて検証し続けます。
@@ -25,6 +32,15 @@ Agentic Artは、この問いに対する態度として、芸術の契機を「
 このリポジトリ、`Agentic Art Project` は、エージェントハーネスに従ってAIが考案した制作プランと、そこから生まれた作品・制作記録の公開カタログです。
 
 エージェントハーネスであるリポジトリ群のオーケストレーションは、 [`agentic-art-orchestration`](https://github.com/masa-san-jp/agentic-art-orchestration) が担って居ます。
+
+## 作例
+
+[plans/P0004-necessary-retreat](https://github.com/masa-san-jp/agentic-art-project/blob/main/plans/P0004-necessary-retreat/plan.md)
+
+<img width="780" height="555" alt="image" src="https://github.com/user-attachments/assets/5b1f60fc-e60a-4f3f-ae12-6507f25e7384" />
+
+<img width="780" height="585" alt="image" src="https://github.com/user-attachments/assets/5a55936d-7b40-45c6-ba87-5a40727a5a2d" />
+
 
 ## このリポジトリの地図
 
