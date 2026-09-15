@@ -1,6 +1,6 @@
 # Agentic Art Project
 
-<img width="780" height="437" alt="image" src="assets/agentic-art-project-img-01.png" />
+<img width="780" height="438" alt="image" src="assets/agentic-art-project-img-02.png" />
 
 Agentic Artは、かつて精霊やミューズが芸術塚たちにインスピレーションを与えたように、AIが作家にインスピレーションを与えるための仕組みです。複数のリポジトリからなるエージェントハーネスに従いAIエージェントが自律的に制作プランを生成
 
