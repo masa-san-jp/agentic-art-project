@@ -1,4 +1,4 @@
-# Agentic Art Project
+# Artificial Inspiration - 人工霊感
 
 <img width="1920" height="1076" alt="image" src="https://github.com/user-attachments/assets/f811d9af-5fb9-4710-9f50-650c7da3e3df" />
 
