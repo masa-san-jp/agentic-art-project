@@ -23,6 +23,7 @@ Agentic Art の制作プラン一覧です。
 - [距離が境界を選ぶ — Distance Selects Boundary](P0006-distance-selects-boundary/README.md)
 - [近くても受領されない — Near, Not Received](P0007-near-not-received/README.md)
 - [aak07-agent-20260910-p4](P0008-aak07-agent-20260910-p4/README.md)
+- [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](P0009-external-possession/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。

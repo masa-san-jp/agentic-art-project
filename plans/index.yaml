@@ -224,4 +224,32 @@ records:
   canonical_artifact: production-plan.md
   assets: '[{"byte_length":1985,"media_type":"image/svg+xml","path":"03_plan/media/concept-mockup.svg","rights_ref":"automatic-plan-authority/production/aak07-agent-20260910-p4#PL001","rights_status":"PUBLIC_CLEARED","sha256":"sha256:9c017f6910cf6032956a76ef3bf5dad7fdc7c57fa4649f6ff7714f83d52476be"},{"byte_length":3664,"media_type":"image/svg+xml","path":"03_plan/media/visual-reference-board.svg","rights_ref":"automatic-plan-authority/production/aak07-agent-20260910-p4#PL001","rights_status":"PUBLIC_CLEARED","sha256":"sha256:6696ccd280f671db605c35c01d5625c2642294e16ad2f1d2351359b73d883997"}]'
   path: plans/P0008-aak07-agent-20260910-p4
+- id: P0009
+  slug: external-possession
+  title: 外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白
+  source_key: plan:production/external-possession-v1#PL001
+  source_identity: production/external-possession-v1#PL001
+  plan_revision: 1
+  introduction_contract: project-plan-introduction/v1
+  introduction_revision: '1'
+  introduction_sha256: 8e2ee33e5e052e5248f20157bbc4060a9bcb23207b3993dd527b54f114920cf5
+  production_repository: masa-san-jp/agentic-art-production
+  production_commit: 69567e88131e3f033d010791fb5849e1b2ebff8d
+  source_run_id: run-external-possession-v1-20260919
+  content_sha256: e09692d6d42821fa7ac1cccd9e387a0221aef531bb1a4a3f1767ba22a7f9206c
+  attestation_sha256: 328f510b113fd7108308dcc5c0d7a55c71b7257878a8de5621fc7aa7396ed168
+  projection_contract: canonical-plan-projection/v2
+  projection_mode: AUTOMATIC_PLAN
+  body_transform: none
+  plan_state: canonical
+  production_state: PLANNING
+  visibility: public
+  external_effects_authorized: false
+  status: ready-for-publication
+  rights_status: cleared
+  contract_version: canonical-plan-projection/v2
+  mode: AUTOMATIC_PLAN
+  canonical_artifact: production-plan.md
+  assets: "[{\"byte_length\":2300,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/concept-mockup.svg\",\"rights_ref\":\"generated-by-agentic-art-production/from-user-authorized-project-source\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:25f202750dac54d5c405fe5e208486e7108e90d476b85e3ef8220fc3abad7c27\"},{\"byte_length\":4470,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/visual-reference-board.svg\",\"rights_ref\":\"generated-by-agentic-art-production/from-user-authorized-project-source\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:5e9f406769a5bc36048ab633242f605b17bcaed0aa5c6b0452dee95d29207237\"}]"
+  path: plans/P0009-external-possession
 retired_ids: []
