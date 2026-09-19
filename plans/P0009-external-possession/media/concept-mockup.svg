@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>Concept mockup · 停止条件によって切り落とされた運筆プロトコルと自律的余白</title>
+<desc>Conceptual simulated mockup only. Physical and external validation have not been run.</desc>
+<rect width="1200" height="760" fill="#f8fafc" />
+<line x1="100" y1="540" x2="1100" y2="540" stroke="#94a3b8" stroke-width="4" />
+<rect x="150" y="240" width="400" height="240" fill="#1e293b" opacity="0.05" stroke="#cbd5e1" stroke-dasharray="4 4" />
+<rect x="550" y="240" width="500" height="240" fill="#ffffff" stroke="#e2e8f0" />
+<line x1="180" y1="280" x2="520" y2="280" stroke="#0f172a" stroke-width="2" />
+<line x1="180" y1="320" x2="490" y2="320" stroke="#0f172a" stroke-width="3" />
+<line x1="180" y1="360" x2="540" y2="360" stroke="#0f172a" stroke-width="1.5" />
+<line x1="180" y1="400" x2="460" y2="400" stroke="#0f172a" stroke-width="2.5" />
+<line x1="550" y1="200" x2="550" y2="500" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 6" />
+<text x="560" y="225" font-size="14" fill="#dc2626" font-family="monospace">HALT: STOP_CONDITION_TRIGGERED</text>
+<text x="680" y="360" font-size="28" fill="#94a3b8" font-family="sans-serif">余白 (Yohaku / Ma)</text>
+<circle cx="300" cy="525" r="14" fill="#2563eb" />
+<line x1="300" y1="525" x2="350" y2="430" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 4" />
+<text x="48" y="64" font-size="28" fill="#111827" font-family="sans-serif">Concept mockup · 停止条件によって切り落とされた運筆プロトコルと自律的余白</text>
+<text x="48" y="98" font-size="15" fill="#475569" font-family="sans-serif">VP002 · CONCEPTUAL · NOT TO SCALE</text>
+<text x="48" y="620" font-size="16" fill="#111827" font-family="sans-serif">Left 3m: Generated Protocol &amp; Manual Trace → HALT Point → Right 3m: Pure Void</text>
+<text x="48" y="662" font-size="13" fill="#475569" font-family="sans-serif">PHYSICAL_EXTERNAL validation: NOT_RUN. No physical prototype, publication, purchase, contract, or Drive share was performed.</text>
+<text x="48" y="700" font-size="13" fill="#475569" font-family="sans-serif">Synthetic conceptual diagram generated from accepted brief fields; not a rendered physical work.</text>
+</svg>

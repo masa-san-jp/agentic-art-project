@@ -105,6 +105,7 @@ flowchart TD
 - [距離が境界を選ぶ — Distance Selects Boundary](plans/P0006-distance-selects-boundary/README.md)
 - [近くても受領されない — Near, Not Received](plans/P0007-near-not-received/README.md)
 - [aak07-agent-20260910-p4](plans/P0008-aak07-agent-20260910-p4/README.md)
+- [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](plans/P0009-external-possession/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
