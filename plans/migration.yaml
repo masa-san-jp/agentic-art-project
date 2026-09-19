@@ -4,3 +4,19 @@ records:
     source_candidate: git-history/P0010-moving-gap-and-legacy-moving-gap
     blocking_reason: Git履歴に旧P0010レコードが存在し、現行の検証可能なProduction正本・安定したsource identityを新規レコードとして確定できない
     unblock_condition: 対応する現行Production正本・公開attestation・安定したsource identityをowner確認し、同じP0010へ正規移行する
+  - id: P0011
+    source_candidate: git-history/P0011-yohaku-breath-and-legacy-yohaku-breath
+    blocking_reason: Git履歴に旧P0011レコードが存在し、現行の検証可能なProduction正本・安定したsource identityを新規レコードとして確定できない
+    unblock_condition: 対応する現行Production正本・公開attestation・安定したsource identityをowner確認し、同じP0011へ正規移行する
+  - id: P0012
+    source_candidate: git-history/P0012-close-but-cannot-reach-and-legacy-close-but-cannot-reach
+    blocking_reason: Git履歴に旧P0012レコードが存在し、現行の検証可能なProduction正本・安定したsource identityを新規レコードとして確定できない
+    unblock_condition: 対応する現行Production正本・公開attestation・安定したsource identityをowner確認し、同じP0012へ正規移行する
+  - id: P0013
+    source_candidate: git-history/P0013-distance-selects-boundary-and-legacy-distance-selects-boundary
+    blocking_reason: Git履歴に旧P0013レコードが存在し、現行の検証可能なProduction正本・安定したsource identityを新規レコードとして確定できない
+    unblock_condition: 対応する現行Production正本・公開attestation・安定したsource identityをowner確認し、同じP0013へ正規移行する
+  - id: P0014
+    source_candidate: git-history/P0014-near-not-received-and-legacy-near-not-received
+    blocking_reason: Git履歴に旧P0014レコードが存在し、現行の検証可能なProduction正本・安定したsource identityを新規レコードとして確定できない
+    unblock_condition: 対応する現行Production正本・公開attestation・安定したsource identityをowner確認し、同じP0014へ正規移行する
