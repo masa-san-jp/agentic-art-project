@@ -1,2 +1,6 @@
 version: 1
-records: []
+records:
+  - id: P0010
+    source_candidate: git-history/P0010-moving-gap-and-legacy-moving-gap
+    blocking_reason: Git履歴に旧P0010レコードが存在し、現行の検証可能なProduction正本・安定したsource identityを新規レコードとして確定できない
+    unblock_condition: 対応する現行Production正本・公開attestation・安定したsource identityをowner確認し、同じP0010へ正規移行する
