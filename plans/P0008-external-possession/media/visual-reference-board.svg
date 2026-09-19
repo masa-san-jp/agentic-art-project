@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>Visual reference board · 停止条件によって切り落とされた運筆プロトコルと自律的余白</title>
+<desc>Deterministic synthetic visual reference board. Citation-only references; no external image body.</desc>
+<rect width="1200" height="760" fill="#f8fafc" />
+<rect x="48" y="168" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="246" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="324" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="402" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="480" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="780" y="170" width="150" height="60" rx="8" fill="#111827" stroke="#64748b" />
+<rect x="950" y="170" width="150" height="60" rx="8" fill="#374151" stroke="#64748b" />
+<text x="48" y="64" font-size="28" fill="#111827" font-family="sans-serif">Visual reference board · 停止条件によって切り落とされた運筆プロトコルと自律的余白</text>
+<text x="48" y="98" font-size="15" fill="#374151" font-family="sans-serif">VP002 · REFERENCE BOARD · CITATION ONLY</text>
+<text x="48" y="142" font-size="18" fill="#374151" font-family="sans-serif">No external image body is copied into this fixture.</text>
+<text x="78" y="196" font-size="18" fill="#111827" font-family="sans-serif">EV101 · concept/automatism</text>
+<text x="78" y="222" font-size="14" fill="#374151" font-family="sans-serif">シュルレアリスム宣言におけるオートマティスムとマッソンの霊媒的比喩</text>
+<text x="78" y="245" font-size="12" fill="#374151" font-family="sans-serif">urn:ahn:concept/automatism</text>
+<text x="78" y="274" font-size="18" fill="#111827" font-family="sans-serif">EV102 · concept/ma</text>
+<text x="78" y="300" font-size="14" fill="#374151" font-family="sans-serif">東京国立近代美術館・和歌山県美『疎密考』における関係性と間合い</text>
+<text x="78" y="323" font-size="12" fill="#374151" font-family="sans-serif">urn:ahn:concept/ma</text>
+<text x="78" y="352" font-size="18" fill="#111827" font-family="sans-serif">EV103 · concept/yohaku</text>
+<text x="78" y="378" font-size="14" fill="#374151" font-family="sans-serif">気韻・大気としての非描画領域と現代における構造的空白</text>
+<text x="78" y="401" font-size="12" fill="#374151" font-family="sans-serif">urn:ahn:concept/yohaku</text>
+<text x="78" y="430" font-size="18" fill="#111827" font-family="sans-serif">EV104 · practice/generative-ai-workflow-governance</text>
+<text x="78" y="456" font-size="14" fill="#374151" font-family="sans-serif">生成AI業務プロセスにおける人間の確認範囲・停止条件・ガバナンス設計</text>
+<text x="78" y="479" font-size="12" fill="#374151" font-family="sans-serif">urn:mtn:practice/generative-ai-workflow-governance</text>
+<text x="78" y="508" font-size="18" fill="#111827" font-family="sans-serif">EV105 · self-model: D5 / D6</text>
+<text x="78" y="534" font-size="14" fill="#374151" font-family="sans-serif">自律・制御・エージェンシーの回復と不確実性制御</text>
+<text x="78" y="557" font-size="12" fill="#374151" font-family="sans-serif">self-model-notes/config/drive-systems.yaml</text>
+<text x="780" y="272" font-size="13" fill="#111827" font-family="sans-serif">微細印字コードと肉筆墨線の並走 · research visual-language label</text>
+<text x="950" y="272" font-size="13" fill="#111827" font-family="sans-serif">強制停止ログと完全な白紙余白 · research visual-language label</text>
+<text x="780" y="430" font-size="16" fill="#111827" font-family="sans-serif">MATERIAL</text>
+<text x="780" y="458" font-size="13" fill="#374151" font-family="sans-serif">特厚和紙ロール（1.8m×6m）、油煙墨、純羊毫中鋒筆</text>
+<text x="780" y="514" font-size="16" fill="#111827" font-family="sans-serif">LIGHT / SPACE</text>
+<text x="780" y="542" font-size="13" fill="#374151" font-family="sans-serif">壁面から3mの全体視と30cmの至近視を鑑賞者が往復する展示空間</text>
+<text x="48" y="690" font-size="13" fill="#374151" font-family="sans-serif">Neutral deterministic rendering of accepted references; this is not an external image acquisition.</text>
+</svg>

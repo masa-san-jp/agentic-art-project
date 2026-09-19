@@ -81,6 +81,7 @@ flowchart TD
 
 <!-- agentic-art:catalog:start -->
 - [必要な後退 — 単位を視認限界の下へ置いた一枚の大判プリント](plans/P0004-necessary-retreat/README.md)
+- [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](plans/P0008-external-possession/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
