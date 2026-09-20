@@ -92,7 +92,7 @@ records:
   plan_revision: '1'
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: c9173fe7dbef4c52d4a23973228a4f0d684328a3a926cfa6ae03e10a78ee7cfe
+  introduction_sha256: 4c1a38d92ad5b45100d0d748db6d6b8b715af9cc6cffe543902a2d7c14c89e27
   production_repository: masa-san-jp/agentic-art-production
   production_commit: 69567e88131e3f033d010791fb5849e1b2ebff8d
   source_run_id: migration-necessary-retreat-v4-20260906
