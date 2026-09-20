@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>P0002 simulated prototype preview</title>
+<desc>Deterministic README-only simulated visualization derived from a public production plan. It is not a physical prototype or production evidence.</desc>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif" font-weight="700">移動する空白 — Moving Gap</text>
+<text x="48" y="96" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">P0002 · SIMULATED PROTOTYPE PREVIEW · NOT TO SCALE</text>
+<text x="48" y="145" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">このページは、Productionで生成された公開制作プランの紹介です。制作計画</text>
+<text x="48" y="169" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">の正本と受入条件は [plan.md](plan.md) にあり、このREADM</text>
+<text x="48" y="193" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">Eはその入口として要点だけを示します。公開済みなのは計画と決定論的なビジュアルf</text>
+<rect x="160" y="220" width="460" height="300" fill="#dbeafe" fill-opacity=".45" stroke="#1e3a8a" stroke-width="3"/>
+<line x1="245" y1="260" x2="245" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="293" y1="260" x2="293" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="341" y1="260" x2="341" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="389" y1="260" x2="389" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="437" y1="260" x2="437" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="485" y1="260" x2="485" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="533" y1="260" x2="533" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="581" y1="260" x2="581" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<line x1="629" y1="260" x2="629" y2="470" stroke="#1e3a8a" stroke-width="4"/>
+<rect x="420" y="255" width="460" height="300" fill="#fef3c7" fill-opacity=".5" stroke="#b45309" stroke-width="3"/>
+<line x1="290" y1="300" x2="290" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="338" y1="300" x2="338" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="386" y1="300" x2="386" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="434" y1="300" x2="434" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="482" y1="300" x2="482" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="530" y1="300" x2="530" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="578" y1="300" x2="578" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="626" y1="300" x2="626" y2="510" stroke="#b45309" stroke-width="4"/>
+<line x1="674" y1="300" x2="674" y2="510" stroke="#b45309" stroke-width="4"/>
+<rect x="602" y="220" width="74" height="335" fill="#f8fafc" stroke="#be123c" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="590" y="590" font-size="16" fill="#9f1239" font-family="sans-serif">NON-CONTACT GAP</text>
+<text x="48" y="690" font-size="15" fill="#334155" font-family="sans-serif" font-weight="400">two reading directions / shifted planes / no fusion at the gap</text>
+<text x="48" y="720" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">README supplemental media · physical validation: NOT_RUN · no purchase, publication, or external effect</text>
+<text x="48" y="744" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">This diagram visualizes a plan hypothesis; it does not claim that an object was made or tested.</text>
+</svg>

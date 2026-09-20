@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>P0009 simulated prototype preview</title>
+<desc>Deterministic README-only simulated visualization derived from a public production plan. It is not a physical prototype or production evidence.</desc>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif" font-weight="700">外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白</text>
+<text x="48" y="96" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">P0009 · SIMULATED PROTOTYPE PREVIEW · NOT TO SCALE</text>
+<text x="48" y="145" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">公開planの構成をもとにした確認用の図</text>
+<rect x="145" y="185" width="520" height="340" fill="#e2e8f0" fill-opacity=".45" stroke="#334155" stroke-width="3"/>
+<line x1="180" y1="220" x2="210" y2="480" stroke="#0f172a" stroke-width="2" opacity="0.35"/>
+<line x1="228" y1="220" x2="258" y2="480" stroke="#0f172a" stroke-width="3" opacity="0.40"/>
+<line x1="276" y1="220" x2="306" y2="480" stroke="#0f172a" stroke-width="4" opacity="0.45"/>
+<line x1="324" y1="220" x2="354" y2="480" stroke="#0f172a" stroke-width="5" opacity="0.50"/>
+<line x1="372" y1="220" x2="402" y2="480" stroke="#0f172a" stroke-width="2" opacity="0.55"/>
+<line x1="420" y1="220" x2="450" y2="480" stroke="#0f172a" stroke-width="3" opacity="0.60"/>
+<line x1="468" y1="220" x2="498" y2="480" stroke="#0f172a" stroke-width="4" opacity="0.65"/>
+<line x1="516" y1="220" x2="546" y2="480" stroke="#0f172a" stroke-width="5" opacity="0.70"/>
+<line x1="564" y1="220" x2="594" y2="480" stroke="#0f172a" stroke-width="2" opacity="0.75"/>
+<line x1="612" y1="220" x2="642" y2="480" stroke="#0f172a" stroke-width="3" opacity="0.80"/>
+<line x1="690" y1="190" x2="690" y2="530" stroke="#be123c" stroke-width="5" stroke-dasharray="14 12"/>
+<rect x="735" y="190" width="290" height="340" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<text x="775" y="300" font-size="22" fill="#94a3b8" font-family="sans-serif">STOP</text>
+<text x="775" y="350" font-size="22" fill="#94a3b8" font-family="sans-serif">→ BLANK</text>
+<text x="200" y="580" font-size="17" fill="#334155" font-family="sans-serif">delegated stroke protocol</text>
+<text x="735" y="580" font-size="17" fill="#9f1239" font-family="sans-serif">uncertainty boundary</text>
+<text x="48" y="690" font-size="15" fill="#334155" font-family="sans-serif" font-weight="400">delegated stroke protocol / uncertainty stop / autonomous blank space</text>
+<text x="48" y="720" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">README supplemental media · physical validation: NOT_RUN · no purchase, publication, or external effect</text>
+<text x="48" y="744" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">This diagram visualizes a plan hypothesis; it does not claim that an object was made or tested.</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>P0007 simulated prototype preview</title>
+<desc>Deterministic README-only simulated visualization derived from a public production plan. It is not a physical prototype or production evidence.</desc>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif" font-weight="700">近くても受領されない — Near, Not Received</text>
+<text x="48" y="96" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">P0007 · SIMULATED PROTOTYPE PREVIEW · NOT TO SCALE</text>
+<text x="48" y="145" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">このページは、Productionで生成された公開制作プランの紹介です。制作計画</text>
+<text x="48" y="169" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">の正本と受入条件は [plan.md](plan.md) にあり、このREADM</text>
+<text x="48" y="193" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">Eはその入口として要点だけを示します。公開済みなのは計画と決定論的なビジュアルf</text>
+<rect x="250" y="190" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="320" y="190" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="390" y="190" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="460" y="190" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="530" y="190" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="600" y="190" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="250" y="245" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="320" y="245" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="390" y="245" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="460" y="245" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="530" y="245" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="600" y="245" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="250" y="300" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="320" y="300" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="390" y="300" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="460" y="300" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="530" y="300" width="52" height="38" fill="#f8fafc" stroke="#be123c" stroke-width="3"/>
+<rect x="600" y="300" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="250" y="355" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="320" y="355" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="390" y="355" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="460" y="355" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="530" y="355" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="600" y="355" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="250" y="410" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="320" y="410" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="390" y="410" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="460" y="410" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="530" y="410" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="600" y="410" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="250" y="465" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="320" y="465" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="390" y="465" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="460" y="465" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="530" y="465" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<rect x="600" y="465" width="52" height="38" rx="5" fill="#d6d3d1" stroke="#57534e" stroke-width="2"/>
+<text x="245" y="565" font-size="18" fill="#44403c" font-family="sans-serif">35 SEALED PACKETS</text>
+<text x="650" y="565" font-size="18" fill="#9f1239" font-family="sans-serif">1 EMPTY CELL</text>
+<rect x="930" y="220" width="100" height="100" fill="#fef3c7" stroke="#a16207" stroke-width="3"/>
+<text x="950" y="275" font-size="18" fill="#854d0e" font-family="sans-serif">STATUS</text>
+<text x="48" y="690" font-size="15" fill="#334155" font-family="sans-serif" font-weight="400">36-cell grid / 35 sealed packets / one empty cell / no recipient</text>
+<text x="48" y="720" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">README supplemental media · physical validation: NOT_RUN · no purchase, publication, or external effect</text>
+<text x="48" y="744" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">This diagram visualizes a plan hypothesis; it does not claim that an object was made or tested.</text>
+</svg>

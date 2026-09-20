@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>P0015 simulated prototype preview</title>
+<desc>Deterministic README-only simulated visualization derived from a public production plan. It is not a physical prototype or production evidence.</desc>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif" font-weight="700">auto-auto-plan-20260916t125851z-rev6</text>
+<text x="48" y="96" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">P0015 · SIMULATED PROTOTYPE PREVIEW · NOT TO SCALE</text>
+<text x="48" y="145" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">- [concept-mockup.svg](media/concept-moc</text>
+<text x="48" y="169" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">kup.svg) - [visual-reference-board.svg](</text>
+<text x="48" y="193" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">media/visual-reference-board.svg)</text>
+<rect x="160" y="230" width="210" height="220" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+<rect x="495" y="230" width="210" height="220" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+<rect x="830" y="230" width="210" height="220" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+<line x1="370" y1="340" x2="480" y2="340" stroke="#64748b" stroke-width="4" marker-end="url(#arrow)"/>
+<line x1="705" y1="340" x2="815" y2="340" stroke="#64748b" stroke-width="4" marker-end="url(#arrow)"/>
+<path d="M1020 500 C760 640 420 640 180 500" fill="none" stroke="#be123c" stroke-width="3" stroke-dasharray="12 10"/>
+<text x="210" y="500" font-size="17" fill="#1e40af" font-family="sans-serif">BEFORE</text>
+<text x="545" y="500" font-size="17" fill="#92400e" font-family="sans-serif">THRESHOLD</text>
+<text x="875" y="500" font-size="17" fill="#166534" font-family="sans-serif">AFTER / RETURN</text>
+<text x="48" y="690" font-size="15" fill="#334155" font-family="sans-serif" font-weight="400">before / threshold / after / return gaze makes relation perceptible</text>
+<text x="48" y="720" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">README supplemental media · physical validation: NOT_RUN · no purchase, publication, or external effect</text>
+<text x="48" y="744" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">This diagram visualizes a plan hypothesis; it does not claim that an object was made or tested.</text>
+</svg>

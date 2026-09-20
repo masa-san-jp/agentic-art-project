@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>P0006 simulated prototype preview</title>
+<desc>Deterministic README-only simulated visualization derived from a public production plan. It is not a physical prototype or production evidence.</desc>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif" font-weight="700">距離が境界を選ぶ — Distance Selects Boundary</text>
+<text x="48" y="96" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">P0006 · SIMULATED PROTOTYPE PREVIEW · NOT TO SCALE</text>
+<text x="48" y="145" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">このページは、Productionで生成された公開制作プランの紹介です。制作計画</text>
+<text x="48" y="169" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">の正本と受入条件は [plan.md](plan.md) にあり、このREADM</text>
+<text x="48" y="193" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">Eはその入口として要点だけを示します。公開済みなのは計画と決定論的なビジュアルf</text>
+<line x1="180" y1="535" x2="930" y2="535" stroke="#334155" stroke-width="5"/>
+<line x1="350" y1="475" x2="350" y2="590" stroke="#dc2626" stroke-width="5"/>
+<text x="275" y="625" font-size="16" fill="#b91c1c" font-family="sans-serif">STOP LINE · 450 mm</text>
+<rect x="500" y="210" width="360" height="290" fill="#dbeafe" fill-opacity=".25" stroke="#1e40af" stroke-width="4"/>
+<rect x="520" y="240" width="52" height="235" fill="#bfdbfe" fill-opacity=".35" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="592" y="240" width="52" height="235" fill="#bfdbfe" fill-opacity=".35" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="664" y="240" width="52" height="235" fill="#bfdbfe" fill-opacity=".35" stroke="#1d4ed8" stroke-width="2"/>
+<rect x="736" y="240" width="52" height="235" fill="#bfdbfe" fill-opacity=".35" stroke="#1d4ed8" stroke-width="2"/>
+<circle cx="1000" cy="250" r="30" fill="#f59e0b"/><circle cx="1000" cy="250" r="48" fill="none" stroke="#fbbf24" stroke-width="4" stroke-dasharray="16 12"/>
+<text x="905" y="350" font-size="16" fill="#92400e" font-family="sans-serif">LIGHT PAUSE</text>
+<text x="505" y="555" font-size="16" fill="#1e40af" font-family="sans-serif">VISIBLE · NOT TOUCHABLE</text>
+<text x="48" y="690" font-size="15" fill="#334155" font-family="sans-serif" font-weight="400">transparent surface / stop line / light pause / visible but untouchable</text>
+<text x="48" y="720" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">README supplemental media · physical validation: NOT_RUN · no purchase, publication, or external effect</text>
+<text x="48" y="744" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">This diagram visualizes a plan hypothesis; it does not claim that an object was made or tested.</text>
+</svg>

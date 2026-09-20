@@ -68,7 +68,8 @@ class PublicCatalogValidationTests(unittest.TestCase):
             self.assertEqual([], validator.validate_record(ROOT, record))
         migration = validator.catalog_sync._parse_list_records(ROOT / "plans/migration.yaml", "records")
         self.assertEqual([], migration)
-        self.assertEqual({f"P{i:04d}" for i in range(1, 10)}, {record["id"] for record in records})
+        expected_ids = {f"P{i:04d}" for i in range(1, 10)} | {"P0015"}
+        self.assertEqual(expected_ids, {record["id"] for record in records})
         self.assertFalse(list((ROOT / "plans").glob("P*/summary.md")))
 
     def test_tampered_plan_body_is_rejected_by_hash(self):

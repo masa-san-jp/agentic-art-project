@@ -10,6 +10,14 @@
 
 **固有の構成:** 三面パネル、三つの手動スイッチ、持続する状態表示。個人の原資料は保持しない。
 
+<!-- prototype-visualization:start -->
+## 試作の可視化
+
+![P0001 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
+
+このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+<!-- prototype-visualization:end -->
+
 ## 制作状態
 
 このページは、Productionで生成された公開制作プランの紹介です。制作計画の正本と受入条件は [plan.md](plan.md) にあり、このREADMEはその入口として要点だけを示します。公開済みなのは計画と決定論的なビジュアルfixtureであり、物理制作・購入・契約・展示・外部連絡を実行した記録ではありません。実行前に、plan.md の未解決事項と承認境界を確認してください。

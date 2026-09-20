@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>P0003 simulated prototype preview</title>
+<desc>Deterministic README-only simulated visualization derived from a public production plan. It is not a physical prototype or production evidence.</desc>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif" font-weight="700">余白の呼吸 — Yohaku Breath</text>
+<text x="48" y="96" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">P0003 · SIMULATED PROTOTYPE PREVIEW · NOT TO SCALE</text>
+<text x="48" y="145" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">このページは、Productionで生成された公開制作プランの紹介です。制作計画</text>
+<text x="48" y="169" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">の正本と受入条件は [plan.md](plan.md) にあり、このREADM</text>
+<text x="48" y="193" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">Eはその入口として要点だけを示します。公開済みなのは計画と決定論的なビジュアルf</text>
+<rect x="170" y="215" width="720" height="320" fill="#e2e8f0" fill-opacity=".45" stroke="#475569" stroke-width="3"/>
+<line x1="230" y1="220" x2="230" y2="520" stroke="#334155" stroke-width="3" opacity="0.35"/>
+<line x1="286" y1="220" x2="286" y2="520" stroke="#334155" stroke-width="4" opacity="0.41"/>
+<line x1="342" y1="220" x2="342" y2="520" stroke="#334155" stroke-width="5" opacity="0.47"/>
+<line x1="398" y1="220" x2="398" y2="520" stroke="#334155" stroke-width="3" opacity="0.53"/>
+<line x1="454" y1="220" x2="454" y2="520" stroke="#334155" stroke-width="4" opacity="0.59"/>
+<line x1="510" y1="220" x2="510" y2="520" stroke="#334155" stroke-width="5" opacity="0.65"/>
+<line x1="566" y1="220" x2="566" y2="520" stroke="#334155" stroke-width="3" opacity="0.71"/>
+<line x1="622" y1="220" x2="622" y2="520" stroke="#334155" stroke-width="4" opacity="0.77"/>
+<line x1="678" y1="220" x2="678" y2="520" stroke="#334155" stroke-width="5" opacity="0.83"/>
+<line x1="734" y1="220" x2="734" y2="520" stroke="#334155" stroke-width="3" opacity="0.89"/>
+<line x1="790" y1="220" x2="790" y2="520" stroke="#334155" stroke-width="4" opacity="0.95"/>
+<rect x="370" y="195" width="90" height="360" fill="#f8fafc" fill-opacity=".82"/>
+<rect x="690" y="195" width="80" height="360" fill="#f8fafc" fill-opacity=".72"/>
+<circle cx="260" cy="590" r="14" fill="#0f766e"/><text x="205" y="630" font-size="16" fill="#0f766e" font-family="sans-serif">NEAR · DETAIL</text>
+<circle cx="720" cy="590" r="14" fill="#7c3aed"/><text x="675" y="630" font-size="16" fill="#6d28d9" font-family="sans-serif">FAR · WHOLE</text>
+<text x="48" y="690" font-size="15" fill="#334155" font-family="sans-serif" font-weight="400">moving viewpoint / partial occlusion / detail and whole remain selectable</text>
+<text x="48" y="720" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">README supplemental media · physical validation: NOT_RUN · no purchase, publication, or external effect</text>
+<text x="48" y="744" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">This diagram visualizes a plan hypothesis; it does not claim that an object was made or tested.</text>
+</svg>
