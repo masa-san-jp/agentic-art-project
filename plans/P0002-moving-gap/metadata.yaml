@@ -6,7 +6,7 @@ source_identity: production/moving-gap#PL001
 plan_revision: '1'
 introduction_contract: project-plan-introduction/v1
 introduction_revision: '1'
-introduction_sha256: 75e802f3e1d164a0e9156ea419d5034b2600f0f19fe18beec077bd551f36cee1
+introduction_sha256: 0b9ddff604845db242a13556afdbb7d9a1839f961b083929fe958b8139956450
 production_repository: masa-san-jp/agentic-art-production
 production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
 source_run_id: LEGACY-DISTINCT-P0002-BASE-20260910

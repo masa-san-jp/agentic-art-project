@@ -6,7 +6,7 @@ source_identity: production/owner-of-choice#PL001
 plan_revision: '1'
 introduction_contract: project-plan-introduction/v1
 introduction_revision: '1'
-introduction_sha256: c7cc0d5f0d191c10f3bbdf3502dbcf152d00a647e6d54354f46ec7e1e501ada0
+introduction_sha256: f741125ab0498586a4a8287e559e805c508ea5d3ad4d65d00ad0b163b01aef42
 production_repository: masa-san-jp/agentic-art-production
 production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
 source_run_id: LEGACY-DISTINCT-P0001-BASE-20260910

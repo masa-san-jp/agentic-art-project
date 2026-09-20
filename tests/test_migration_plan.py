@@ -8,7 +8,8 @@ class MigrationPlanTests(unittest.TestCase):
         report=classify(ROOT)
         self.assertEqual("COMPLETE",report["status"])
         rows={row["id"]:row for row in report["records"]}
-        self.assertEqual({f"P{i:04d}" for i in range(1, 10)}, set(rows))
+        expected_ids = {f"P{i:04d}" for i in range(1, 10)} | {"P0015"}
+        self.assertEqual(expected_ids, set(rows))
         self.assertTrue(all(row["classification"] == "CANONICAL" for row in rows.values()))
         self.assertTrue(all(not row["applied"] for row in rows.values()))
         self.assertEqual([],report["writes"])

@@ -6,7 +6,7 @@ source_identity: production/near-not-received#PL001
 plan_revision: '1'
 introduction_contract: project-plan-introduction/v1
 introduction_revision: '1'
-introduction_sha256: 922c71ad48b4c9c7a5dd8905208ce0dec79975d4d02d18cb12914d5567a02150
+introduction_sha256: bd1a5019d4326df850815fafaaa3b63939820f5962d554fa74a7410bd8dcfd67
 production_repository: masa-san-jp/agentic-art-production
 production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
 source_run_id: LEGACY-DISTINCT-P0007-BASE-20260910

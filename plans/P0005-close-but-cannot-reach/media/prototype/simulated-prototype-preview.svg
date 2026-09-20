@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>P0005 simulated prototype preview</title>
+<desc>Deterministic README-only simulated visualization derived from a public production plan. It is not a physical prototype or production evidence.</desc>
+<rect width="1200" height="760" fill="#f8fafc"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif" font-weight="700">近いが届かない — Close but Cannot Reach</text>
+<text x="48" y="96" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">P0005 · SIMULATED PROTOTYPE PREVIEW · NOT TO SCALE</text>
+<text x="48" y="145" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">このページは、Productionで生成された公開制作プランの紹介です。制作計画</text>
+<text x="48" y="169" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">の正本と受入条件は [plan.md](plan.md) にあり、このREADM</text>
+<text x="48" y="193" font-size="15" fill="#475569" font-family="sans-serif" font-weight="400">Eはその入口として要点だけを示します。公開済みなのは計画と決定論的なビジュアルf</text>
+<rect x="195" y="190" width="430" height="320" fill="none" stroke="#0f172a" stroke-width="18"/>
+<rect x="235" y="230" width="350" height="240" fill="#e2e8f0" fill-opacity=".35" stroke="#64748b" stroke-width="2"/>
+<circle cx="805" cy="350" r="85" fill="#94a3b8"/>
+<rect x="760" y="435" width="90" height="80" fill="#94a3b8"/>
+<line x1="630" y1="350" x2="730" y2="350" stroke="#be123c" stroke-width="4" stroke-dasharray="12 10"/>
+<line x1="700" y1="300" x2="700" y2="400" stroke="#be123c" stroke-width="3"/>
+<text x="245" y="570" font-size="16" fill="#0f172a" font-family="sans-serif">VIEWER-SIDE FRAME</text>
+<text x="720" y="570" font-size="16" fill="#9f1239" font-family="sans-serif">NEAR / UNREACHABLE</text>
+<text x="48" y="690" font-size="15" fill="#334155" font-family="sans-serif" font-weight="400">a frame belongs to the viewer; nearness does not create a route</text>
+<text x="48" y="720" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">README supplemental media · physical validation: NOT_RUN · no purchase, publication, or external effect</text>
+<text x="48" y="744" font-size="13" fill="#64748b" font-family="sans-serif" font-weight="400">This diagram visualizes a plan hypothesis; it does not claim that an object was made or tested.</text>
+</svg>
