@@ -62,13 +62,13 @@ class PublicCatalogValidationTests(unittest.TestCase):
         content = b"# Integrated plan\n## Schedule\n## Budget\n"
         self.assertTrue(validator.canonical_plan_errors(content, "fixture/plan.md"))
 
-    def test_all_published_records_are_canonical_and_no_ids_remain_reserved(self):
+    def test_all_published_records_are_canonical_and_reserved_ids_remain_closed(self):
         records = validator.catalog_sync._parse_list_records(ROOT / "plans/index.yaml", "records")
         for record in records:
             self.assertEqual([], validator.validate_record(ROOT, record))
         migration = validator.catalog_sync._parse_list_records(ROOT / "plans/migration.yaml", "records")
-        self.assertEqual([], migration)
-        expected_ids = {f"P{i:04d}" for i in range(1, 10)} | {"P0015"}
+        self.assertEqual(["P0016"], [row["id"] for row in migration])
+        expected_ids = {f"P{i:04d}" for i in range(1, 10)} | {"P0015", "P0017"}
         self.assertEqual(expected_ids, {record["id"] for record in records})
         self.assertFalse(list((ROOT / "plans").glob("P*/summary.md")))
 
