@@ -1,2 +1,6 @@
 version: 1
-records: []
+records:
+  - id: P0016
+    source_candidate: git-history/P0016-reverted-incomplete-receiving-interval-projection
+    blocking_reason: Git履歴に未完了の旧P0016投影が存在し、同じIDを新規Project-localレコードとして再利用できない
+    unblock_condition: 旧P0016を正規のProject lineageとして完成させるか、履歴を保持したまま別の未使用IDで新規投影する
