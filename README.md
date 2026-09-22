@@ -110,6 +110,7 @@ flowchart TD
 - [backfill-gap-0011](plans/P0011-backfill-gap-0011/README.md)
 - [backfill-gap-0012](plans/P0012-backfill-gap-0012/README.md)
 - [auto-auto-plan-20260916t125851z-rev4](plans/P0013-auto-auto-plan-20260916t125851z-rev4/README.md)
+- [auto-auto-plan-20260916t125851z-rev5](plans/P0014-auto-auto-plan-20260916t125851z-rev5/README.md)
 - [auto-auto-plan-20260916t125851z-rev6](plans/P0015-auto-auto-plan-20260916t125851z-rev6/README.md)
 - [auto-auto-plan-20260921t152805z-rev1](plans/P0017-auto-auto-plan-20260921t152805z-rev1/README.md)
 <!-- agentic-art:catalog:end -->
