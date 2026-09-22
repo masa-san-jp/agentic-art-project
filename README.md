@@ -106,6 +106,7 @@ flowchart TD
 - [近くても受領されない — Near, Not Received](plans/P0007-near-not-received/README.md)
 - [aak07-agent-20260910-p4](plans/P0008-aak07-agent-20260910-p4/README.md)
 - [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](plans/P0009-external-possession/README.md)
+- [backfill-gap-0010](plans/P0010-backfill-gap-0010/README.md)
 - [auto-auto-plan-20260916t125851z-rev6](plans/P0015-auto-auto-plan-20260916t125851z-rev6/README.md)
 - [auto-auto-plan-20260921t152805z-rev1](plans/P0017-auto-auto-plan-20260921t152805z-rev1/README.md)
 <!-- agentic-art:catalog:end -->
