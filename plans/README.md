@@ -28,6 +28,7 @@ Agentic Art の制作プラン一覧です。
 - [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](P0009-external-possession/README.md)
 - [backfill-gap-0010](P0010-backfill-gap-0010/README.md)
 - [backfill-gap-0011](P0011-backfill-gap-0011/README.md)
+- [backfill-gap-0012](P0012-backfill-gap-0012/README.md)
 - [auto-auto-plan-20260916t125851z-rev6](P0015-auto-auto-plan-20260916t125851z-rev6/README.md)
 - [auto-auto-plan-20260921t152805z-rev1](P0017-auto-auto-plan-20260921t152805z-rev1/README.md)
 <!-- agentic-art:catalog:end -->

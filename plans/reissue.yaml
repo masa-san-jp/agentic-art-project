@@ -14,7 +14,7 @@ records:
     source_identity: production/backfill-gap-0012#PL001
     reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
     authorization_ref: user-requested-gap-backfill-20260922
-    state: PENDING
+    state: APPLIED
   - id: P0013
     source_identity: production/auto-auto-plan-20260916t125851z-rev4#PL001
     reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
