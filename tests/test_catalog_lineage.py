@@ -356,6 +356,38 @@ class CatalogLineageTests(unittest.TestCase):
         with self.assertRaisesRegex(lineage.LineageError, "RESERVED_ID_REUSED"):
             lineage.records(self.root)
 
+    def test_explicit_reissue_registry_allows_only_the_bound_historical_source(self):
+        row = self.plan()
+        commit(self.root, "historical public record")
+        write_rows(self.root / "plans/reissue.yaml", [{
+            "id": row["id"],
+            "source_identity": row["source_identity"],
+            "reason": "synthetic one-time gap backfill",
+            "authorization_ref": "synthetic-user-request",
+            "state": "PENDING",
+        }])
+        value = self.label(row)
+        self.assertEqual("origin-a", value["origin_instance_id"])
+        write_rows(self.root / "plans/reissue.yaml", [{
+            "id": row["id"],
+            "source_identity": row["source_identity"],
+            "reason": "synthetic one-time gap backfill",
+            "authorization_ref": "synthetic-user-request",
+            "state": "APPLIED",
+        }])
+        self.assertEqual([], lineage.validate_reissue_registry(self.root))
+
+        write_rows(self.root / "plans/reissue.yaml", [{
+            "id": row["id"],
+            "source_identity": "production/other#PL001",
+            "reason": "synthetic one-time gap backfill",
+            "authorization_ref": "synthetic-user-request",
+            "state": "APPLIED",
+        }])
+        wrong = dict(value, revision=2)
+        with self.assertRaisesRegex(lineage.LineageError, "INHERITED_RECORD_IS_NOT_NEW"):
+            lineage.annotate(self.root, row["id"], wrong, instance=actor(), mode="new", expected_sha256=digest((self.root / row["path"] / "lineage.json").read_bytes()), apply=False)
+
     def test_closed_metadata_permissions_symlinks_and_dirty_snapshot_fail_closed(self):
         row = self.plan(); value = lineage.default_lineage(self.root, "plans", row)
         for change in ({"raw_voice": "not allowed"}, {"canonical_revision": True}, {"revision": True}):

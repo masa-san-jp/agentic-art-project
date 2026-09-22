@@ -6,6 +6,8 @@ Agentic Art の制作プラン一覧です。
 
 `ready-for-publication`はProduction正本、公開証明、無変換投影の来歴を確認済みです。正本を確認できない旧レコードは一覧や個別ディレクトリに残さず、IDと復旧条件だけを[`migration.yaml`](migration.yaml)に記録します。旧本文はGit履歴からのみ参照できます。
 
+履歴上すでに使われたIDを正規の新しいProduction正本へ再発行する場合だけ、IDと`source_identity`の一対一対応を[`reissue.yaml`](reissue.yaml)に記録します。投影前は`PENDING`、投影後は`APPLIED`とし、これは今回の移行証跡であって採番器の一般的な再利用許可ではありません。
+
 全件の機械可読一覧は [`index.yaml`](index.yaml) を参照してください。`index.yaml` が制作プランのSSOTであり、下の一覧とルートREADMEの制作プラン一覧は `python3 tools/catalog_sync.py --write` で同期します。
 
 ## 取り込み方針

@@ -1,0 +1,32 @@
+version: 1
+records:
+  - id: P0010
+    source_identity: production/backfill-gap-0010#PL001
+    reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
+    authorization_ref: user-requested-gap-backfill-20260922
+    state: PENDING
+  - id: P0011
+    source_identity: production/backfill-gap-0011#PL001
+    reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
+    authorization_ref: user-requested-gap-backfill-20260922
+    state: PENDING
+  - id: P0012
+    source_identity: production/backfill-gap-0012#PL001
+    reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
+    authorization_ref: user-requested-gap-backfill-20260922
+    state: PENDING
+  - id: P0013
+    source_identity: production/auto-auto-plan-20260916t125851z-rev4#PL001
+    reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
+    authorization_ref: user-requested-gap-backfill-20260922
+    state: PENDING
+  - id: P0014
+    source_identity: production/auto-auto-plan-20260916t125851z-rev5#PL001
+    reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
+    authorization_ref: user-requested-gap-backfill-20260922
+    state: PENDING
+  - id: P0016
+    source_identity: production/backfill-gap-0016#PL001
+    reason: historical public ID gap backfill after the superseded recovery sequence was renumbered
+    authorization_ref: user-requested-gap-backfill-20260922
+    state: PENDING

@@ -5,6 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from tools import catalog_lineage
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("public_catalog_validate", ROOT / "tools/validate.py")
@@ -67,8 +69,11 @@ class PublicCatalogValidationTests(unittest.TestCase):
         for record in records:
             self.assertEqual([], validator.validate_record(ROOT, record))
         migration = validator.catalog_sync._parse_list_records(ROOT / "plans/migration.yaml", "records")
-        self.assertEqual(["P0016"], [row["id"] for row in migration])
-        expected_ids = {f"P{i:04d}" for i in range(1, 10)} | {"P0015", "P0017"}
+        self.assertEqual([], migration)
+        reissues = catalog_lineage.reissue_records(ROOT)
+        self.assertEqual({f"P{i:04d}" for i in (10, 11, 12, 13, 14, 16)}, {row["id"] for row in reissues})
+        self.assertTrue(all(row["state"] == "APPLIED" for row in reissues))
+        expected_ids = {f"P{i:04d}" for i in range(1, 18)}
         self.assertEqual(expected_ids, {record["id"] for record in records})
         self.assertFalse(list((ROOT / "plans").glob("P*/summary.md")))
 
