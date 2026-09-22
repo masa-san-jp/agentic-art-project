@@ -32,6 +32,7 @@ Agentic Art の制作プラン一覧です。
 - [auto-auto-plan-20260916t125851z-rev4](P0013-auto-auto-plan-20260916t125851z-rev4/README.md)
 - [auto-auto-plan-20260916t125851z-rev5](P0014-auto-auto-plan-20260916t125851z-rev5/README.md)
 - [auto-auto-plan-20260916t125851z-rev6](P0015-auto-auto-plan-20260916t125851z-rev6/README.md)
+- [backfill-gap-0016](P0016-backfill-gap-0016/README.md)
 - [auto-auto-plan-20260921t152805z-rev1](P0017-auto-auto-plan-20260921t152805z-rev1/README.md)
 <!-- agentic-art:catalog:end -->
 
