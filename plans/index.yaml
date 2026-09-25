@@ -36,7 +36,7 @@ records:
   plan_revision: '1'
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: 0b9ddff604845db242a13556afdbb7d9a1839f961b083929fe958b8139956450
+  introduction_sha256: 645ea3f21c6dc26b7a73d09f60409d52c11d26004d8178ff464f76882bdefff1
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0002-BASE-20260910
@@ -64,7 +64,7 @@ records:
   plan_revision: '1'
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: 13e4bf2bb0dc754aac6fa6e93561730fe3b2556cafd779f8eb76eee4be32b877
+  introduction_sha256: b90aeb34732ce940e55ee4844970ddfe16676d303f76183c5915216eafad972f
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0003-BASE-20260910
@@ -120,7 +120,7 @@ records:
   plan_revision: '1'
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: c82e6a60a94c7b3d2a4731affa01cfd2b93c05a248c3d8a7c3ee7de941b84f3c
+  introduction_sha256: 705fef4111027950788ec01f70dfb9cbb7f394d5061b3bd410531657ec4b757c
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0005-BASE-20260910
@@ -148,7 +148,7 @@ records:
   plan_revision: '1'
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: 2e6895810657224b057a90945860e60a96a8ba466736b5dc1a54e2501e6a0c9b
+  introduction_sha256: 5bbd1dad6a2993a131f246023f153f43034b7b5f29311084175d7ad696372acc
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0006-BASE-20260910
@@ -176,7 +176,7 @@ records:
   plan_revision: '1'
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: bd1a5019d4326df850815fafaaa3b63939820f5962d554fa74a7410bd8dcfd67
+  introduction_sha256: 3e1521fddb8b1ee2029adbf5917ad59d32c342aa9573619a8b98b25bbc1ba5e4
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: LEGACY-DISTINCT-P0007-BASE-20260910
@@ -204,7 +204,7 @@ records:
   plan_revision: '1'
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: ef9d448614002816a876db062890387b4707bd80e43a546360a3ec784c72a42b
+  introduction_sha256: ce7e22cf04afa55bddbd01e4ac9aa93b5b6189e0cb887e56cb198e7733f8550c
   production_repository: masa-san-jp/agentic-art-production
   production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
   source_run_id: PROJECT-LOCAL-PLAN-20260910-04
@@ -232,7 +232,7 @@ records:
   plan_revision: 1
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: 8044588d084d3d5b88bb4093b17a9535466c6df479264d4de08bca1f0f199a9d
+  introduction_sha256: b105f7533a2066263506eead4a9bac4b03350debb361cc79fbbc244d10c909e0
   production_repository: masa-san-jp/agentic-art-production
   production_commit: 69567e88131e3f033d010791fb5849e1b2ebff8d
   source_run_id: run-external-possession-v1-20260919
@@ -278,6 +278,6 @@ records:
   assets: "[{\"byte_length\":2055,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/concept-mockup.svg\",\"rights_ref\":\"automatic-plan-authority/production/auto-auto-plan-20260916t125851z-rev6#PL001\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:58ae9aff783ee6ed8e4eb8b9291c115d530018fad0150e78afeaa6d49985987e\"},{\"byte_length\":4515,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/visual-reference-board.svg\",\"rights_ref\":\"automatic-plan-authority/production/auto-auto-plan-20260916t125851z-rev6#PL001\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:9ee56a74d0f2280779397cb36db24e2ac831d52750118b555b51016b1b56edc2\"}]"
   introduction_contract: project-plan-introduction/v1
   introduction_revision: '1'
-  introduction_sha256: 39591155c8890bc38ebce2c175036629b5421fbd87bd0b9df6dfb85591fc96a3
+  introduction_sha256: 6334b8191ca9a643f9ec9fa57501f902eb10c6fa2f4de35ef54a3637c36f29a9
   path: plans/P0015-auto-auto-plan-20260916t125851z-rev6
 retired_ids: []

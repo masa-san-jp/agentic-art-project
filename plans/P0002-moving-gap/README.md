@@ -16,6 +16,12 @@
 ![P0002 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
 
 このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![移動する空白 — 二層の面と中央の隙間](media/prototype-whole.jpg)
+
+二層の面を意図的にずらして重ね、それぞれに別の記号系を載せています。中央に立つ細い光の筋が、接触も融合も許さない局所的な隙間です。左右の低い通路が二方向の接近経路にあたり、どちらから入るかで読める側が変わります。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
 <!-- prototype-visualization:end -->
 
 ## 制作状態

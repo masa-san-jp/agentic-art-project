@@ -16,6 +16,12 @@ A3の浅い透明な閉箱を36セルに分け、35個の同型紙包みと一�
 ![P0007 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
 
 このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![近くても受領されない — 閉じた箱の格子](media/prototype-whole.jpg)
+
+浅い透明の閉箱を格子に区切り、同型の紙包みを一つずつ入れ、一つのセルだけ空けています。包みは手の届く場所にありますが、箱を開けなければ触れられません。傍らの状態カードが、受領されない状態も完成した状態であることを示します。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
 <!-- prototype-visualization:end -->
 
 ## 制作状態
