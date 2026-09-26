@@ -6,7 +6,7 @@ source_identity: production/yohaku-breath#PL001
 plan_revision: '1'
 introduction_contract: project-plan-introduction/v1
 introduction_revision: '1'
-introduction_sha256: 13e4bf2bb0dc754aac6fa6e93561730fe3b2556cafd779f8eb76eee4be32b877
+introduction_sha256: b90aeb34732ce940e55ee4844970ddfe16676d303f76183c5915216eafad972f
 production_repository: masa-san-jp/agentic-art-production
 production_commit: eec39272c5c4827a1caf27fa928de18b58882e96
 source_run_id: LEGACY-DISTINCT-P0003-BASE-20260910

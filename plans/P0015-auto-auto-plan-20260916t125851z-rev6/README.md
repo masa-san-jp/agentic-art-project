@@ -29,4 +29,10 @@
 ![P0015 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
 
 このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![一度だけ変わる関係と、見直し](media/prototype-whole.jpg)
+
+同型の要素が一つの経路に沿って一定の律動で並び、途中の一箇所で関係が一度だけ変わり、そのまま続きます。変化点に立った人が、歩いてきた側を振り返っています。反復とレビューの順序を、説明ではなく移動で経験させる構成です。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
 <!-- prototype-visualization:end -->

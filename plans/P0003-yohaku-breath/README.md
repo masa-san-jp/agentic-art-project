@@ -16,6 +16,12 @@
 ![P0003 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
 
 このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![余白の呼吸 — 線群と視点の移動](media/prototype-whole.jpg)
+
+視線の高さを越える線群が室内を横断し、部分的な遮蔽が視線を切ります。近くに立つ人は細部を、奥に離れた人は全体の構図を取っています。どちらを選ぶかに正解を置かない、という plan.md の主張がそのまま配置になっています。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
 <!-- prototype-visualization:end -->
 
 ## 制作状態

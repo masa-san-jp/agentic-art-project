@@ -16,6 +16,12 @@
 ![P0005 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
 
 このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![近いが届かない — 観客側の枠と匿名の像](media/prototype-whole.jpg)
+
+手前の重い枠は観客の側に属します。枠の向こうに匿名の像が立ちますが、梯子も階段もロープも架けていません。近づくほど枠の縁と自分の位置が視界を占め、距離が縮まっても到達の手段は増えません。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
 <!-- prototype-visualization:end -->
 
 ## 制作状態

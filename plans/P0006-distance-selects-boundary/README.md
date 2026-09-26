@@ -16,6 +16,12 @@
 ![P0006 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
 
 このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![距離が境界を選ぶ — 透明面と停止線](media/prototype-whole.jpg)
+
+床から頭上まで立つ透明面の向こうに歪んだ線画を吊っています。手前の床に引いた停止線が、見えるが触れない距離を決めます。暖色光は周期のなかで静止しており、休止は効果ではなく構成の一部です。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
 <!-- prototype-visualization:end -->
 
 ## 制作状態

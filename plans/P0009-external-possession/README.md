@@ -18,4 +18,10 @@
 ![P0009 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
 
 このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![外部化された憑依 — 停止条件が切り落とした余白](media/prototype-whole.jpg)
+
+ロール紙の上を、機械的に転写された運筆が一定の手順で進み、途中で断ち切られています。止まった位置に墨皿と筆が置かれたままです。残りの白は構図として選ばれた余白ではなく、停止条件が発火して加筆を禁じた領域です。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
 <!-- prototype-visualization:end -->
