@@ -1,0 +1,38 @@
+# Interrupted interval installation
+
+一定間隔で並ぶ要素の一箇所だけ間隔を変え、鑑賞者がそこに当たった後で初めて、背後にあった規則を遡って知覚する。
+
+## このプランで見るもの
+
+列の正面を約2mの距離で端から端まで歩き、崩れた一点を見つけてから列全体を見直す。
+
+**主張:** 規則は、それが破れた瞬間にだけ知覚される。破れる前は背景であって、見えていない。
+
+**固有の構成:** 等間隔の反復と一箇所の中断。タイトルは現時点では生成時の作業名で、作品名は未確定。
+
+<!-- prototype-visualization:start -->
+## 試作の可視化
+
+![P0008 simulated prototype preview](media/prototype/simulated-prototype-preview.svg)
+
+このSVGは、公開済みの制作プラン本文から構成を読み取り、Project側で決定的に描画した `simulated` な確認用出力です。実物の試作、物理検証、鑑賞者検証、制作実績、公開承認を示しません。canonicalな `plan.md` とProduction attestationには追記せず、README専用の補助メディアとして保持しています。
+
+![等間隔の列と、一箇所の中断](media/prototype-whole.jpg)
+
+同型の要素が壁に沿って等間隔に並び、中央の一箇所だけ間隔が空いています。鑑賞者はこの一点に当たって初めて足を止め、そこから列全体を見直します。中断は見どころではなく、背景だった規則を知覚可能にする装置です。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
+<!-- prototype-visualization:end -->
+
+## 制作状態
+
+このページは、Productionで生成された公開制作プランの紹介です。制作計画の正本と受入条件は [plan.md](plan.md) にあり、このREADMEはその入口として要点だけを示します。公開済みなのは計画と決定論的なビジュアルfixtureであり、物理制作・購入・契約・展示・外部連絡を実行した記録ではありません。実行前に、plan.md の未解決事項と承認境界を確認してください。
+
+## 関連ファイル
+
+- [完全な制作プラン](plan.md)
+- [コンセプト・モックアップ](media/concept-mockup.svg)
+- [ビジュアルリファレンスボード](media/visual-reference-board.svg)
+- [公開プラン証明](public-plan-attestation.json)
+- [生成メタデータ](metadata.yaml)
+- [来歴](lineage.json)
