@@ -24,4 +24,4 @@
 "assets": "[{\"byte_length\":2061,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/concept-mockup.svg\",\"rights_ref\":\"automatic-plan-authority/production/auto-auto-plan-20260921t152805z-rev1#PL001\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:5da3f52a90957abdcb615f53b730f7c98e1820dc81e59d90a17baf722fc76f73\"},{\"byte_length\":4611,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/visual-reference-board.svg\",\"rights_ref\":\"automatic-plan-authority/production/auto-auto-plan-20260921t152805z-rev1#PL001\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:045c80a3c999b885e62fa4a9612dc776f44701a62cec7993fb4ae53e5f139d5e\"}]"
 "introduction_contract": "project-plan-introduction/v1"
 "introduction_revision": "1"
-"introduction_sha256": "c06a8212de9be88f33bd84e7334860620e1ff2a0ea4aa0df415ba9cfcce94b37"
+"introduction_sha256": "22922a29f4f17956e50e71c7ca70f180ac4dc3511ef5988a0971ddf8c34202cc"

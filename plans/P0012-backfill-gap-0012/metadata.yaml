@@ -24,4 +24,4 @@
 "assets": "[{\"byte_length\":2061,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/concept-mockup.svg\",\"rights_ref\":\"automatic-plan-authority/production/backfill-gap-0012#PL001\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:5da3f52a90957abdcb615f53b730f7c98e1820dc81e59d90a17baf722fc76f73\"},{\"byte_length\":4611,\"media_type\":\"image/svg+xml\",\"path\":\"03_plan/media/visual-reference-board.svg\",\"rights_ref\":\"automatic-plan-authority/production/backfill-gap-0012#PL001\",\"rights_status\":\"PUBLIC_CLEARED\",\"sha256\":\"sha256:045c80a3c999b885e62fa4a9612dc776f44701a62cec7993fb4ae53e5f139d5e\"}]"
 "introduction_contract": "project-plan-introduction/v1"
 "introduction_revision": "1"
-"introduction_sha256": "236bcae55d7c7e534a6616109d41d3f32cb433ee84b7c127c1a9065a2d096ddd"
+"introduction_sha256": "27b730d08ef90a1d335f23d510c0822902c262b8daf724c823bae250fe826297"

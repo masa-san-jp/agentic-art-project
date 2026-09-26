@@ -19,6 +19,16 @@
 - [concept-mockup.svg](media/concept-mockup.svg)
 - [visual-reference-board.svg](media/visual-reference-board.svg)
 
+<!-- prototype-visualization:start -->
+## 試作の可視化
+
+![半透明面と細い光 — 閾値の後](media/prototype-whole.jpg)
+
+細い光の中に半透明面を吊った状態です。面の下端と、床に落ちた影の位置がわずかにずれています。小さな空気の到来が、面の縁または影を一度だけ動かす機構に当たります。到着・待機・戻りの三状態のうち、閾値を越えた後の一枚として読めます。
+
+ローカル生成によるレンダリングであり、制作した現物の写真ではありません。物理試作、外部検証、展示の実施記録を示しません。
+<!-- prototype-visualization:end -->
+
 ## 制作入口
 
 制作判断と受入条件の入口は [plan.md](plan.md) です。ここで公開されるのは検証済みの制作計画と紹介であり、物理制作、購入、契約、展示、外部連絡はこの投影から実行されません。
