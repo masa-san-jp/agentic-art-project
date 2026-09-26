@@ -159,11 +159,12 @@ class LocalWorkspaceTests(unittest.TestCase):
         self.git(root, "remote", "set-url", "origin", "https://github.com/example/public.git")
         self.assertEqual([], validate(root))
 
-    def test_exported_tree_without_git_uses_static_checks(self):
+    def test_exported_tree_without_git_rejects_git_bound_reissue_registry(self):
         temporary, root = self.checkout(git=False)
         self.addCleanup(temporary.cleanup)
         self.assertFalse((root / ".git").exists())
-        self.assertEqual([], validate(root))
+        errors = validate(root)
+        self.assertTrue(any(error.startswith("plans/reissue.yaml:") for error in errors))
         result = subprocess.run(
             [sys.executable, str(ROOT / "tools/validate.py"), "--check", "--root", str(root)],
             cwd=root,
@@ -172,8 +173,8 @@ class LocalWorkspaceTests(unittest.TestCase):
             stderr=subprocess.PIPE,
             check=False,
         )
-        self.assertEqual(0, result.returncode)
-        self.assertIn("NOT_APPLICABLE", result.stdout)
+        self.assertEqual(1, result.returncode)
+        self.assertIn("P0010 is not a historical ID in Git", result.stderr)
 
 
 if __name__ == "__main__":

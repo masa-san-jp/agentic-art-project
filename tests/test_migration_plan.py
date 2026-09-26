@@ -7,11 +7,12 @@ class MigrationPlanTests(unittest.TestCase):
     def test_report_marks_all_published_plans_complete(self):
         report=classify(ROOT)
         self.assertEqual("COMPLETE",report["status"])
-        rows={row["id"]:row for row in report["records"]}
-        expected_ids = {f"P{i:04d}" for i in range(1, 10)} | {"P0015"}
+        rows={row["id"]:row for row in report["records"] if not row["applied"]}
+        expected_ids = {f"P{i:04d}" for i in range(1, 18)}
         self.assertEqual(expected_ids, set(rows))
         self.assertTrue(all(row["classification"] == "CANONICAL" for row in rows.values()))
-        self.assertTrue(all(not row["applied"] for row in rows.values()))
+        reserved={row["id"]:row for row in report["records"] if row["applied"]}
+        self.assertEqual(set(), set(reserved))
         self.assertEqual([],report["writes"])
 
 

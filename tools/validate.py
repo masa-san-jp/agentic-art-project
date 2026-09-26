@@ -454,7 +454,8 @@ def validate(root: Path = ROOT) -> list[str]:
         errors.append("plans/index.yaml: indexed plan directories differ from the filesystem")
     for record in records:
         errors.extend(validate_record(root, record))
-    from tools.catalog_lineage import index_document
+    from tools.catalog_lineage import index_document, validate_reissue_registry
+    errors.extend(validate_reissue_registry(root, records))
     try:
         for item in index_document(root)["records"]:
             if item["status"] == "BLOCKED":

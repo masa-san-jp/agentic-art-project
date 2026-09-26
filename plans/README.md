@@ -6,6 +6,8 @@ Agentic Art の制作プラン一覧です。
 
 `ready-for-publication`はProduction正本、公開証明、無変換投影の来歴を確認済みです。正本を確認できない旧レコードは一覧や個別ディレクトリに残さず、IDと復旧条件だけを[`migration.yaml`](migration.yaml)に記録します。旧本文はGit履歴からのみ参照できます。
 
+履歴上すでに使われたIDを正規の新しいProduction正本へ再発行する場合だけ、IDと`source_identity`の一対一対応を[`reissue.yaml`](reissue.yaml)に記録します。投影前は`PENDING`、投影後は`APPLIED`とし、これは今回の移行証跡であって採番器の一般的な再利用許可ではありません。
+
 全件の機械可読一覧は [`index.yaml`](index.yaml) を参照してください。`index.yaml` が制作プランのSSOTであり、下の一覧とルートREADMEの制作プラン一覧は `python3 tools/catalog_sync.py --write` で同期します。
 
 ## 取り込み方針
@@ -24,7 +26,14 @@ Agentic Art の制作プラン一覧です。
 - [近くても受領されない — Near, Not Received](P0007-near-not-received/README.md)
 - [aak07-agent-20260910-p4](P0008-aak07-agent-20260910-p4/README.md)
 - [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](P0009-external-possession/README.md)
+- [backfill-gap-0010](P0010-backfill-gap-0010/README.md)
+- [backfill-gap-0011](P0011-backfill-gap-0011/README.md)
+- [backfill-gap-0012](P0012-backfill-gap-0012/README.md)
+- [auto-auto-plan-20260916t125851z-rev4](P0013-auto-auto-plan-20260916t125851z-rev4/README.md)
+- [auto-auto-plan-20260916t125851z-rev5](P0014-auto-auto-plan-20260916t125851z-rev5/README.md)
 - [auto-auto-plan-20260916t125851z-rev6](P0015-auto-auto-plan-20260916t125851z-rev6/README.md)
+- [backfill-gap-0016](P0016-backfill-gap-0016/README.md)
+- [auto-auto-plan-20260921t152805z-rev1](P0017-auto-auto-plan-20260921t152805z-rev1/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。

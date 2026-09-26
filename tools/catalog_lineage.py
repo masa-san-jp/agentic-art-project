@@ -26,6 +26,8 @@ IDENTITY = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")
 REPOSITORY = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 SHA = re.compile(r"^[0-9a-f]{64}$")
 COMMIT = re.compile(r"^[0-9a-f]{40}$")
+REISSUE_PATH = "plans/reissue.yaml"
+REISSUE_FIELDS = {"id", "source_identity", "reason", "authorization_ref", "state"}
 FIELDS = {"contract_version", "record_id", "revision", "origin_instance_id", "creator_id",
           "source_identity", "content_sha256", "derived_from", "source_plans", "comparison",
           "stage", "stage_evidence", "canonical_revision"}
@@ -99,6 +101,61 @@ def records(root):
         if reserved & {row["id"] for _, row in result}:
             raise LineageError("RESERVED_ID_REUSED")
     return result
+
+
+def reissue_records(root):
+    """Read the closed, one-time registry for explicitly authorized ID reuse."""
+    path = safe_path(root, REISSUE_PATH)
+    if not path.exists():
+        return []
+    rows = catalog_sync._parse_list_records(path, "records")
+    seen = set()
+    for row in rows:
+        if set(row) != REISSUE_FIELDS:
+            raise LineageError("INVALID_REISSUE_REGISTRY")
+        if (not re.fullmatch(r"P[0-9]{4}", row["id"]) or row["id"] in seen
+                or not row["source_identity"] or not row["reason"] or not row["authorization_ref"]
+                or row["state"] not in {"PENDING", "APPLIED"}):
+            raise LineageError("INVALID_REISSUE_REGISTRY")
+        seen.add(row["id"])
+    return rows
+
+
+def validate_reissue_registry(root, plan_records=None):
+    """Validate applied reissues against the current catalog and Git history."""
+    try:
+        rows = reissue_records(root)
+    except (LineageError, ValueError, OSError, KeyError, TypeError) as exc:
+        return [f"plans/reissue.yaml: {exc}"]
+    if not rows:
+        return []
+    if plan_records is None:
+        plan_records = [row for kind, row in records(root) if kind == "plans"]
+    by_id = {row["id"]: row for row in plan_records}
+    errors = []
+    for row in rows:
+        current = by_id.get(row["id"])
+        if current is None:
+            if row["state"] != "PENDING":
+                errors.append(f"plans/reissue.yaml: {row['id']} is APPLIED without an active public record")
+            continue
+        if row["state"] != "APPLIED":
+            errors.append(f"plans/reissue.yaml: {row['id']} remains PENDING after projection")
+        if current.get("source_identity") != row["source_identity"]:
+            errors.append(f"plans/reissue.yaml: {row['id']} source identity differs from the active record")
+        if not _git(root, "log", "--all", "--format=%H", "--", f"plans/{row['id']}-*", required=False).strip():
+            errors.append(f"plans/reissue.yaml: {row['id']} is not a historical ID in Git")
+    return sorted(set(errors))
+
+
+def _historical_reissue_allowed(root, kind, row):
+    if kind != "plans":
+        return False
+    try:
+        return any(item["id"] == row["id"] and item["source_identity"] == row.get("source_identity")
+                   for item in reissue_records(root))
+    except (LineageError, ValueError, OSError, KeyError, TypeError):
+        return False
 
 
 def validate_reference(ref):
@@ -307,9 +364,12 @@ def annotate(root, record_id, value, *, instance, mode, expected_sha256, apply=F
     if mode == "new":
         if value["origin_instance_id"] != instance["instance_id"] or value["creator_id"] != instance["creator_id"]:
             raise LineageError("NEW_RECORD_INSTANCE_MISMATCH")
-        if previous != raw and (_git(root, "rev-parse", "--is-shallow-repository").strip() == b"true"
-                or _git(root, "log", "--all", "--format=%H", "--", f"{kind}/{record_id}-*", required=False).strip()):
-            raise LineageError("INHERITED_RECORD_IS_NOT_NEW")
+        if previous != raw:
+            if _git(root, "rev-parse", "--is-shallow-repository").strip() == b"true":
+                raise LineageError("INHERITED_RECORD_IS_NOT_NEW")
+            if (_git(root, "log", "--all", "--format=%H", "--", f"{kind}/{record_id}-*", required=False).strip()
+                    and not _historical_reissue_allowed(root, kind, row)):
+                raise LineageError("INHERITED_RECORD_IS_NOT_NEW")
     elif mode == "preserve":
         if any(value[key] != old[key] for key in ("origin_instance_id", "creator_id")):
             raise LineageError("INHERITED_ATTRIBUTION_CHANGED")
