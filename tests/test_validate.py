@@ -71,9 +71,9 @@ class PublicCatalogValidationTests(unittest.TestCase):
         migration = validator.catalog_sync._parse_list_records(ROOT / "plans/migration.yaml", "records")
         self.assertEqual([], migration)
         reissues = catalog_lineage.reissue_records(ROOT)
-        self.assertEqual({f"P{i:04d}" for i in (10, 11, 12, 13, 14, 16)}, {row["id"] for row in reissues})
+        self.assertEqual({f"P{i:04d}" for i in (10, 13)}, {row["id"] for row in reissues})
         self.assertTrue(all(row["state"] == "APPLIED" for row in reissues))
-        expected_ids = {f"P{i:04d}" for i in range(1, 18)}
+        expected_ids = {f"P{i:04d}" for i in (*range(1, 11), 13)}
         self.assertEqual(expected_ids, {record["id"] for record in records})
         self.assertFalse(list((ROOT / "plans").glob("P*/summary.md")))
 

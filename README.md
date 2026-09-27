@@ -107,13 +107,7 @@ flowchart TD
 - [Interrupted interval installation](plans/P0008-interrupted-interval-installation/README.md)
 - [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](plans/P0009-external-possession/README.md)
 - [Receiving interval](plans/P0010-receiving-interval/README.md)
-- [Receiving interval](plans/P0011-receiving-interval/README.md)
-- [Receiving interval](plans/P0012-receiving-interval/README.md)
 - [Review threshold as a reversible installation](plans/P0013-review-threshold-as-a-reversible-installation/README.md)
-- [Review threshold as a reversible installation](plans/P0014-review-threshold-as-a-reversible-installation/README.md)
-- [Review threshold as a reversible installation](plans/P0015-review-threshold-as-a-reversible-installation/README.md)
-- [Receiving interval](plans/P0016-receiving-interval/README.md)
-- [Receiving interval](plans/P0017-receiving-interval/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。
