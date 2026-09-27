@@ -27,7 +27,7 @@ Agentic Art の制作プラン一覧です。
 - [Interrupted interval installation](P0008-interrupted-interval-installation/README.md)
 - [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](P0009-external-possession/README.md)
 - [Receiving interval](P0010-receiving-interval/README.md)
-- [Review threshold as a reversible installation](P0013-review-threshold-as-a-reversible-installation/README.md)
+- [Review threshold as a reversible installation](P0011-review-threshold-as-a-reversible-installation/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。
