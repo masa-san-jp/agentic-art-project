@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>Digital prototype PRT002</title>
+<desc>Deterministic simulated digital prototype. No physical, network, provider, purchase, or publication action was performed.</desc>
+<rect width="1200" height="760" fill="#f8fafc" />
+<rect x="90" y="160" width="760" height="370" rx="16" fill="#ffffff" stroke="#334155" stroke-width="4" />
+<rect x="270" y="235" width="400" height="220" fill="#cbd5e1" stroke="#111827" stroke-width="5" />
+<line x1="270" y1="475" x2="670" y2="475" stroke="#f59e0b" stroke-width="5" stroke-dasharray="10 8" />
+<line x1="135" y1="600" x2="805" y2="600" stroke="#64748b" stroke-width="4" />
+<circle cx="150" cy="575" r="15" fill="#f59e0b" />
+<line x1="150" y1="575" x2="270" y2="350" stroke="#f59e0b" stroke-width="3" stroke-dasharray="8 8" />
+<text x="48" y="62" font-size="30" fill="#111827" font-family="sans-serif">Digital prototype · PRT002</text>
+<text x="48" y="98" font-size="15" fill="#475569" font-family="sans-serif">PL001 revision 1 · PP002 · SIMULATED · NOT TO SCALE</text>
+<text x="48" y="132" font-size="13" fill="#475569" font-family="sans-serif">SVG generated locally from the accepted production plan; output is inspectable and not physical evidence.</text>
+<text x="900" y="190" font-size="16" font-weight="bold" fill="#111827" font-family="sans-serif">PLAN INPUTS</text>
+<text x="900" y="225" font-size="13" fill="#475569" font-family="sans-serif">DIMENSIONS</text>
+<text x="900" y="250" font-size="13" fill="#111827" font-family="sans-serif">method-dimensions-1: 3 m, method-dimensions-2: 4 m, method-dimensions-3: 30 cm</text>
+<text x="900" y="295" font-size="13" fill="#475569" font-family="sans-serif">MATERIAL</text>
+<text x="900" y="320" font-size="13" fill="#111827" font-family="sans-serif">縦30cm×横40cm・厚さ約1.5cmの白ジェッソ下地の綿布張り木製キャンバスパネル</text>
+<text x="900" y="365" font-size="13" fill="#475569" font-family="sans-serif">QUANTITY</text>
+<text x="900" y="390" font-size="13" fill="#111827" font-family="sans-serif">1 item</text>
+<text x="900" y="435" font-size="13" fill="#475569" font-family="sans-serif">VIEWER / INSTALLATION</text>
+<text x="900" y="460" font-size="13" fill="#111827" font-family="sans-serif">鑑賞者は床の白いテープの線の上に立ち、壁面に並ぶ小さな色の点をまっすぐ見つめる姿勢で、作品と一定の距離を保っている。</text>
+<text x="48" y="660" font-size="14" fill="#111827" font-family="sans-serif">Viewer position → object outline → installation surface relation</text>
+<text x="48" y="700" font-size="13" fill="#475569" font-family="sans-serif">Scale: NOT TO SCALE · epistemic status: simulated · run: PRT002</text>
+<text x="48" y="728" font-size="12" fill="#475569" font-family="sans-serif">Prototype inputs: 03_plan/production-plan.yaml dimensions（寸法）; 03_plan/production-plan.yaml materials（素材）; 03_plan/production-plan.yaml quantity（数量）; 小さな点を並べた縦30cm×横40cmほどの試し塗り用キャンバス板。点の混ざり方を確かめる見本として使う。; 試し塗りの安定箇所を緑、曖昧な箇所を赤で印し、確定済みの費用と予備枠の金額を並べて書いた、A3一枚の費用管理シート。; 鑑賞者が立つ位置を示す、床に貼った白いテープの線と、その位置から点の混ざり方を確かめるための壁面展示スペース。</text>
+<text x="48" y="748" font-size="12" fill="#475569" font-family="sans-serif">Constraints: 物の制作・購入・公開・依頼をしない（READ_ONLY と REPOSITORY_WRITE の段取りだけ）。</text>
+</svg>
