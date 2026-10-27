@@ -308,3 +308,10 @@
   "introduction_revision": "1"
   "introduction_sha256": "f0fce6d4acd4744ad7ab96a9d825d561dadb78af84bc3359ec11f053a95a44a3"
   "path": "plans/P0011-review-threshold-as-a-reversible-installation"
+"retired_ids":
+- "P0012"
+- "P0013"
+- "P0014"
+- "P0015"
+- "P0016"
+- "P0017"
