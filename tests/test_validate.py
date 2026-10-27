@@ -73,9 +73,26 @@ class PublicCatalogValidationTests(unittest.TestCase):
         reissues = catalog_lineage.reissue_records(ROOT)
         self.assertEqual({f"P{i:04d}" for i in (10, 11)}, {row["id"] for row in reissues})
         self.assertTrue(all(row["state"] == "APPLIED" for row in reissues))
-        expected_ids = {f"P{i:04d}" for i in range(1, 12)}
+        # P0012-P0017 are retired (plans/index.yaml retired_ids); new records continue from P0018.
+        expected_ids = {f"P{i:04d}" for i in range(1, 12)} | {"P0018"}
         self.assertEqual(expected_ids, {record["id"] for record in records})
         self.assertFalse(list((ROOT / "plans").glob("P*/summary.md")))
+
+    def test_index_keeps_retired_ids_for_the_projection_receiver(self):
+        # The canonical projection receiver requires version/records/retired_ids exactly;
+        # losing the key (48b60cd) stopped every automatic plan projection.
+        lines = (ROOT / "plans/index.yaml").read_text(encoding="utf-8").splitlines()
+        self.assertIn('"retired_ids":', lines)
+        retired = []
+        for line in lines[lines.index('"retired_ids":') + 1:]:
+            if not line.startswith("- "):
+                break
+            retired.append(line[2:].strip('"'))
+        self.assertTrue(all(validator.PLAN_ID.fullmatch(identifier) for identifier in retired))
+        self.assertEqual(len(retired), len(set(retired)))
+        records = validator.catalog_sync._parse_list_records(ROOT / "plans/index.yaml", "records")
+        self.assertEqual(set(), set(retired) & {record["id"] for record in records})
+        self.assertEqual(set(), set(retired) & {row["id"] for row in catalog_lineage.reissue_records(ROOT)})
 
     def test_tampered_plan_body_is_rejected_by_hash(self):
         record = validator.catalog_sync._parse_list_records(ROOT / "plans/index.yaml", "records")[0]

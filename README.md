@@ -172,6 +172,7 @@ flowchart TD
 - [外部化された憑依 — 停止条件によって切り落とされた運筆プロトコルと自律的余白](plans/P0009-external-possession/README.md)
 - [Receiving interval](plans/P0010-receiving-interval/README.md)
 - [Review threshold as a reversible installation](plans/P0011-review-threshold-as-a-reversible-installation/README.md)
+- [Repository-derived production proposal](plans/P0018-auto-catalog-20261027-e-b050f4b1747b/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>Visual reference board · 小さな試し塗りで見え方が安定した部分から順に費用を確定し、曖昧さが残る箇所だけ予備枠で受け止めることで、不確かさを抱えたまま制作の費用を段階的に固められる。</title>
+<desc>Deterministic synthetic visual reference board. Citation-only references; no external image body.</desc>
+<rect width="1200" height="760" fill="#f8fafc" />
+<rect x="48" y="168" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="246" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="324" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="402" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="480" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="780" y="170" width="150" height="60" rx="8" fill="#111827" stroke="#64748b" />
+<rect x="950" y="170" width="150" height="60" rx="8" fill="#475569" stroke="#64748b" />
+<rect x="780" y="270" width="150" height="60" rx="8" fill="#cbd5e1" stroke="#64748b" />
+<rect x="950" y="270" width="150" height="60" rx="8" fill="#f8fafc" stroke="#64748b" />
+<text x="48" y="64" font-size="30" fill="#111827" font-family="sans-serif">Visual reference board · 小さな試し塗りで見え方が安定した部分から順に費用を確定し、曖昧さが残る箇所だけ予備枠で受け止めることで、不確かさを抱えたまま制作の費用を段階的に固められる。</text>
+<text x="48" y="98" font-size="15" fill="#475569" font-family="sans-serif">VP001 · REFERENCE BOARD · CITATION ONLY</text>
+<text x="48" y="142" font-size="18" fill="#475569" font-family="sans-serif">No external image body is copied into this fixture.</text>
+<text x="78" y="196" font-size="18" fill="#111827" font-family="sans-serif">DC001 · UNKNOWN</text>
+<text x="78" y="222" font-size="14" fill="#475569" font-family="sans-serif">DC001-option-1 selected under IN001: スーラの分割技法や展覧会の前売券期間は、いずれも根拠が弱く、費用確定の直接的な手がかりになるとは断定できず、せいぜい補助的な参考情報にとどまる可能性がある。</text>
+<text x="78" y="245" font-size="12" fill="#475569" font-family="sans-serif">urn:source-ref:DC001</text>
+<text x="78" y="274" font-size="18" fill="#111827" font-family="sans-serif">DC003 · UNKNOWN</text>
+<text x="78" y="300" font-size="14" fill="#475569" font-family="sans-serif">DC003-option-1 selected under IN003: これらの主張は弱い根拠に基づくため断定はできないが、分割した点を観る人の目の中で混ぜる手法は光の効果を高める一方で感覚的な曖昧さも残すので、費用確定の判断をどこまで前倒しできるかは、この主張だけでは決められない。</text>
+<text x="78" y="323" font-size="12" fill="#475569" font-family="sans-serif">urn:source-ref:DC003</text>
+<text x="78" y="352" font-size="18" fill="#111827" font-family="sans-serif">EV001 · UNKNOWN</text>
+<text x="78" y="378" font-size="14" fill="#475569" font-family="sans-serif">agent-retrieved-public; rights_status=unknown; sensitivity=PUBLIC_CITABLE</text>
+<text x="78" y="401" font-size="12" fill="#475569" font-family="sans-serif">https://www.nact.jp/english/artcommons/user/detail/4241</text>
+<text x="78" y="430" font-size="18" fill="#111827" font-family="sans-serif">EV002 · UNKNOWN</text>
+<text x="78" y="456" font-size="14" fill="#475569" font-family="sans-serif">agent-retrieved-public; rights_status=unknown; sensitivity=PUBLIC_CITABLE</text>
+<text x="78" y="479" font-size="12" fill="#475569" font-family="sans-serif">https://www.nact.jp/artcommons/user/detail/43862</text>
+<text x="78" y="508" font-size="18" fill="#111827" font-family="sans-serif">EV004 · UNKNOWN</text>
+<text x="78" y="534" font-size="14" fill="#475569" font-family="sans-serif">agent-retrieved-public; rights_status=unknown; sensitivity=PUBLIC_CITABLE</text>
+<text x="78" y="557" font-size="12" fill="#475569" font-family="sans-serif">https://www.nact.jp/artcommons/user/detail/4241</text>
+<text x="780" y="272" font-size="13" fill="#111827" font-family="sans-serif">ink · neutral fixture foreground</text>
+<text x="950" y="272" font-size="13" fill="#111827" font-family="sans-serif">slate · neutral fixture structure</text>
+<text x="780" y="372" font-size="13" fill="#111827" font-family="sans-serif">mist · neutral fixture interval</text>
+<text x="950" y="372" font-size="13" fill="#111827" font-family="sans-serif">paper · neutral fixture ground</text>
+<text x="780" y="430" font-size="16" fill="#111827" font-family="sans-serif">MATERIAL</text>
+<text x="780" y="458" font-size="13" fill="#475569" font-family="sans-serif">Material detail is not supplied by the accepted handoff.</text>
+<text x="780" y="514" font-size="16" fill="#111827" font-family="sans-serif">LIGHT / SPACE</text>
+<text x="780" y="542" font-size="13" fill="#475569" font-family="sans-serif">Light detail is not supplied by the accepted handoff.; 鑑賞者は床の白いテープの線の上に立ち、壁面に並ぶ小さな色の点をまっすぐ見つめる姿勢で、作品と一定の距離を保っている。; 点描(新印象派)の視覚芸術・絵画の分野</text>
+<text x="48" y="690" font-size="13" fill="#475569" font-family="sans-serif">Neutral deterministic rendering of accepted references; this is not an external image acquisition.</text>
+</svg>
