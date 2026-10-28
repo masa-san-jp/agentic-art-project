@@ -74,7 +74,7 @@ class PublicCatalogValidationTests(unittest.TestCase):
         self.assertEqual({f"P{i:04d}" for i in (10, 11)}, {row["id"] for row in reissues})
         self.assertTrue(all(row["state"] == "APPLIED" for row in reissues))
         # P0012-P0017 are retired (plans/index.yaml retired_ids); new records continue from P0018.
-        expected_ids = {f"P{i:04d}" for i in range(1, 12)} | {"P0018"}
+        expected_ids = {f"P{i:04d}" for i in range(1, 12)} | {"P0018", "P0019"}
         self.assertEqual(expected_ids, {record["id"] for record in records})
         self.assertFalse(list((ROOT / "plans").glob("P*/summary.md")))
 

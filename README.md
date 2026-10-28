@@ -173,6 +173,7 @@ flowchart TD
 - [Receiving interval](plans/P0010-receiving-interval/README.md)
 - [Review threshold as a reversible installation](plans/P0011-review-threshold-as-a-reversible-installation/README.md)
 - [点描に学ぶ試し塗りと予備枠の費用](plans/P0018-pointillist-swatches-and-reserve-budget/README.md)
+- [白木の壁、三色の指示書](plans/P0019-auto-catalog-20261028-a-82a4cc46133a/README.md)
 <!-- agentic-art:catalog:end -->
 
 作品は [works/README.md](works/README.md) から一覧できます。プランと作品の関係は、各レコードのREADMEとmetadataで確認できます。

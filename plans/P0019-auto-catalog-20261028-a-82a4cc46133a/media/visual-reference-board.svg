@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<title>Visual reference board · 白い木の壁の1m四方に3×3のgridでcubesの立体図を3色で塗る指示書は、第三者が構想どおりに実行できるほど結果を事前に決められる、という命題を示す。</title>
+<desc>Deterministic synthetic visual reference board. Citation-only references; no external image body.</desc>
+<rect width="1200" height="760" fill="#f8fafc" />
+<rect x="48" y="168" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="246" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="324" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="402" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="48" y="480" width="650" height="62" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+<rect x="780" y="170" width="150" height="60" rx="8" fill="#111827" stroke="#64748b" />
+<rect x="950" y="170" width="150" height="60" rx="8" fill="#475569" stroke="#64748b" />
+<rect x="780" y="270" width="150" height="60" rx="8" fill="#cbd5e1" stroke="#64748b" />
+<rect x="950" y="270" width="150" height="60" rx="8" fill="#f8fafc" stroke="#64748b" />
+<text x="48" y="64" font-size="30" fill="#111827" font-family="sans-serif">Visual reference board · 白い木の壁の1m四方に3×3のgridでcubesの立体図を3色で塗る指示書は、第三者が構想どおりに実行できるほど結果を事前に決められる、という命題を示す。</text>
+<text x="48" y="98" font-size="15" fill="#475569" font-family="sans-serif">VP001 · REFERENCE BOARD · CITATION ONLY</text>
+<text x="48" y="142" font-size="18" fill="#475569" font-family="sans-serif">No external image body is copied into this fixture.</text>
+<text x="78" y="196" font-size="18" fill="#111827" font-family="sans-serif">DC001 · UNKNOWN</text>
+<text x="78" y="222" font-size="14" fill="#475569" font-family="sans-serif">DC001-option-1 selected under IN001: The idea becomes a machine&quot;は概念の成立過程に重点を置くため、市場の費用先行や確定待ちといった具体性には直接応えていない可能性が高いが、値上がりと形の目減りへの皮肉との関係は抜き書きだけでは断定できない。</text>
+<text x="78" y="245" font-size="12" fill="#475569" font-family="sans-serif">urn:source-ref:DC001</text>
+<text x="78" y="274" font-size="18" fill="#111827" font-family="sans-serif">DC003 · UNKNOWN</text>
+<text x="78" y="300" font-size="14" fill="#475569" font-family="sans-serif">DC003-option-1 selected under IN003: この主張は、white wood の in situ な壁面に multicoloured な wall drawings を載せ、&quot;written instructions&quot; と &quot;grid&quot; や &quot;cubes&quot; の条件だけで第三者が実行できる小規模な試作を作れば検証できる可能性を示すが、どちらの主張も根拠が弱いため、耐えるかどうかは断定できない。</text>
+<text x="78" y="323" font-size="12" fill="#475569" font-family="sans-serif">urn:source-ref:DC003</text>
+<text x="78" y="352" font-size="18" fill="#111827" font-family="sans-serif">EV001 · UNKNOWN</text>
+<text x="78" y="378" font-size="14" fill="#475569" font-family="sans-serif">agent-retrieved-public; rights_status=unknown; sensitivity=PUBLIC_CITABLE</text>
+<text x="78" y="401" font-size="12" fill="#475569" font-family="sans-serif">https://www.sfaq.us/2011/11/sol-lewitt-on-conceptual-art-1967/</text>
+<text x="78" y="430" font-size="18" fill="#111827" font-family="sans-serif">EV003 · UNKNOWN</text>
+<text x="78" y="456" font-size="14" fill="#475569" font-family="sans-serif">agent-retrieved-public; rights_status=unknown; sensitivity=PUBLIC_CITABLE</text>
+<text x="78" y="479" font-size="12" fill="#475569" font-family="sans-serif">https://www.phaidon.com/en-eu/blogs/artspace/the-abcs-of-sol-lewitts-art</text>
+<text x="78" y="508" font-size="18" fill="#111827" font-family="sans-serif">EV004 · UNKNOWN</text>
+<text x="78" y="534" font-size="14" fill="#475569" font-family="sans-serif">agent-retrieved-public; rights_status=unknown; sensitivity=PUBLIC_CITABLE</text>
+<text x="78" y="557" font-size="12" fill="#475569" font-family="sans-serif">https://www.artbook.com/9783037643068.html</text>
+<text x="780" y="272" font-size="13" fill="#111827" font-family="sans-serif">ink · neutral fixture foreground</text>
+<text x="950" y="272" font-size="13" fill="#111827" font-family="sans-serif">slate · neutral fixture structure</text>
+<text x="780" y="372" font-size="13" fill="#111827" font-family="sans-serif">mist · neutral fixture interval</text>
+<text x="950" y="372" font-size="13" fill="#111827" font-family="sans-serif">paper · neutral fixture ground</text>
+<text x="780" y="430" font-size="16" fill="#111827" font-family="sans-serif">MATERIAL</text>
+<text x="780" y="458" font-size="13" fill="#475569" font-family="sans-serif">Material detail is not supplied by the accepted handoff.</text>
+<text x="780" y="514" font-size="16" fill="#111827" font-family="sans-serif">LIGHT / SPACE</text>
+<text x="780" y="542" font-size="13" fill="#475569" font-family="sans-serif">Light detail is not supplied by the accepted handoff.; 鑑賞者は白い木の壁の前に立ち、1m四方の面に3色でcubesが塗られていく過程を、壁面に近い距離から立ったまま見届ける。; インストラクション・ペインティング(壁画・コンセプチュアルアート)</text>
+<text x="48" y="690" font-size="13" fill="#475569" font-family="sans-serif">Neutral deterministic rendering of accepted references; this is not an external image acquisition.</text>
+</svg>
