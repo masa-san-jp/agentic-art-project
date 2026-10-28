@@ -9,7 +9,7 @@ class MigrationPlanTests(unittest.TestCase):
         self.assertEqual("COMPLETE",report["status"])
         rows={row["id"]:row for row in report["records"] if not row["applied"]}
         # P0012-P0017 are retired (plans/index.yaml retired_ids); new records continue from P0018.
-        expected_ids = {f"P{i:04d}" for i in range(1, 12)} | {"P0018"}
+        expected_ids = {f"P{i:04d}" for i in range(1, 12)} | {"P0018", "P0019"}
         self.assertEqual(expected_ids, set(rows))
         self.assertTrue(all(row["classification"] == "CANONICAL" for row in rows.values()))
         reserved={row["id"]:row for row in report["records"] if row["applied"]}
