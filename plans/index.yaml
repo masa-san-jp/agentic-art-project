@@ -337,7 +337,7 @@
   "introduction_sha256": "5b9de0818eda485eb189e9dfc60ba4f877f9b9cc5e9073442f6a47b6dee8a655"
   "path": "plans/P0018-pointillist-swatches-and-reserve-budget"
 - "id": "P0019"
-  "slug": "auto-catalog-20261028-a-82a4cc46133a"
+  "slug": "white-wood-wall-three-color-instructions"
   "title": "白木の壁、三色の指示書"
   "source_key": "plan:production/auto-catalog-20261028-a-82a4cc46133a#PL001"
   "source_identity": "production/auto-catalog-20261028-a-82a4cc46133a#PL001"
@@ -363,7 +363,7 @@
   "introduction_contract": "project-plan-introduction/v1"
   "introduction_revision": "1"
   "introduction_sha256": "feafd87b6e3b980fadc2b5d28bdc1afa81837bbada7f666f145234e1b1478f2e"
-  "path": "plans/P0019-auto-catalog-20261028-a-82a4cc46133a"
+  "path": "plans/P0019-white-wood-wall-three-color-instructions"
 "retired_ids":
 - "P0012"
 - "P0013"

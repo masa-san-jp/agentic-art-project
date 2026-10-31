@@ -29,7 +29,7 @@ Agentic Art の制作プラン一覧です。
 - [Receiving interval](P0010-receiving-interval/README.md)
 - [Review threshold as a reversible installation](P0011-review-threshold-as-a-reversible-installation/README.md)
 - [点描に学ぶ試し塗りと予備枠の費用](P0018-pointillist-swatches-and-reserve-budget/README.md)
-- [白木の壁、三色の指示書](P0019-auto-catalog-20261028-a-82a4cc46133a/README.md)
+- [白木の壁、三色の指示書](P0019-white-wood-wall-three-color-instructions/README.md)
 <!-- agentic-art:catalog:end -->
 
 管理対象ブロックを直接編集した場合は、`python3 tools/catalog_sync.py --check` が失敗します。オーケストレーションの自動plan投影は、新しいプランのレコード、`plans/index.yaml`、この一覧、およびルートREADMEに管理対象markerがある場合のルート一覧を同じローカルtransactionで更新します。
